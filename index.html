@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fitness Fusion | Votre Salle de Sport Premium</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Fitness Fusion, la meilleure salle de sport à Constantine. Cours collectifs, coaching personnalisé, et équipements de pointe. Rejoignez-nous pour atteindre vos objectifs !">
+  <meta name="keywords" content="salle de sport, fitness, musculation, cardio, coaching, Constantine, Algérie, Fitness Fusion">
+  
+  <!-- Open Graph Meta Tags for Social Sharing -->
+  <meta property="og:title" content="Fitness Fusion | Votre Salle de Sport Premium" />
+  <meta property="og:description" content="Découvrez nos cours, nos coachs et nos offres exclusives. Transformez votre corps et votre esprit." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&q=80&w=2070" />
+  <meta property="og:url" content="https://your-gym-domain.com" /> <!-- Replace with your actual domain -->
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon (Emoji) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💪</text></svg>">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Poppins & Oswald -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8f9fa;
+      --text-primary: #1a202c;
+      --text-secondary: #4a5568;
+      --accent-color: #f59e0b; /* A vibrant amber/gold for energy */
+      --accent-color-dark: #d97706;
+      --border-color: #e2e8f0;
+      --shadow-color-rgb: 0, 0, 0;
+    }
+    
+    html[data-theme='dark'] {
+      --bg-primary: #1a202c;
+      --bg-secondary: #2d3748;
+      --text-primary: #f7fafc;
+      --text-secondary: #a0aec0;
+      --border-color: #4a5568;
+      --shadow-color-rgb: 255, 255, 255;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .font-heading {
+      font-family: 'Oswald', sans-serif;
+    }
+    
+    /* Reusable component styles */
+    .bg-primary { background-color: var(--bg-primary); }
+    .bg-secondary { background-color: var(--bg-secondary); }
+    .text-primary { color: var(--text-primary); }
+    .text-secondary { color: var(--text-secondary); }
+    .border-color { border-color: var(--border-color); }
+    .shadow-custom { box-shadow: 0 4px 6px -1px rgba(var(--shadow-color-rgb), 0.1), 0 2px 4px -1px rgba(var(--shadow-color-rgb), 0.06); }
+    .shadow-custom-lg { box-shadow: 0 10px 15px -3px rgba(var(--shadow-color-rgb), 0.1), 0 4px 6px -2px rgba(var(--shadow-color-rgb), 0.05); }
+    .shadow-custom-xl { box-shadow: 0 20px 25px -5px rgba(var(--shadow-color-rgb), 0.1), 0 10px 10px -5px rgba(var(--shadow-color-rgb), 0.04); }
+
+    /* Header scroll effect */
+    header.scrolled {
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8px);
+    }
+    html[data-theme='dark'] header.scrolled {
+       background-color: rgba(26, 32, 44, 0.9);
+       box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Active Nav Link */
+    .nav-link.active {
+        color: var(--accent-color);
+        position: relative;
+    }
+    .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--accent-color);
+    }
+
+    /* Fade-in animation */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Parallax effect */
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    /* Pricing Card Highlight */
+    .pricing-card-popular {
+      border: 2px solid var(--accent-color);
+      transform: scale(1.05);
+      position: relative;
+      z-index: 10;
+    }
+    .popular-badge {
+      position: absolute;
+      top: -1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--accent-color);
+      color: white;
+      padding: 0.25rem 1rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+    }
+
+    /* Testimonial Slider */
+    #testimonial-slider-container {
+      position: relative;
+      min-height: 300px; 
+    }
+    .testimonial-slide {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      transition: opacity 0.5s ease-in-out;
+      width: 100%;
+    }
+    .testimonial-slide.active {
+      opacity: 1;
+      position: relative;
+    }
+
+    /* Form input focus animation */
+    .form-input {
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .form-input:focus {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
+    }
+    
+    /* Class Schedule */
+    .schedule-filter-btn.active {
+      background-color: var(--accent-color);
+      color: white;
+    }
+    .schedule-item {
+        transition: transform 0.2s ease-in-out;
+    }
+     .schedule-item:hover {
+        transform: translateY(-5px);
+    }
+
+    /* Gallery Lightbox */
+    #lightbox {
+        transition: opacity 0.3s ease-in-out;
+    }
+    #lightbox.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+    #lightbox img {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Trial Modal */
+     #trial-modal-overlay {
+        transition: opacity 0.3s ease-in-out;
+    }
+    #trial-modal-box {
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Header -->
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="text-3xl font-heading font-bold text-primary">
+        FITNESS<span style="color: var(--accent-color);">FUSION</span>
+      </a>
+      
+      <!-- Desktop Nav -->
+      <ul class="hidden md:flex items-center space-x-6">
+        <li><a href="#about" class="nav-link text-secondary hover:text-amber-500 font-semibold">À Propos</a></li>
+        <li><a href="#schedule" class="nav-link text-secondary hover:text-amber-500 font-semibold">Programme</a></li>
+        <li><a href="#gallery" class="nav-link text-secondary hover:text-amber-500 font-semibold">Galerie</a></li>
+        <li><a href="#pricing" class="nav-link text-secondary hover:text-amber-500 font-semibold">Tarifs</a></li>
+        <li><a href="#contact" class="nav-link text-secondary hover:text-amber-500 font-semibold">Contact</a></li>
+        <li>
+          <button id="theme-toggle" class="text-secondary hover:text-amber-500">
+            <i class="fas fa-moon text-xl" id="theme-toggle-dark-icon"></i>
+            <i class="fas fa-sun text-xl hidden" id="theme-toggle-light-icon"></i>
+          </button>
+        </li>
+        <li><a href="#" id="trial-cta-header" class="bg-amber-500 text-white px-5 py-2 rounded-full hover:bg-amber-600 transition-transform transform hover:scale-105 shadow-custom">Essai Gratuit</a></li>
+      </ul>
+      
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center space-x-4">
+        <button id="theme-toggle-mobile" class="text-secondary hover:text-amber-500">
+            <i class="fas fa-moon text-xl"></i>
+            <i class="fas fa-sun text-xl hidden"></i>
+        </button>
+        <button id="mobile-menu-btn" class="text-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-primary shadow-custom-lg">
+      <a href="#about" class="block py-3 px-6 text-secondary hover:bg-secondary">À Propos</a>
+      <a href="#schedule" class="block py-3 px-6 text-secondary hover:bg-secondary">Programme</a>
+      <a href="#gallery" class="block py-3 px-6 text-secondary hover:bg-secondary">Galerie</a>
+      <a href="#pricing" class="block py-3 px-6 text-secondary hover:bg-secondary">Tarifs</a>
+      <a href="#contact" class="block py-3 px-6 text-secondary hover:bg-secondary">Contact</a>
+      <div class="p-4">
+        <a href="#" id="trial-cta-mobile" class="block text-center w-full bg-amber-500 text-white px-5 py-2 rounded-full hover:bg-amber-600">Essai Gratuit</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="h-screen min-h-[700px] flex items-center justify-center text-white bg-cover bg-center parallax" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&q=80&w=2070')">
+      <div class="text-center p-6 fade-in-up">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-4 drop-shadow-lg font-heading uppercase">DÉPASSEZ VOS LIMITES</h1>
+        <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto drop-shadow-md">L'endroit où la force rencontre la détermination. Rejoignez la communauté Fitness Fusion.</p>
+        <a href="#pricing" class="bg-amber-500 text-white px-8 py-3 rounded-full hover:bg-amber-600 transition-all transform hover:scale-105 text-lg font-bold shadow-xl uppercase">Devenir Membre</a>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-primary">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="fade-in-up">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&q=80&w=2070" alt="Intérieur de la salle de sport Fitness Fusion" class="rounded-lg shadow-custom-2xl w-full h-auto object-cover">
+          </div>
+          <div class="fade-in-up" style="transition-delay: 150ms;">
+            <h2 class="text-4xl font-bold font-heading mb-4 text-primary">BIENVENUE CHEZ FITNESS FUSION</h2>
+            <p class="text-secondary mb-4 text-lg">
+              Fitness Fusion n'est pas juste une salle de sport, c'est un mode de vie. Situé au cœur de Constantine, nous offrons un espace moderne et motivant, équipé des dernières technologies pour vous aider à atteindre vos objectifs de forme et de bien-être.
+            </p>
+            <p class="text-secondary mb-6 text-lg">
+              Notre mission est de vous inspirer à travers une variété de cours collectifs, un coaching personnalisé et une communauté soudée. Que vous soyez débutant ou athlète confirmé, vous trouverez votre place chez nous.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="py-20 parallax text-white" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&q=80&w=2069');">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16 fade-in-up">
+          <h2 class="text-4xl font-bold font-heading mb-4">POURQUOI NOUS CHOISIR ?</h2>
+          <p class="text-gray-300 max-w-2xl mx-auto">Nous offrons plus qu'un simple abonnement. Nous offrons une expérience.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="text-center fade-in-up">
+            <div class="bg-white/10 w-20 h-20 rounded-full mx-auto flex items-center justify-center shadow-custom-lg mb-4">
+              <i class="fas fa-cogs text-4xl" style="color: var(--accent-color);"></i>
+            </div>
+            <h3 class="text-xl font-bold font-heading mb-2">ÉQUIPEMENT DE POINTE</h3>
+            <p class="text-gray-300">Entraînez-vous avec les dernières machines Technogym pour des performances optimales.</p>
+          </div>
+          <div class="text-center fade-in-up" style="transition-delay: 150ms;">
+            <div class="bg-white/10 w-20 h-20 rounded-full mx-auto flex items-center justify-center shadow-custom-lg mb-4">
+              <i class="fas fa-users text-4xl" style="color: var(--accent-color);"></i>
+            </div>
+            <h3 class="text-xl font-bold font-heading mb-2">COACHS CERTIFIÉS</h3>
+            <p class="text-gray-300">Nos experts sont là pour vous guider et vous motiver à chaque étape de votre parcours.</p>
+          </div>
+          <div class="text-center fade-in-up" style="transition-delay: 300ms;">
+            <div class="bg-white/10 w-20 h-20 rounded-full mx-auto flex items-center justify-center shadow-custom-lg mb-4">
+              <i class="fas fa-heartbeat text-4xl" style="color: var(--accent-color);"></i>
+            </div>
+            <h3 class="text-xl font-bold font-heading mb-2">COMMUNAUTÉ MOTIVANTE</h3>
+            <p class="text-gray-300">Rejoignez une famille de passionnés qui s'entraident pour atteindre leurs objectifs.</p>
+          </div>
+          <div class="text-center fade-in-up" style="transition-delay: 450ms;">
+            <div class="bg-white/10 w-20 h-20 rounded-full mx-auto flex items-center justify-center shadow-custom-lg mb-4">
+              <i class="fas fa-clock text-4xl" style="color: var(--accent-color);"></i>
+            </div>
+            <h3 class="text-xl font-bold font-heading mb-2">HORAIRES FLEXIBLES</h3>
+            <p class="text-gray-300">Nous sommes ouverts 7j/7, de tôt le matin à tard le soir, pour s'adapter à votre emploi du temps.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="py-20 bg-primary">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold font-heading mb-4 text-primary">NOTRE PROGRAMME</h2>
+                <p class="text-secondary max-w-2xl mx-auto">Trouvez le cours parfait pour vous et réservez votre place.</p>
+                <div id="schedule-filters" class="flex justify-center space-x-2 md:space-x-4 mt-8">
+                    <button class="schedule-filter-btn active px-4 py-2 font-semibold rounded-full transition bg-secondary text-primary" data-filter="all">Tous</button>
+                    <button class="schedule-filter-btn px-4 py-2 font-semibold rounded-full transition bg-secondary text-primary" data-filter="hiit">HIIT</button>
+                    <button class="schedule-filter-btn px-4 py-2 font-semibold rounded-full transition bg-secondary text-primary" data-filter="yoga">Yoga</button>
+                    <button class="schedule-filter-btn px-4 py-2 font-semibold rounded-full transition bg-secondary text-primary" data-filter="spinning">Spinning</button>
+                    <button class="schedule-filter-btn px-4 py-2 font-semibold rounded-full transition bg-secondary text-primary" data-filter="musculation">Musculation</button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in-up">
+                <!-- Schedule items -->
+                 <div class="schedule-item bg-secondary p-6 rounded-lg shadow-custom" data-category="hiit">
+                    <p class="font-bold text-lg text-primary">HIIT Intense</p>
+                    <p class="font-semibold" style="color:var(--accent-color)">Lundi, 18:00 - 18:45</p>
+                    <p class="text-secondary mt-2">Coach: John Doe</p>
+                </div>
+                 <div class="schedule-item bg-secondary p-6 rounded-lg shadow-custom" data-category="yoga">
+                    <p class="font-bold text-lg text-primary">Yoga Flow</p>
+                    <p class="font-semibold" style="color:var(--accent-color)">Mardi, 19:00 - 20:00</p>
+                    <p class="text-secondary mt-2">Coach: Jane Smith</p>
+                </div>
+                 <div class="schedule-item bg-secondary p-6 rounded-lg shadow-custom" data-category="spinning">
+                    <p class="font-bold text-lg text-primary">Cardio Spinning</p>
+                    <p class="font-semibold" style="color:var(--accent-color)">Mercredi, 17:30 - 18:15</p>
+                    <p class="text-secondary mt-2">Coach: Karim B.</p>
+                </div>
+                 <div class="schedule-item bg-secondary p-6 rounded-lg shadow-custom" data-category="musculation">
+                    <p class="font-bold text-lg text-primary">Force & Condition</p>
+                    <p class="font-semibold" style="color:var(--accent-color)">Jeudi, 19:00 - 20:00</p>
+                    <p class="text-secondary mt-2">Coach: John Doe</p>
+                </div>
+                 <div class="schedule-item bg-secondary p-6 rounded-lg shadow-custom" data-category="hiit">
+                    <p class="font-bold text-lg text-primary">Tabata Burn</p>
+                    <p class="font-semibold" style="color:var(--accent-color)">Vendredi, 18:00 - 18:45</p>
+                    <p class="text-secondary mt-2">Coach: Karim B.</p>
+                </div>
+                 <div class="schedule-item bg-secondary p-6 rounded-lg shadow-custom" data-category="yoga">
+                    <p class="font-bold text-lg text-primary">Yoga Matinal</p>
+                    <p class="font-semibold" style="color:var(--accent-color)">Samedi, 09:00 - 10:00</p>
+                    <p class="text-secondary mt-2">Coach: Jane Smith</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 parallax text-white" style="background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&q=80&w=1974');">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold font-heading mb-4">NOTRE ESPACE</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Découvrez l'environnement dans lequel vous allez vous transformer.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 fade-in-up">
+                <div class="overflow-hidden rounded-lg shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800" alt="Espace poids libres" class="gallery-item w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=800" alt="Zone cardio" class="gallery-item w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1571388208497-71bedc66e932?auto=format&fit=crop&q=80&w=800" alt="Salle de cours collectifs" class="gallery-item w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+                </div>
+                 <div class="overflow-hidden rounded-lg shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1610023588242-cf3227096c42?auto=format&fit=crop&q=80&w=800" alt="Vestiaires modernes" class="gallery-item w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-primary">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16 fade-in-up">
+          <h2 class="text-4xl font-bold font-heading mb-4 text-primary">CHOISISSEZ VOTRE PLAN</h2>
+          <p class="text-secondary max-w-2xl mx-auto">Des abonnements flexibles conçus pour s'adapter à votre style de vie et à vos objectifs. Engagement mensuel, sans frais cachés.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-center">
+          <!-- Plan 1: 2 sessions/week -->
+          <div class="bg-secondary p-8 rounded-lg shadow-custom-lg text-center flex flex-col h-full fade-in-up">
+            <h3 class="text-2xl font-bold font-heading mb-2 text-primary">DÉCOUVERTE</h3>
+            <p class="text-4xl font-bold mb-4 text-primary">3,000 <span class="text-lg font-medium text-secondary">DZD/mois</span></p>
+            <p class="font-semibold text-secondary mb-6">2 Séances / Semaine</p>
+            <ul class="text-left space-y-2 mb-8 text-secondary flex-grow">
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Accès à la salle</li>
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Cours collectifs</li>
+            </ul>
+            <a href="#contact" class="mt-auto w-full bg-gray-300 text-gray-800 p-3 rounded-full hover:bg-gray-400 font-bold transition">Choisir ce Plan</a>
+          </div>
+
+          <!-- Plan 2: 3 sessions/week -->
+          <div class="bg-secondary p-8 rounded-lg shadow-custom-lg text-center flex flex-col h-full fade-in-up" style="transition-delay: 150ms;">
+            <h3 class="text-2xl font-bold font-heading mb-2 text-primary">ACTIF</h3>
+            <p class="text-4xl font-bold mb-4 text-primary">4,000 <span class="text-lg font-medium text-secondary">DZD/mois</span></p>
+            <p class="font-semibold text-secondary mb-6">3 Séances / Semaine</p>
+             <ul class="text-left space-y-2 mb-8 text-secondary flex-grow">
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Accès à la salle</li>
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Cours collectifs</li>
+            </ul>
+            <a href="#contact" class="mt-auto w-full bg-gray-300 text-gray-800 p-3 rounded-full hover:bg-gray-400 font-bold transition">Choisir ce Plan</a>
+          </div>
+
+          <!-- Plan 3: 4 sessions/week (Popular) -->
+          <div class="pricing-card-popular bg-secondary p-8 rounded-lg shadow-custom-xl text-center flex flex-col h-full fade-in-up" style="transition-delay: 300ms;">
+            <div class="popular-badge">Populaire</div>
+            <h3 class="text-2xl font-bold font-heading mb-2 text-primary">PERFORMANCE</h3>
+            <p class="text-4xl font-bold mb-4" style="color: var(--accent-color);">5,000 <span class="text-lg font-medium text-secondary">DZD/mois</span></p>
+            <p class="font-semibold text-secondary mb-6">4 Séances / Semaine</p>
+            <ul class="text-left space-y-2 mb-8 text-secondary flex-grow">
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Accès à la salle</li>
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Cours collectifs</li>
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Suivi mensuel</li>
+            </ul>
+            <a href="#contact" class="mt-auto w-full p-3 rounded-full font-bold transition transform hover:scale-105" style="background-color: var(--accent-color); color: white;">Choisir ce Plan</a>
+          </div>
+          
+          <!-- Plan 4: Unlimited -->
+          <div class="bg-secondary p-8 rounded-lg shadow-custom-lg text-center flex flex-col h-full fade-in-up" style="transition-delay: 600ms;">
+            <h3 class="text-2xl font-bold font-heading mb-2 text-primary">ILLIMITÉ</h3>
+            <p class="text-4xl font-bold mb-4 text-primary">7,000 <span class="text-lg font-medium text-secondary">DZD/mois</span></p>
+            <p class="font-semibold text-secondary mb-6">Accès Illimité</p>
+            <ul class="text-left space-y-2 mb-8 text-secondary flex-grow">
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Accès à la salle</li>
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Cours collectifs</li>
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Suivi personnalisé</li>
+            </ul>
+            <a href="#contact" class="mt-auto w-full bg-gray-300 text-gray-800 p-3 rounded-full hover:bg-gray-400 font-bold transition">Choisir ce Plan</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 parallax" style="background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=2070');">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold font-heading mb-4 fade-in-up text-primary">ILS ONT ATTEINT LEURS OBJECTIFS</h2>
+        <p class="text-secondary mb-12 max-w-2xl mx-auto fade-in-up">Découvrez les histoires de réussite de nos membres.</p>
+        
+        <div class="relative max-w-3xl mx-auto bg-primary p-8 rounded-lg shadow-custom-xl fade-in-up">
+          <div id="testimonial-slider-container">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-slide active">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&q=80&w=200&h=200" alt="Photo de Amine B." class="w-24 h-24 rounded-full mx-auto mb-6 border-4 object-cover" style="border-color: var(--accent-color);">
+              <p class="text-secondary italic text-lg mb-6">"J'ai perdu 10 kg en 3 mois grâce aux coachs de Fitness Fusion ! L'ambiance est incroyable et m'a vraiment motivé à ne rien lâcher."</p>
+              <p class="font-bold text-primary text-xl">- Amine B.</p>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="testimonial-slide">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=1974" alt="Photo de Fatima Z." class="w-24 h-24 rounded-full mx-auto mb-6 border-4 object-cover" style="border-color: var(--accent-color);">
+              <p class="text-secondary italic text-lg mb-6">"Les cours de Yoga sont fantastiques. J'ai retrouvé une souplesse que je pensais perdue. C'est mon moment de détente de la semaine."</p>
+              <p class="font-bold text-primary text-xl">- Fatima Z.</p>
+            </div>
+          </div>
+
+          <!-- Slider Controls -->
+          <button class="testimonial-prev absolute top-1/2 left-0 md:-left-12 transform -translate-y-1/2 bg-secondary/50 hover:bg-secondary text-primary p-3 rounded-full shadow-md transition">
+              <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="testimonial-next absolute top-1/2 right-0 md:-right-12 transform -translate-y-1/2 bg-secondary/50 hover:bg-secondary text-primary p-3 rounded-full shadow-md transition">
+              <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-primary">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 fade-in-up">
+                <h2 class="text-4xl font-bold font-heading mb-4 text-primary">CONTACTEZ-NOUS</h2>
+                <p class="text-secondary max-w-xl mx-auto">Prêt à commencer ? Envoyez-nous un message ou passez nous voir !</p>
+            </div>
+
+            <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 bg-secondary p-8 rounded-lg shadow-custom-lg">
+                <!-- Contact Form & Info -->
+                <div class="fade-in-up">
+                  <form id="contact-form" action="#" method="POST" >
+                      <div class="mb-4">
+                          <label for="name" class="block text-primary font-semibold mb-2">Nom Complet</label>
+                          <input type="text" id="name" name="name" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-primary text-primary" required>
+                      </div>
+                      <div class="mb-4">
+                          <label for="email" class="block text-primary font-semibold mb-2">Email</label>
+                          <input type="email" id="email" name="email" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-primary text-primary" required>
+                      </div>
+                      <div class="mb-6">
+                          <label for="message" class="block text-primary font-semibold mb-2">Votre Message</label>
+                          <textarea id="message" name="message" rows="5" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-primary text-primary" required placeholder="J'aimerais m'inscrire au plan Performance..."></textarea>
+                      </div>
+                      <button type="submit" class="w-full text-white p-3 rounded-full font-bold text-lg transition flex items-center justify-center space-x-2" style="background-color: var(--accent-color); hover:background-color: var(--accent-color-dark);">
+                          <span>Envoyer</span>
+                      </button>
+                      <div id="form-status" class="mt-4 text-center"></div>
+                  </form>
+                  <div class="mt-12">
+                     <h3 class="text-2xl font-bold mb-4 text-primary">Nos Coordonnées</h3>
+                      <div class="space-y-6">
+                        <div class="flex items-center group">
+                            <div class="bg-primary p-3 rounded-full mr-4 shadow-custom-sm">
+                                <i class="fas fa-map-marker-alt text-2xl" style="color: var(--accent-color);"></i>
+                            </div>
+                            <div>
+                              <p class="font-bold text-primary">Adresse</p>
+                              <p class="text-secondary">123 Rue de la Liberté, Constantine, Algérie</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center group">
+                            <div class="bg-primary p-3 rounded-full mr-4 shadow-custom-sm">
+                                <i class="fas fa-phone text-2xl" style="color: var(--accent-color);"></i>
+                            </div>
+                            <div>
+                              <p class="font-bold text-primary">Téléphone</p>
+                              <p class="text-secondary">+213 555 123 456</p>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                
+                <!-- Google Map -->
+                <div class="fade-in-up" style="transition-delay: 200ms;">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d103243.51817812921!2d6.551322386352934!3d36.34091515281896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12f1db535a265b79%3A0x285923a634125c14!2sConstantine!5e0!3m2!1sfr!2sdz!4v1678886543210!5m2!1sfr!2sdz" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0; border-radius: 8px;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Carte de Fitness Fusion à Constantine">
+                  </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white">
+      <div class="container mx-auto px-6 py-6 text-center">
+          <p>&copy; 2025 Fitness Fusion. Tous droits réservés.</p>
+      </div>
+  </footer>
+  
+  <!-- Floating Back to Top Button -->
+  <button id="back-to-top" class="hidden fixed bottom-5 right-5 w-12 h-12 rounded-full shadow-lg focus:outline-none transition-opacity duration-300 z-50 text-white" style="background-color: var(--accent-color);">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Gallery Lightbox -->
+    <div id="lightbox" class="fixed inset-0 bg-black/80 flex items-center justify-center opacity-0 pointer-events-none z-[100]">
+        <button id="lightbox-close" class="absolute top-5 right-5 text-white text-3xl">&times;</button>
+        <img id="lightbox-img" src="" alt="Vue agrandie de la galerie" class="max-w-[90%] max-h-[80%] object-contain rounded-lg">
+    </div>
+
+    <!-- Free Trial Modal -->
+    <div id="trial-modal-overlay" class="fixed inset-0 bg-black/60 flex items-center justify-center opacity-0 pointer-events-none z-[100]">
+        <div id="trial-modal-box" class="bg-primary p-8 rounded-lg shadow-xl w-full max-w-md mx-4 transform scale-95 opacity-0">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold font-heading text-primary">Votre Séance d'Essai Gratuite</h2>
+                <button id="trial-modal-close" class="text-2xl text-secondary">&times;</button>
+            </div>
+            <p class="text-secondary mb-6">Remplissez ce formulaire pour recevoir votre pass par email. Valable une semaine.</p>
+            <form id="trial-form">
+                <div class="mb-4">
+                    <label for="trial-name" class="block text-primary font-semibold mb-2">Nom Complet</label>
+                    <input type="text" id="trial-name" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-secondary text-primary" required>
+                </div>
+                <div class="mb-6">
+                    <label for="trial-email" class="block text-primary font-semibold mb-2">Email</label>
+                    <input type="email" id="trial-email" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-secondary text-primary" required>
+                </div>
+                <button type="submit" class="w-full text-white p-3 rounded-full font-bold text-lg transition" style="background-color: var(--accent-color);">Obtenir Mon Pass</button>
+                <p id="trial-form-status" class="text-center mt-4"></p>
+            </form>
+        </div>
+    </div>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const header = document.getElementById("header");
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const contactForm = document.getElementById('contact-form');
+      const formStatus = document.getElementById('form-status');
+      const backToTopBtn = document.getElementById('back-to-top');
+
+      // --- Dark Mode Toggle ---
+      const themeToggleBtns = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
+      const darkIcons = document.querySelectorAll('#theme-toggle-dark-icon, #theme-toggle-mobile .fa-moon');
+      const lightIcons = document.querySelectorAll('#theme-toggle-light-icon, #theme-toggle-mobile .fa-sun');
+
+      const setTheme = (theme) => {
+          document.documentElement.setAttribute('data-theme', theme);
+          localStorage.setItem('theme', theme);
+          if (theme === 'dark') {
+              darkIcons.forEach(i => i.classList.add('hidden'));
+              lightIcons.forEach(i => i.classList.remove('hidden'));
+              document.getElementById('testimonials').style.backgroundImage = `linear-gradient(rgba(26, 32, 44, 0.92), rgba(26, 32, 44, 0.92)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=2070')`;
+          } else {
+              darkIcons.forEach(i => i.classList.remove('hidden'));
+              lightIcons.forEach(i => i.classList.add('hidden'));
+              document.getElementById('testimonials').style.backgroundImage = `linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=2070')`;
+          }
+      };
+      
+      const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      setTheme(savedTheme);
+
+      themeToggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+      });
+
+
+      // --- Header scroll & Back to Top Button ---
+      window.addEventListener("scroll", () => {
+        header.classList.toggle("scrolled", window.scrollY > 50);
+        
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.remove('hidden');
+        } else {
+            backToTopBtn.classList.add('hidden');
+        }
+      });
+      
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+
+      // --- Mobile menu toggle ---
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // --- Smooth scroll & Active Nav Link on Scroll ---
+      const sections = document.querySelectorAll('main section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  navLinks.forEach(link => {
+                      link.classList.remove('active');
+                      if (link.getAttribute('href').substring(1) === entry.target.id) {
+                          link.classList.add('active');
+                      }
+                  });
+              }
+          });
+      }, { rootMargin: '-50% 0px -50% 0px' });
+
+      sections.forEach(section => observer.observe(section));
+      
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetElement = document.querySelector(this.getAttribute('href'));
+          if (targetElement) {
+              targetElement.scrollIntoView({ behavior: 'smooth' });
+              if (!mobileMenu.classList.contains('hidden')) {
+                  mobileMenu.classList.add('hidden');
+              }
+          }
+        });
+      });
+      
+      // --- Contact Form Submission ---
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          formStatus.textContent = 'Message envoyé avec succès !';
+          formStatus.style.color = 'green';
+          contactForm.reset();
+          setTimeout(() => { formStatus.textContent = ''; }, 5000);
+        });
+      }
+
+      // --- Scroll-triggered fade-in animation ---
+      const animationObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.classList.add('visible');
+              }
+          });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in-up').forEach(el => {
+          animationObserver.observe(el);
+      });
+
+      // --- Testimonial Slider ---
+      const slides = document.querySelectorAll('.testimonial-slide');
+      const prevBtn = document.querySelector('.testimonial-prev');
+      const nextBtn = document.querySelector('.testimonial-next');
+      let currentSlide = 0;
+
+      function showSlide(n) {
+          slides.forEach((slide, i) => {
+              slide.classList.toggle('active', i === n);
+          });
+          currentSlide = n;
+      }
+
+      if (slides.length > 0) {
+        nextBtn.addEventListener('click', () => {
+            showSlide((currentSlide + 1) % slides.length);
+        });
+
+        prevBtn.addEventListener('click', () => {
+            showSlide((currentSlide - 1 + slides.length) % slides.length);
+        });
+      }
+
+      // --- Schedule Filter ---
+        const filterBtns = document.querySelectorAll('.schedule-filter-btn');
+        const scheduleItems = document.querySelectorAll('.schedule-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+
+                scheduleItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // --- Gallery Lightbox ---
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                lightboxImg.src = item.src;
+                lightbox.classList.add('active');
+            });
+        });
+
+        const closeLightbox = () => {
+            lightbox.classList.remove('active');
+            setTimeout(() => { lightboxImg.src = '' }, 300);
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // --- Free Trial Modal ---
+        const trialModalOverlay = document.getElementById('trial-modal-overlay');
+        const trialModalBox = document.getElementById('trial-modal-box');
+        const openTrialModalBtns = document.querySelectorAll('#trial-cta-header, #trial-cta-mobile');
+        const closeTrialModalBtn = document.getElementById('trial-modal-close');
+        const trialForm = document.getElementById('trial-form');
+        const trialFormStatus = document.getElementById('trial-form-status');
+
+        const openModal = () => {
+            trialModalOverlay.classList.remove('opacity-0', 'pointer-events-none');
+            trialModalBox.classList.remove('scale-95', 'opacity-0');
+        };
+
+        const closeModal = () => {
+            trialModalBox.classList.add('scale-95', 'opacity-0');
+            trialModalOverlay.classList.add('opacity-0', 'pointer-events-none');
+        };
+
+        openTrialModalBtns.forEach(btn => btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+             if (!mobileMenu.classList.contains('hidden')) {
+                  mobileMenu.classList.add('hidden');
+              }
+        }));
+
+        closeTrialModalBtn.addEventListener('click', closeModal);
+        trialModalOverlay.addEventListener('click', (e) => {
+            if (e.target === trialModalOverlay) {
+                closeModal();
+            }
+        });
+        
+        trialForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            trialFormStatus.style.color = 'green';
+            trialFormStatus.textContent = 'Merci ! Votre pass a été envoyé.';
+            setTimeout(() => {
+                closeModal();
+                trialFormStatus.textContent = '';
+                trialForm.reset();
+            }, 2000);
+        });
+      
+    });
+  </script>
+</body>
+</html>
+
+
