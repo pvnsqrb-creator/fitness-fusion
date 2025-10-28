@@ -1,54 +1,80 @@
 <!DOCTYPE html>
+<!-- 
+  FICHIER FUSIONNÉ (v4 - Thème Jaune & Noir + Fonctionnalités Boutique)
+  Base : sevengym.html
+  MODIFIÉ : 
+  - Changement de nom pour "Seven Gym"
+  - Refonte de la palette de couleurs en Jaune & Noir
+  - Ajout des fonctionnalités Pro Shop : Recherche, Tri, Évaluations, Badges
+  - MISE À JOUR : Liste des produits 28/10/2025
+  - CORRECTION : Ajout des écouteurs pour fermer le modal produit.
+-->
 <html lang="fr" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fitness Fusion | Votre Salle de Sport Premium</title>
+  <title>Seven Gym | Votre Club de Fitness Premium</title>
   
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Fitness Fusion, la meilleure salle de sport à Constantine. Cours collectifs, coaching personnalisé, et équipements de pointe. Rejoignez-nous pour atteindre vos objectifs !">
-  <meta name="keywords" content="salle de sport, fitness, musculation, cardio, coaching, Constantine, Algérie, Fitness Fusion">
+  <meta name="description" content="Seven Gym, club de fitness premium à Cheraga, Alger. Horaires, Kickboxing, Zumba, CrossFit, tarifs, et Pro Shop. Rejoignez-nous !">
+  <meta name="keywords" content="salle de sport, fitness, gym, musculation, kickboxing, zumba, crossfit, pro shop, suppléments, Alger, Cheraga, Seven Gym">
   
   <!-- Open Graph Meta Tags for Social Sharing -->
-  <meta property="og:title" content="Fitness Fusion | Votre Salle de Sport Premium" />
-  <meta property="og:description" content="Découvrez nos cours, nos coachs et nos offres exclusives. Transformez votre corps et votre esprit." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&q=80&w=2070" />
-  <meta property="og:url" content="https://your-gym-domain.com" /> <!-- Replace with your actual domain -->
+  <meta property="og:title" content="Seven Gym | Club de Fitness Premium & Pro Shop" />
+  <meta property="og:description" content="Rejoignez Seven Gym pour atteindre vos objectifs de fitness et découvrez notre Pro Shop." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&q=80&w=2070" /> 
   <meta property="og:type" content="website" />
 
   <!-- Favicon (Emoji) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💪</text></svg>">
+  <link id="favicon" rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏋️</text></svg>">
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Google Fonts: Poppins & Oswald -->
+  <!-- Google Fonts: Poppins, Oswald, Tajawal (for Arabic) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Oswald:wght@600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
   <style>
     :root {
+      /* NOUVELLE Palette : Jaune & Noir (Clair) */
       --bg-primary: #ffffff;
       --bg-secondary: #f8f9fa;
-      --text-primary: #1a202c;
+      --text-primary: #111111; /* Presque Noir */
       --text-secondary: #4a5568;
-      --accent-color: #f59e0b; /* A vibrant amber/gold for energy */
-      --accent-color-dark: #d97706;
+      --accent-color: #fde047; /* Jaune Vif */
+      --accent-color-dark: #facc15; /* Jaune Foncé */
+      --accent-alt: #fde047;
       --border-color: #e2e8f0;
       --shadow-color-rgb: 0, 0, 0;
+      /* Lueur (Glow) */
+      --glow-zumba: rgba(219, 39, 119, 0.3); 
+      --glow-crossfit: rgba(37, 99, 235, 0.3);
+      --glow-boxthai: rgba(220, 38, 38, 0.3);
+      --glow-gym: rgba(74, 85, 104, 0.2);
+      --header-height: 68px;
     }
     
     html[data-theme='dark'] {
-      --bg-primary: #1a202c;
-      --bg-secondary: #2d3748;
-      --text-primary: #f7fafc;
+      /* NOUVELLE Palette : Jaune & Noir (Sombre) */
+      --bg-primary: #111111; /* Presque Noir */
+      --bg-secondary: #1e1e1e; /* Gris Sombre */
+      --text-primary: #f7fafc; /* Blanc */
       --text-secondary: #a0aec0;
-      --border-color: #4a5568;
+      --accent-color: #fde047; /* Jaune Vif */
+      --accent-color-dark: #facc15;
+      --accent-alt: #fde047;
+      --border-color: #3f3f3f; /* Bordure Grise */
       --shadow-color-rgb: 255, 255, 255;
+      /* Lueur (Glow) Sombre */
+      --glow-zumba: rgba(249, 168, 212, 0.4); 
+      --glow-crossfit: rgba(147, 197, 253, 0.4);
+      --glow-boxthai: rgba(252, 165, 165, 0.4);
+      --glow-gym: rgba(160, 174, 192, 0.3);
     }
 
     body {
@@ -60,8 +86,49 @@
     .font-heading {
       font-family: 'Oswald', sans-serif;
     }
-    
-    /* Reusable component styles */
+
+    /* Styles RTL (CONSERVÉS) */
+    html[lang="ar"] body { font-family: 'Tajawal', sans-serif; }
+    html[lang="ar"] .font-heading { font-family: 'Tajawal', sans-serif; font-weight: 700; }
+    html[dir="rtl"] .schedule-table th, 
+    html[dir="rtl"] .schedule-table td { text-align: right; }
+    html[dir="rtl"] .activity-tag { margin-right: 0; margin-left: 0.5rem; }
+    html[dir="rtl"] .schedule-tab.rounded-l-full { border-radius: 0 9999px 9999px 0; border-left-width: 1px; border-right-width: 0; }
+    html[dir="rtl"] .schedule-tab.rounded-r-full { border-radius: 9999px 0 0 9999px; border-left-width: 0; border-right-width: 1px; }
+    html[dir="rtl"] .fa-globe { margin-right: 0; margin-left: 0.25rem; }
+    html[dir="rtl"] #lang-menu, html[dir="rtl"] #lang-menu-mobile { right: auto; left: 0; }
+    html[dir="rtl"] .fa-phone { margin-right: 0; margin-left: 1rem; }
+    html[dir="rtl"] .fa-map-marker-alt { margin-right: 0; margin-left: 1rem; }
+    html[dir="rtl"] #back-to-top { right: auto; left: 1.25rem; }
+    html[dir="rtl"] #whatsapp-button { right: auto; left: 1.25rem; }
+    html[dir="rtl"] .activity-item i { margin-right: 0; margin-left: 0.5rem; }
+    html[dir="rtl"] .hero-cta-icon { margin-left: 0; margin-right: 0.5rem; transform: translateX(100%); }
+    html[dir="rtl"] .hero-cta:hover .hero-cta-icon { transform: translateX(0); }
+    html[dir="rtl"] .view-map-link i { margin-right: 0; margin-left: 0.25rem; }
+    html[dir="rtl"] .testimonial-prev { left: auto; right: 0; transform: translate(50%, -50%); }
+    html[dir="rtl"] .testimonial-next { right: auto; left: 0; transform: translate(-50%, -50%); }
+    html[dir="rtl"] .md\:testimonial-prev { right: -3rem; left: auto; transform: translateY(-50%); }
+    html[dir="rtl"] .md\:testimonial-next { left: -3rem; right: auto; transform: translateY(-50%); }
+    html[dir="rtl"] .faq-item summary::after { left: 1rem; right: auto; transform: rotate(-90deg); }
+    html[dir="rtl"] .faq-item[open] summary::after { transform: rotate(90deg); }
+    html[dir="rtl"] #mobile-menu { right: auto; left: 0; transform: translateX(-100%); }
+    html[dir="rtl"] #mobile-menu.open { transform: translateX(0); }
+    html[dir="rtl"] .form-input-container .validation-icon { right: auto; left: 0.75rem; }
+    html[dir="rtl"] .form-label { left: auto; right: 0.75rem; }
+    html[dir="rtl"] .form-input:focus + .form-label, 
+    html[dir="rtl"] .form-input:not(:placeholder-shown) + .form-label { left: auto; right: 0.5rem; }
+    html[dir="rtl"] .book-now-btn i { margin-left: 0; margin-right: 0.25rem; }
+    html[dir="rtl"] .cart-item-details { margin-left: 0; margin-right: 1rem; }
+    html[dir="rtl"] .cart-item-remove { margin-right: 0; margin-left: auto; }
+    html[dir="rtl"] .modal-close { right: auto; left: 0.75rem; }
+    /* NOUVEAU : RTL pour Recherche/Tri */
+    html[dir="rtl"] #shop-search-input { padding-left: 1rem; padding-right: 2.5rem; }
+    html[dir="rtl"] #shop-search-input + i { left: auto; right: 1rem; }
+    html[dir="rtl"] #shop-sort-select { padding-left: 2.5rem; padding-right: 1rem; }
+    html[dir="rtl"] #shop-sort-select + i { right: auto; left: 1rem; }
+
+
+    /* Styles des composants réutilisables */
     .bg-primary { background-color: var(--bg-primary); }
     .bg-secondary { background-color: var(--bg-secondary); }
     .text-primary { color: var(--text-primary); }
@@ -71,490 +138,903 @@
     .shadow-custom-lg { box-shadow: 0 10px 15px -3px rgba(var(--shadow-color-rgb), 0.1), 0 4px 6px -2px rgba(var(--shadow-color-rgb), 0.05); }
     .shadow-custom-xl { box-shadow: 0 20px 25px -5px rgba(var(--shadow-color-rgb), 0.1), 0 10px 10px -5px rgba(var(--shadow-color-rgb), 0.04); }
 
-    /* Header scroll effect */
+    /* Effet de défilement de l'en-tête (MIS À JOUR pour le noir) */
+    header { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
     header.scrolled {
       background-color: rgba(255, 255, 255, 0.9);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(8px);
     }
     html[data-theme='dark'] header.scrolled {
-       background-color: rgba(26, 32, 44, 0.9);
-       box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1);
+        background-color: rgba(17, 17, 17, 0.9); /* Fond noir transparent */
+        box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1);
     }
     
-    /* Active Nav Link */
-    .nav-link.active {
+    /* Animation de soulignement du lien de navigation */
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 2px; background-color: var(--accent-color); transform: scaleX(0); transform-origin: center; transition: transform 0.3s ease; }
+    .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+
+    /* Animation de fondu entrant */
+    .fade-in-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* Effet Parallaxe */
+    .parallax { background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; }
+
+    /* Animation des champs de formulaire et Étiquettes Flottantes */
+    .form-input-container { position: relative; margin-bottom: 1.5rem; }
+    .form-input { transition: border-color 0.3s ease, box-shadow 0.3s ease; padding-top: 1.25rem; }
+    .form-input:focus { border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(253, 224, 71, 0.3); } /* Lueur Jaune */
+    .form-label { position: absolute; top: 0.85rem; left: 0.75rem; color: var(--text-secondary); transition: all 0.2s ease-out; pointer-events: none; background-color: var(--bg-primary); padding: 0 0.25rem; font-size: 1rem; }
+    .form-input:focus + .form-label, 
+    .form-input:not(:placeholder-shown) + .form-label {
+        top: -0.6rem;
+        left: 0.5rem;
+        font-size: 0.75rem;
         color: var(--accent-color);
-        position: relative;
     }
-    .nav-link.active::after {
-        content: '';
-        position: absolute;
-        bottom: -4px;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background-color: var(--accent-color);
+    html[data-theme='dark'] .form-label {
+      background-color: var(--bg-primary); 
     }
-
-    /* Fade-in animation */
-    .fade-in-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .fade-in-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Parallax effect */
-    .parallax {
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
+    .validation-icon { position: absolute; top: 50%; right: 0.75rem; transform: translateY(-50%); opacity: 0; transition: opacity 0.3s ease; }
+    .form-input-container.valid .validation-icon.check { opacity: 1; color: #10b981; }
+    .form-input-container.invalid .validation-icon.cross { opacity: 1; color: #ef4444; }
     
-    /* Pricing Card Highlight */
-    .pricing-card-popular {
-      border: 2px solid var(--accent-color);
-      transform: scale(1.05);
-      position: relative;
-      z-index: 10;
+    /* NOUVEAU : Focus pour Recherche/Tri */
+    #shop-search-input:focus, #shop-sort-select:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(253, 224, 71, 0.3);
     }
-    .popular-badge {
-      position: absolute;
-      top: -1.25rem;
-      left: 50%;
-      transform: translateX(-50%);
+
+
+    /* Onglets d'horaires et Fondu du Contenu (CONSERVÉS) */
+    .schedule-tab.active { background-color: var(--accent-color); color: var(--text-primary); } /* Texte noir sur jaune */
+    .schedule-content { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
+    .schedule-content.active { display: block; opacity: 1; }
+    .schedule-table thead.sticky-header th { position: sticky; top: var(--header-height); z-index: 10; background-color: var(--bg-secondary); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    html[data-theme='dark'] .schedule-table thead.sticky-header th { background-color: var(--bg-secondary); box-shadow: 0 2px 4px rgba(255,255,255,0.1); }
+    
+    .schedule-table th, .schedule-table td { padding: 1rem; border: 1px solid var(--border-color); text-align: left; vertical-align: top; }
+    .schedule-table th { background-color: var(--bg-secondary); font-weight: 600; font-size: 1.1rem; }
+    .schedule-table td:first-child { font-weight: 600; width: 120px; }
+    .schedule-table tr:nth-child(even) td { background-color: var(--bg-secondary); }
+    html[data-theme='dark'] .schedule-table tr:nth-child(even) td { background-color: rgba(255, 255, 255, 0.05); }
+    .activity-item { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; padding: 0.5rem; border-radius: 0.375rem; transition: box-shadow 0.3s ease; }
+    .activity-item:last-child { margin-bottom: 0; }
+    .activity-item .activity-details { display: flex; align-items: center; }
+    .activity-item .activity-details i { margin-right: 0.5rem; width: 1.25rem; text-align: center; }
+    .activity-gym { background-color: transparent; border-left: 4px solid var(--text-secondary); padding-left: 0.75rem; color: var(--text-primary); }
+    .activity-zumba { background-color: #fdf2f8; border-left: 4px solid #db2777; color: #9d174d; }
+    .activity-crossfit { background-color: #eff6ff; border-left: 4px solid #2563eb; color: #1e3a8a; }
+    .activity-boxthai { background-color: #fef2f2; border-left: 4px solid #dc2626; color: #991b1b; }
+    html[data-theme='dark'] .activity-gym { border-left-color: var(--text-secondary); color: var(--text-primary); }
+    html[data-theme='dark'] .activity-zumba { background-color: #500724; border-left-color: #f9a8d4; color: #fce7f3; } 
+    html[data-theme='dark'] .activity-crossfit { background-color: #1e3a8a; border-left-color: #93c5fd; color: #dbeafe; } 
+    html[data-theme='dark'] .activity-boxthai { background-color: #7f1d1d; border-left-color: #fca5a5; color: #fee2e2; } 
+    .activity-zumba:hover { box-shadow: 0 0 15px 5px var(--glow-zumba); }
+    .activity-crossfit:hover { box-shadow: 0 0 15px 5px var(--glow-crossfit); }
+    .activity-boxthai:hover { box-shadow: 0 0 15px 5px var(--glow-boxthai); }
+    .activity-gym:hover { box-shadow: 0 0 15px 5px var(--glow-gym); }
+     @keyframes pulse-live {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); } /* Garde le rouge pour "live" */
+      70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    }
+    .activity-item.highlight-now { animation: pulse-live 2s infinite; }
+
+    .book-now-btn {
+        background-color: var(--accent-color-dark); /* Jaune foncé */
+        color: var(--text-primary); /* Texte noir */
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        margin-top: 0.5rem; 
+        margin-left: auto; 
+        flex-shrink: 0;
+    }
+    @media (min-width: 640px) { .book-now-btn { margin-top: 0; } }
+    .book-now-btn:hover {
+        background-color: var(--accent-color); /* Jaune vif */
+        transform: scale(1.05);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .book-now-btn i { margin-left: 0.25rem; }
+
+    /* Carte de Tarification (Flip-Card) */
+    .pricing-card { 
+      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+      opacity: 0; 
+      transform: translateY(20px); 
+      perspective: 1000px; 
+      min-height: 400px; 
+    }
+    .pricing-card.visible { opacity: 1; transform: translateY(0); }
+    .pricing-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-custom-xl); }
+    .pricing-card .price-number { transition: color 0.3s ease; }
+    .pricing-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
+    @media (hover: hover) {
+      .pricing-card:hover .pricing-card-inner { transform: rotateY(180deg); }
+    }
+    .pricing-card:focus-within .pricing-card-inner, 
+    .pricing-card.is-flipped .pricing-card-inner { transform: rotateY(180deg); }
+    .pricing-card-front, .pricing-card-back { 
+      position: absolute; width: 100%; height: 100%; 
+      -webkit-backface-visibility: hidden; backface-visibility: hidden; 
+      display: flex; flex-direction: column; align-items: center; 
+      padding: 1.5rem; border-radius: 0.5rem; 
+    }
+    .pricing-card-front { background-color: var(--bg-primary); }
+    .pricing-card-back { 
+      background-color: var(--accent-color); color: var(--text-primary); /* Texte noir sur jaune */
+      transform: rotateY(180deg); 
+    }
+    .pricing-card-back h4 { font-weight: bold; margin-bottom: 1rem; }
+    .pricing-card-back ul { list-style: none; padding: 0; text-align: left; }
+    .pricing-card-back li { margin-bottom: 0.5rem; }
+     @keyframes pulse-badge { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.08); opacity: 0.85; } }
+    .pricing-card-popular-badge { animation: pulse-badge 2s infinite cubic-bezier(0.4, 0, 0.6, 1); }
+
+    /* Badge de Statut Ouvert/Fermé */
+    .status-badge { display: inline-block; padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.05em; }
+    .status-badge.open { background-color: #10b981; color: white; }
+    .status-badge.closed { background-color: #6b7280; color: white; }
+
+    /* Animation de l'icône du CTA du Héros */
+    .hero-cta { position: relative; overflow: hidden; display: inline-flex; align-items: center; }
+    .hero-cta-icon { display: inline-block; margin-left: 0.5rem; transform: translateX(-150%); transition: transform 0.3s ease; }
+    .hero-cta:hover .hero-cta-icon { transform: translateX(0); }
+    .hero-cta { color: var(--text-primary); } /* Texte noir sur bouton jaune */
+
+    /* États du bouton de soumission */
+    #contact-form button[type="submit"]:disabled, #booking-modal-form button:disabled, .shop-modal-form button:disabled { 
+      cursor: not-allowed; opacity: 0.7; 
+    }
+     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .spinner { display: inline-block; border: 2px solid rgba(0,0,0,0.3); border-radius: 50%; border-top-color: var(--text-primary); width: 1em; height: 1em; animation: spin 1s linear infinite; margin-right: 0.5rem; }
+    html[data-theme='dark'] .spinner { border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; }
+
+    /* Slider de Témoignages */
+    #testimonial-slider-container { position: relative; min-height: 250px; }
+    .testimonial-slide { opacity: 0; visibility: hidden; position: absolute; top: 0; left: 0; right: 0; transition: opacity 0.5s ease-in-out, visibility 0s 0.5s; width: 100%; }
+    .testimonial-slide.active { opacity: 1; visibility: visible; position: relative; transition: opacity 0.5s ease-in-out; }
+
+    /* Animation Wiggle du bouton WhatsApp */
+    @keyframes wiggle { 0%, 100% { transform: rotate(0deg) scale(1); } 25% { transform: rotate(-5deg) scale(1.1); } 75% { transform: rotate(5deg) scale(1.1); } }
+    #whatsapp-button.wiggle { animation: wiggle 0.5s ease-in-out; }
+
+    /* Animation Pulse de la flèche "Retour en Haut" */
+    @keyframes pulse-arrow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+    #back-to-top i { animation: pulse-arrow 1.5s infinite ease-in-out; }
+    #back-to-top { color: var(--text-primary); } /* Texte noir sur bouton jaune */
+
+    /* Styles du Pré-chargeur */
+    #preloader { position: fixed; inset: 0; background-color: var(--bg-primary); z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease-out; }
+    #preloader.loaded { opacity: 0; pointer-events: none; }
+    #preloader .logo { font-size: 2.5rem; font-family: 'Oswald', sans-serif; font-weight: bold; color: var(--text-primary); animation: pulse-logo 1.5s infinite ease-in-out; }
+    @keyframes pulse-logo { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.05); } }
+
+    /* Chargement échelonné de la page */
+    header .container > a, header nav ul li { opacity: 0; transform: translateY(-10px); transition: opacity 0.4s ease, transform 0.4s ease; }
+    #home h1, #home p, #home #gym-status, #home .hero-cta { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+
+    /* Animation du sélecteur de thème */
+    #theme-toggle i, #theme-toggle-mobile i { transition: transform 0.4s ease, opacity 0.4s ease; }
+    #theme-toggle .fa-moon.hiding, #theme-toggle-mobile .fa-moon.hiding { transform: rotate(360deg) scale(0); opacity: 0; }
+    #theme-toggle .fa-sun.hiding, #theme-toggle-mobile .fa-sun.hiding { transform: rotate(-360deg) scale(0); opacity: 0; }
+    
+    /* Survol des icônes sociales du pied de page */
+    footer a i { transition: transform 0.3s ease; }
+    footer a:hover i { transform: rotate(15deg) scale(1.2); }
+
+    /* Glissement du menu mobile */
+    #mobile-menu { position: fixed; top: 0; right: 0; height: 100vh; width: 80%; max-width: 300px; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); z-index: 60; overflow-y: auto; }
+    #mobile-menu.open { transform: translateX(0); }
+    #mobile-menu-overlay { position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); opacity: 0; transition: opacity 0.4s ease; z-index: 59; pointer-events: none; }
+    #mobile-menu-overlay.open { opacity: 1; pointer-events: auto; }
+
+    /* Lightbox de la Galerie */
+    #gallery-lightbox { position: fixed; inset: 0; background-color: rgba(0,0,0,0.85); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    #gallery-lightbox.open { opacity: 1; pointer-events: auto; }
+    #gallery-lightbox img { max-width: 90%; max-height: 80%; object-fit: contain; }
+    .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); color: white; border: none; font-size: 2rem; padding: 0.5rem 1rem; cursor: pointer; border-radius: 50%; opacity: 0.7; transition: opacity 0.2s ease; }
+    .lightbox-nav:hover { opacity: 1; }
+    #lightbox-prev { left: 2%; }
+    #lightbox-next { right: 2%; }
+    #lightbox-close { position: absolute; top: 2%; right: 2%; background: none; border: none; color: white; font-size: 2.5rem; cursor: pointer; opacity: 0.7; transition: opacity 0.2s ease; }
+    #lightbox-close:hover { opacity: 1; }
+
+    /* Accordéon FAQ */
+    .faq-item summary { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 1rem 0; font-weight: 600; }
+    .faq-item summary::after { content: '+'; font-size: 1.5rem; transition: transform 0.3s ease; }
+    .faq-item[open] summary::after { content: '-'; }
+    .faq-content { overflow: hidden; max-height: 0; transition: max-height 0.4s cubic-bezier(0, 1, 0, 1); }
+    .faq-item[open] .faq-content { max-height: 500px; transition: max-height 0.6s cubic-bezier(1, 0, 1, 0); padding-bottom: 1rem; }
+
+    /* Bannière du Compte à Rebours */
+    #countdown-banner .countdown-number { font-size: 1.5rem; font-weight: 700; line-height: 1; color: var(--accent-color); }
+    #countdown-banner .countdown-label { font-size: 0.7rem; text-transform: uppercase; }
+
+    /* Curseur de Machine à Écrire (Typewriter) */
+    .typewriter::after { content: '|'; animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* Animation de Lettres */
+    .animate-letters span { display: inline-block; opacity: 0; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s ease; }
+
+    /* Bandeau Défilant (Marquee) */
+    .ticker-wrap { width: 100%; overflow: hidden; background-color: var(--bg-secondary); padding: 0.5rem 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+    .ticker { display: inline-block; white-space: nowrap; animation: scroll-left 20s linear infinite; }
+    .ticker span { display: inline-block; padding: 0 2rem; color: var(--text-secondary); font-size: 0.9rem; }
+    @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* NOUVEAU : Styles de Modal Génériques (pour Réservation, Produit, Panier) */
+    .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        z-index: 1010;
+        pointer-events: none;
+    }
+    .modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.95);
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        box-shadow: var(--shadow-custom-xl);
+        z-index: 1020;
+        width: 90%;
+        max-width: 500px;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        pointer-events: none;
+        max-height: 90vh; 
+        display: flex; 
+        flex-direction: column; 
+    }
+    .modal.open, .modal-overlay.open {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        pointer-events: auto;
+    }
+    .modal-overlay.open {
+        transform: none;
+    }
+    .modal-close {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: color 0.2s ease;
+        z-index: 10; 
+    }
+    .modal-close:hover {
+        color: var(--text-primary);
+    }
+    .modal .form-label {
+      background-color: var(--bg-primary);
+    }
+    .modal-content {
+      overflow-y: auto; 
+      padding-right: 0.5rem; 
+      margin-bottom: 1rem; 
+    }
+    .modal-footer {
+      margin-top: auto; 
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    #booking-confirmation, #cart-confirmation {
+      text-align: center;
+      padding: 2rem 0;
+    }
+    #booking-confirmation i, #cart-confirmation i {
+      font-size: 3rem;
+      color: #10b981; /* Vert Succès */
+      margin-bottom: 1rem;
+    }
+
+    /* NOUVEAU : Styles du Pro Shop */
+    .shop-filter-btn {
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+    .shop-filter-btn.active {
       background-color: var(--accent-color);
-      color: white;
-      padding: 0.25rem 1rem;
+      color: var(--text-primary); /* Texte noir sur jaune */
+      border-color: var(--accent-color);
+    }
+    .shop-filter-btn:not(.active):hover {
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+    }
+
+    .product-card {
+      background-color: var(--bg-primary);
+      border-radius: 0.5rem;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-custom);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-custom-lg);
+    }
+    .product-card-image-container {
+      position: relative;
+    }
+    .product-card-image {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      object-fit: cover;
+    }
+    /* NOUVEAU : Badges Produit */
+    .product-badge {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      background-color: var(--accent-color);
+      color: var(--text-primary); /* Texte noir sur jaune */
+      padding: 0.25rem 0.75rem;
       border-radius: 9999px;
+      font-size: 0.75rem;
       font-weight: 700;
-      font-size: 0.875rem;
       text-transform: uppercase;
     }
-
-    /* Testimonial Slider */
-    #testimonial-slider-container {
-      position: relative;
-      min-height: 300px; 
-    }
-    .testimonial-slide {
-      opacity: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      transition: opacity 0.5s ease-in-out;
-      width: 100%;
-    }
-    .testimonial-slide.active {
-      opacity: 1;
-      position: relative;
+    .product-badge.sale {
+      background-color: #ef4444; /* Rouge pour les soldes */
+      color: white;
+      left: auto;
+      right: 0.75rem;
     }
 
-    /* Form input focus animation */
-    .form-input {
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    .product-card-content {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
-    .form-input:focus {
-        border-color: var(--accent-color);
-        box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
+    /* NOUVEAU : Évaluation par Étoiles */
+    .star-rating {
+      display: flex;
+      align-items: center;
+      color: #f59e0b; /* Garde Ambre pour les étoiles */
+      margin-bottom: 0.5rem;
+    }
+    .star-rating i {
+      font-size: 0.9rem;
     }
     
-    /* Class Schedule */
-    .schedule-filter-btn.active {
+    .product-card-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .product-card-price {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+    }
+    /* NOUVEAU : Prix en Solde */
+    .product-card-price .original-price {
+      text-decoration: line-through;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      font-weight: 400;
+      margin-left: 0.5rem;
+    }
+
+    .product-card-btn {
       background-color: var(--accent-color);
+      color: var(--text-primary); /* Texte noir sur jaune */
+      margin-top: auto; /* Pousse le bouton vers le bas */
+    }
+    .product-card-btn:hover {
+      background-color: var(--accent-color-dark);
+    }
+
+    /* NOUVEAU : Styles du Panier et du Modal Produit */
+    .cart-badge {
+      position: absolute;
+      top: -5px;
+      right: -8px;
+      background-color: #ef4444; /* Badge rouge pour se démarquer du jaune */
       color: white;
+      font-size: 0.65rem;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--bg-primary);
     }
-    .schedule-item {
-        transition: transform 0.2s ease-in-out;
-    }
-     .schedule-item:hover {
-        transform: translateY(-5px);
-    }
-
-    /* Gallery Lightbox */
-    #lightbox {
-        transition: opacity 0.3s ease-in-out;
-    }
-    #lightbox.active {
-        opacity: 1;
-        pointer-events: all;
-    }
-    #lightbox img {
-        transition: transform 0.3s ease-in-out;
+    html[data-theme='dark'] .cart-badge {
+      border-color: var(--bg-primary);
     }
 
-    /* Trial Modal */
-     #trial-modal-overlay {
-        transition: opacity 0.3s ease-in-out;
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
     }
-    #trial-modal-box {
-        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    .cart-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    .cart-item-img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 0.375rem;
+      border: 1px solid var(--border-color);
+    }
+    .cart-item-details {
+      margin-left: 1rem;
+      flex-grow: 1;
+    }
+    .cart-item-name {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .cart-item-price {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    .cart-item-quantity input {
+      width: 45px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      border-radius: 0.25rem;
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      padding: 0.25rem;
+    }
+    .cart-item-remove {
+      margin-left: auto;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .cart-item-remove:hover {
+      color: #ef4444; /* Rouge pour la suppression */
+    }
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+    }
+    .quantity-btn {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      width: 30px;
+      height: 30px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .quantity-btn:hover {
+      background-color: var(--accent-color);
+      color: var(--text-primary);
+    }
+    .quantity-input {
+      width: 40px;
+      height: 30px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      border-left: none;
+      border-right: none;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      -moz-appearance: textfield;
+    }
+    .quantity-input::-webkit-outer-spin-button,
+    .quantity-input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
     }
 
   </style>
 </head>
 <body class="antialiased">
 
-  <!-- Header -->
-  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <!-- Barre de Progression de Défilement -->
+  <div id="scroll-progress-bar" class="fixed top-0 left-0 z-[60] h-1" style="background-color: var(--accent-color); width: 0%;"></div>
+
+  <!-- Pré-chargeur -->
+  <div id="preloader">
+      <div class="logo"><span style="color: var(--accent-color);">SEVEN</span>GYM</div>
+  </div>
+
+  <!-- En-tête -->
+  <header id="header" class="fixed top-0 left-0 right-0 z-50">
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#" class="text-3xl font-heading font-bold text-primary">
-        FITNESS<span style="color: var(--accent-color);">FUSION</span>
+      <a href="#" class="text-3xl font-heading font-bold text-primary logo-load">
+        <span style="color: var(--accent-color);">SEVEN</span>GYM
       </a>
       
-      <!-- Desktop Nav -->
-      <ul class="hidden md:flex items-center space-x-6">
-        <li><a href="#about" class="nav-link text-secondary hover:text-amber-500 font-semibold">À Propos</a></li>
-        <li><a href="#schedule" class="nav-link text-secondary hover:text-amber-500 font-semibold">Programme</a></li>
-        <li><a href="#gallery" class="nav-link text-secondary hover:text-amber-500 font-semibold">Galerie</a></li>
-        <li><a href="#pricing" class="nav-link text-secondary hover:text-amber-500 font-semibold">Tarifs</a></li>
-        <li><a href="#contact" class="nav-link text-secondary hover:text-amber-500 font-semibold">Contact</a></li>
+      <!-- Navigation de Bureau -->
+      <ul class="hidden md:flex items-center space-x-6 nav-load">
+        <li><a href="#home" class="nav-link text-secondary hover:text-yellow-500 font-semibold active" data-translate-key="nav_home">Accueil</a></li>
+        <li><a href="#schedule" class="nav-link text-secondary hover:text-yellow-500 font-semibold" data-translate-key="nav_schedule">Horaires</a></li>
+        <li><a href="#gallery" class="nav-link text-secondary hover:text-yellow-500 font-semibold" data-translate-key="nav_gallery">Notre Salle</a></li>
+        <li><a href="#shop" class="nav-link text-secondary hover:text-yellow-500 font-semibold" data-translate-key="nav_shop">Boutique</a></li>
+        <li><a href="#pricing" class="nav-link text-secondary hover:text-yellow-500 font-semibold" data-translate-key="nav_pricing">Tarifs</a></li>
+        <li><a href="#testimonials" class="nav-link text-secondary hover:text-yellow-500 font-semibold" data-translate-key="nav_testimonials">Témoignages</a></li> 
+        <li><a href="#faq" class="nav-link text-secondary hover:text-yellow-500 font-semibold" data-translate-key="nav_faq">FAQ</a></li>
+        <li><a href="#contact" class="nav-link text-secondary hover:text-yellow-500 font-semibold" data-translate-key="nav_contact">Contact</a></li>
+         <li>
+            <div class="relative">
+                <button id="lang-toggle" class="text-secondary hover:text-yellow-500 font-semibold flex items-center"><i class="fas fa-globe mr-1"></i> <span id="current-lang">FR</span></button>
+                <div id="lang-menu" class="hidden absolute top-full right-0 mt-2 bg-primary rounded-md shadow-lg border border-color w-24 z-10 transition-all duration-200 opacity-0 scale-95">
+                    <a href="#" class="block px-4 py-2 text-sm text-primary hover:bg-secondary" data-lang="fr">Français</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-primary hover:bg-secondary" data-lang="ar">العربية</a>
+                </div>
+            </div>
+        </li>
         <li>
-          <button id="theme-toggle" class="text-secondary hover:text-amber-500">
-            <i class="fas fa-moon text-xl" id="theme-toggle-dark-icon"></i>
-            <i class="fas fa-sun text-xl hidden" id="theme-toggle-light-icon"></i>
+          <button id="cart-toggle" class="text-secondary hover:text-yellow-500 relative">
+            <i class="fas fa-shopping-bag text-xl"></i>
+            <span id="cart-badge" class="cart-badge hidden">0</span>
           </button>
         </li>
-        <li><a href="#" id="trial-cta-header" class="bg-amber-500 text-white px-5 py-2 rounded-full hover:bg-amber-600 transition-transform transform hover:scale-105 shadow-custom">Essai Gratuit</a></li>
+        <li>
+          <button id="theme-toggle" class="text-secondary hover:text-yellow-500 relative w-6 h-6 overflow-hidden">
+            <i class="fas fa-moon text-xl absolute top-0 left-0" id="theme-toggle-dark-icon"></i>
+            <i class="fas fa-sun text-xl absolute top-0 left-0 hidden" id="theme-toggle-light-icon"></i>
+          </button>
+        </li>
       </ul>
       
-      <!-- Mobile Menu Button -->
+      <!-- Bouton du Menu Mobile -->
       <div class="md:hidden flex items-center space-x-4">
-        <button id="theme-toggle-mobile" class="text-secondary hover:text-amber-500">
-            <i class="fas fa-moon text-xl"></i>
-            <i class="fas fa-sun text-xl hidden"></i>
+        <button id="cart-toggle-mobile" class="text-secondary hover:text-yellow-500 relative">
+          <i class="fas fa-shopping-bag text-xl"></i>
+          <span id="cart-badge-mobile" class="cart-badge hidden">0</span>
         </button>
-        <button id="mobile-menu-btn" class="text-secondary">
+         <button id="theme-toggle-mobile" class="text-secondary hover:text-yellow-500 relative w-6 h-6 overflow-hidden">
+             <i class="fas fa-moon text-xl absolute top-0 left-0"></i>
+             <i class="fas fa-sun text-xl absolute top-0 left-0 hidden"></i>
+         </button>
+        <button id="mobile-menu-btn" class="text-secondary z-[61]">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
       </div>
     </nav>
     
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-primary shadow-custom-lg">
-      <a href="#about" class="block py-3 px-6 text-secondary hover:bg-secondary">À Propos</a>
-      <a href="#schedule" class="block py-3 px-6 text-secondary hover:bg-secondary">Programme</a>
-      <a href="#gallery" class="block py-3 px-6 text-secondary hover:bg-secondary">Galerie</a>
-      <a href="#pricing" class="block py-3 px-6 text-secondary hover:bg-secondary">Tarifs</a>
-      <a href="#contact" class="block py-3 px-6 text-secondary hover:bg-secondary">Contact</a>
-      <div class="p-4">
-        <a href="#" id="trial-cta-mobile" class="block text-center w-full bg-amber-500 text-white px-5 py-2 rounded-full hover:bg-amber-600">Essai Gratuit</a>
+    <!-- Menu Mobile -->
+     <div id="mobile-menu-overlay" class=""></div>
+     <div id="mobile-menu" class="md:hidden bg-primary shadow-custom-lg">
+      <a href="#home" class="block py-3 px-6 text-secondary hover:bg-secondary" data-translate-key="nav_home">Accueil</a>
+      <a href="#schedule" class="block py-3 px-6 text-secondary hover:bg-secondary" data-translate-key="nav_schedule">Horaires</a>
+       <a href="#gallery" class="block py-3 px-6 text-secondary hover:bg-secondary" data-translate-key="nav_gallery">Notre Salle</a>
+       <a href="#shop" class="block py-3 px-6 text-secondary hover:bg-secondary" data-translate-key="nav_shop">Boutique</a>
+      <a href="#pricing" class="block py-3 px-6 text-secondary hover:bg-secondary" data-translate-key="nav_pricing">Tarifs</a>
+      <a href="#testimonials" class="block py-3 px-6 text-secondary hover:bg-secondary" data-translate-key="nav_testimonials">Témoignages</a>
+      <a href="#faq" class="block py-3 px-6 text-secondary hover:bg-secondary" data-translate-key="nav_faq">FAQ</a>
+      <a href="#contact" class="block py-3 px-6 text-secondary hover:bg-secondary" data-translate-key="nav_contact">Contact</a>
+       <div class="p-4 border-t border-color flex justify-center">
+            <div class="relative">
+                <button id="lang-toggle-mobile" class="text-secondary hover:text-yellow-500 font-semibold flex items-center"><i class="fas fa-globe mr-1"></i> <span id="current-lang-mobile">FR</span></button>
+                 <div id="lang-menu-mobile" class="hidden absolute bottom-full right-0 mb-2 bg-primary rounded-md shadow-lg border border-color w-24 z-10 transition-all duration-200 opacity-0 scale-95">
+                    <a href="#" class="block px-4 py-2 text-sm text-primary hover:bg-secondary" data-lang="fr">Français</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-primary hover:bg-secondary" data-lang="ar">العربية</a>
+                </div>
+            </div>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- Hero Section -->
-    <section id="home" class="h-screen min-h-[700px] flex items-center justify-center text-white bg-cover bg-center parallax" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&q=80&w=2070')">
-      <div class="text-center p-6 fade-in-up">
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-4 drop-shadow-lg font-heading uppercase">DÉPASSEZ VOS LIMITES</h1>
-        <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto drop-shadow-md">L'endroit où la force rencontre la détermination. Rejoignez la communauté Fitness Fusion.</p>
-        <a href="#pricing" class="bg-amber-500 text-white px-8 py-3 rounded-full hover:bg-amber-600 transition-all transform hover:scale-105 text-lg font-bold shadow-xl uppercase">Devenir Membre</a>
+    <!-- Section Héros (Fusionnée) -->
+    <section id="home" class="relative h-screen min-h-[700px] flex items-center justify-center text-white bg-cover bg-center parallax hero-parallax-container" 
+             style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&q=80&w=2070')">
+      <div class="text-center p-6 z-10 hero-content">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-4 drop-shadow-lg font-heading uppercase hero-load">DÉPASSEZ VOS LIMITES</h1>
+        <p class="text-lg md:text-xl mb-6 max-w-2xl mx-auto drop-shadow-md hero-load typewriter" data-translate-key="hero_subtitle">L'endroit où la force rencontre la détermination. Rejoignez la communauté.</p>
+        <div id="gym-status" class="mb-8 hero-load">
+            <span class="status-badge closed" data-translate-key="status_loading">Chargement...</span>
+        </div>
+        <a href="#pricing" class="hero-cta magnetic-button text-primary px-8 py-3 rounded-full transition-all transform hover:scale-105 text-lg font-bold shadow-xl uppercase hero-load" style="background-color: var(--accent-color);" data-translate-key="hero_cta">
+            Voir les Tarifs
+            <span class="hero-cta-icon"><i class="fas fa-arrow-right"></i></span>
+        </a>
       </div>
+       <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 hidden md:block">
+            <a href="#special-offer" class="text-white text-3xl animate-bounce">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+       </div>
     </section>
 
-    <!-- About Us Section -->
-    <section id="about" class="py-20 bg-primary">
-      <div class="container mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div class="fade-in-up">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&q=80&w=2070" alt="Intérieur de la salle de sport Fitness Fusion" class="rounded-lg shadow-custom-2xl w-full h-auto object-cover">
-          </div>
-          <div class="fade-in-up" style="transition-delay: 150ms;">
-            <h2 class="text-4xl font-bold font-heading mb-4 text-primary">BIENVENUE CHEZ FITNESS FUSION</h2>
-            <p class="text-secondary mb-4 text-lg">
-              Fitness Fusion n'est pas juste une salle de sport, c'est un mode de vie. Situé au cœur de Constantine, nous offrons un espace moderne et motivant, équipé des dernières technologies pour vous aider à atteindre vos objectifs de forme et de bien-être.
-            </p>
-            <p class="text-secondary mb-6 text-lg">
-              Notre mission est de vous inspirer à travers une variété de cours collectifs, un coaching personnalisé et une communauté soudée. Que vous soyez débutant ou athlète confirmé, vous trouverez votre place chez nous.
-            </p>
-          </div>
+    <!-- Bannière de Compte à Rebours -->
+    <section id="special-offer" class="py-6 bg-secondary border-b border-t border-color">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-xl font-semibold font-heading mb-2 text-primary" data-translate-key="offer_title">Offre Spéciale du Mois !</h3>
+            <p class="text-secondary mb-4" data-translate-key="offer_desc">-10% sur votre premier mois d'abonnement illimité !</p>
+            <div id="countdown-banner" class="flex justify-center space-x-4 md:space-x-6 text-primary">
+                <div class="countdown-item"> <div id="offer-days" class="countdown-number">0</div> <div class="countdown-label" data-translate-key="countdown_days">Jours</div> </div>
+                <div class="countdown-item"> <div id="offer-hours" class="countdown-number">0</div> <div class="countdown-label" data-translate-key="countdown_hours">Heures</div> </div>
+                <div class="countdown-item"> <div id="offer-minutes" class="countdown-number">0</div> <div class="countdown-label" data-translate-key="countdown_minutes">Minutes</div> </div>
+                <div class="countdown-item"> <div id="offer-seconds" class="countdown-number">0</div> <div class="countdown-label" data-translate-key="countdown_seconds">Secondes</div> </div>
+            </div>
         </div>
-      </div>
-    </section>
-    
-    <!-- Why Choose Us Section -->
-    <section id="why-us" class="py-20 parallax text-white" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&q=80&w=2069');">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16 fade-in-up">
-          <h2 class="text-4xl font-bold font-heading mb-4">POURQUOI NOUS CHOISIR ?</h2>
-          <p class="text-gray-300 max-w-2xl mx-auto">Nous offrons plus qu'un simple abonnement. Nous offrons une expérience.</p>
-        </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div class="text-center fade-in-up">
-            <div class="bg-white/10 w-20 h-20 rounded-full mx-auto flex items-center justify-center shadow-custom-lg mb-4">
-              <i class="fas fa-cogs text-4xl" style="color: var(--accent-color);"></i>
-            </div>
-            <h3 class="text-xl font-bold font-heading mb-2">ÉQUIPEMENT DE POINTE</h3>
-            <p class="text-gray-300">Entraînez-vous avec les dernières machines Technogym pour des performances optimales.</p>
-          </div>
-          <div class="text-center fade-in-up" style="transition-delay: 150ms;">
-            <div class="bg-white/10 w-20 h-20 rounded-full mx-auto flex items-center justify-center shadow-custom-lg mb-4">
-              <i class="fas fa-users text-4xl" style="color: var(--accent-color);"></i>
-            </div>
-            <h3 class="text-xl font-bold font-heading mb-2">COACHS CERTIFIÉS</h3>
-            <p class="text-gray-300">Nos experts sont là pour vous guider et vous motiver à chaque étape de votre parcours.</p>
-          </div>
-          <div class="text-center fade-in-up" style="transition-delay: 300ms;">
-            <div class="bg-white/10 w-20 h-20 rounded-full mx-auto flex items-center justify-center shadow-custom-lg mb-4">
-              <i class="fas fa-heartbeat text-4xl" style="color: var(--accent-color);"></i>
-            </div>
-            <h3 class="text-xl font-bold font-heading mb-2">COMMUNAUTÉ MOTIVANTE</h3>
-            <p class="text-gray-300">Rejoignez une famille de passionnés qui s'entraident pour atteindre leurs objectifs.</p>
-          </div>
-          <div class="text-center fade-in-up" style="transition-delay: 450ms;">
-            <div class="bg-white/10 w-20 h-20 rounded-full mx-auto flex items-center justify-center shadow-custom-lg mb-4">
-              <i class="fas fa-clock text-4xl" style="color: var(--accent-color);"></i>
-            </div>
-            <h3 class="text-xl font-bold font-heading mb-2">HORAIRES FLEXIBLES</h3>
-            <p class="text-gray-300">Nous sommes ouverts 7j/7, de tôt le matin à tard le soir, pour s'adapter à votre emploi du temps.</p>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- Schedule Section -->
+    <!-- Section Horaires -->
     <section id="schedule" class="py-20 bg-primary">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16 fade-in-up">
-                <h2 class="text-4xl font-bold font-heading mb-4 text-primary">NOTRE PROGRAMME</h2>
-                <p class="text-secondary max-w-2xl mx-auto">Trouvez le cours parfait pour vous et réservez votre place.</p>
-                <div id="schedule-filters" class="flex justify-center space-x-2 md:space-x-4 mt-8">
-                    <button class="schedule-filter-btn active px-4 py-2 font-semibold rounded-full transition bg-secondary text-primary" data-filter="all">Tous</button>
-                    <button class="schedule-filter-btn px-4 py-2 font-semibold rounded-full transition bg-secondary text-primary" data-filter="hiit">HIIT</button>
-                    <button class="schedule-filter-btn px-4 py-2 font-semibold rounded-full transition bg-secondary text-primary" data-filter="yoga">Yoga</button>
-                    <button class="schedule-filter-btn px-4 py-2 font-semibold rounded-full transition bg-secondary text-primary" data-filter="spinning">Spinning</button>
-                    <button class="schedule-filter-btn px-4 py-2 font-semibold rounded-full transition bg-secondary text-primary" data-filter="musculation">Musculation</button>
-                </div>
+            <div class="text-center mb-12 fade-in-up">
+                <h2 class="text-4xl font-bold font-heading mb-4 text-primary animate-letters" data-translate-key="schedule_title">NOS HORAIRES</h2>
+                <p class="text-secondary max-w-2xl mx-auto" data-translate-key="schedule_subtitle">Consultez nos plannings dédiés pour hommes et femmes. <br class="hidden sm:block"> <strong data-translate-key="schedule_book_now">Réservez votre place pour les cours collectifs !</strong></p>
             </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in-up">
-                <!-- Schedule items -->
-                 <div class="schedule-item bg-secondary p-6 rounded-lg shadow-custom" data-category="hiit">
-                    <p class="font-bold text-lg text-primary">HIIT Intense</p>
-                    <p class="font-semibold" style="color:var(--accent-color)">Lundi, 18:00 - 18:45</p>
-                    <p class="text-secondary mt-2">Coach: John Doe</p>
+            <div class="flex justify-center mb-8 fade-in-up">
+                <button class="schedule-tab active px-6 py-3 font-semibold rounded-l-full transition border border-color" data-target="schedule-men" data-translate-key="tab_men">Hommes</button>
+                <button class="schedule-tab px-6 py-3 font-semibold rounded-r-full transition border border-color border-l-0" data-target="schedule-women" data-translate-key="tab_women">Femmes</button>
+            </div>
+            <div class="relative fade-in-up"> 
+                <div id="schedule-men" class="schedule-content active">
+                    <h3 class="text-2xl font-bold font-heading text-center mb-6 text-primary" data-translate-key="schedule_men_title">Planning Hommes</h3>
+                    <div class="overflow-x-auto shadow-custom rounded-lg border border-color">
+                        <table class="w-full schedule-table">
+                            <thead class="schedule-sticky-header">
+                                <tr>
+                                    <th data-translate-key="table_day">Jour</th>
+                                    <th data-translate-key="table_activities">Activités & Horaires</th>
+                                </tr>
+                            </thead>
+                            <tbody id="men-schedule-body"></tbody>
+                        </table>
+                    </div>
                 </div>
-                 <div class="schedule-item bg-secondary p-6 rounded-lg shadow-custom" data-category="yoga">
-                    <p class="font-bold text-lg text-primary">Yoga Flow</p>
-                    <p class="font-semibold" style="color:var(--accent-color)">Mardi, 19:00 - 20:00</p>
-                    <p class="text-secondary mt-2">Coach: Jane Smith</p>
-                </div>
-                 <div class="schedule-item bg-secondary p-6 rounded-lg shadow-custom" data-category="spinning">
-                    <p class="font-bold text-lg text-primary">Cardio Spinning</p>
-                    <p class="font-semibold" style="color:var(--accent-color)">Mercredi, 17:30 - 18:15</p>
-                    <p class="text-secondary mt-2">Coach: Karim B.</p>
-                </div>
-                 <div class="schedule-item bg-secondary p-6 rounded-lg shadow-custom" data-category="musculation">
-                    <p class="font-bold text-lg text-primary">Force & Condition</p>
-                    <p class="font-semibold" style="color:var(--accent-color)">Jeudi, 19:00 - 20:00</p>
-                    <p class="text-secondary mt-2">Coach: John Doe</p>
-                </div>
-                 <div class="schedule-item bg-secondary p-6 rounded-lg shadow-custom" data-category="hiit">
-                    <p class="font-bold text-lg text-primary">Tabata Burn</p>
-                    <p class="font-semibold" style="color:var(--accent-color)">Vendredi, 18:00 - 18:45</p>
-                    <p class="text-secondary mt-2">Coach: Karim B.</p>
-                </div>
-                 <div class="schedule-item bg-secondary p-6 rounded-lg shadow-custom" data-category="yoga">
-                    <p class="font-bold text-lg text-primary">Yoga Matinal</p>
-                    <p class="font-semibold" style="color:var(--accent-color)">Samedi, 09:00 - 10:00</p>
-                    <p class="text-secondary mt-2">Coach: Jane Smith</p>
+                <div id="schedule-women" class="schedule-content">
+                    <h3 class="text-2xl font-bold font-heading text-center mb-6 text-primary" data-translate-key="schedule_women_title">Planning Femmes</h3>
+                     <div class="overflow-x-auto shadow-custom rounded-lg border border-color">
+                         <table class="w-full schedule-table">
+                            <thead class="schedule-sticky-header">
+                                <tr>
+                                    <th data-translate-key="table_day">Jour</th>
+                                    <th data-translate-key="table_activities">Activités & Horaires</th>
+                                </tr>
+                            </thead>
+                            <tbody id="women-schedule-body"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-20 parallax text-white" style="background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&q=80&w=1974');">
+
+    <!-- Section Galerie -->
+    <section id="gallery" class="py-20 bg-secondary">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16 fade-in-up">
-                <h2 class="text-4xl font-bold font-heading mb-4">NOTRE ESPACE</h2>
-                <p class="text-gray-300 max-w-2xl mx-auto">Découvrez l'environnement dans lequel vous allez vous transformer.</p>
+            <div class="text-center mb-12 fade-in-up">
+                <h2 class="text-4xl font-bold font-heading mb-4 text-primary animate-letters" data-translate-key="nav_gallery">Notre Salle</h2>
+                <p class="text-secondary max-w-2xl mx-auto" data-translate-key="gallery_subtitle">Découvrez notre espace moderne et équipé.</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 fade-in-up">
-                <div class="overflow-hidden rounded-lg shadow-lg cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800" alt="Espace poids libres" class="gallery-item w-full h-full object-cover transition-transform duration-300 hover:scale-110">
-                </div>
-                <div class="overflow-hidden rounded-lg shadow-lg cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=800" alt="Zone cardio" class="gallery-item w-full h-full object-cover transition-transform duration-300 hover:scale-110">
-                </div>
-                <div class="overflow-hidden rounded-lg shadow-lg cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1571388208497-71bedc66e932?auto=format&fit=crop&q=80&w=800" alt="Salle de cours collectifs" class="gallery-item w-full h-full object-cover transition-transform duration-300 hover:scale-110">
-                </div>
-                 <div class="overflow-hidden rounded-lg shadow-lg cursor-pointer">
-                    <img src="https://i.postimg.cc/DZb7Mjvd/Capture.png" alt="Vestiaires modernes" class="gallery-item w-full h-full object-cover transition-transform duration-300 hover:scale-110">
-                </div>
+            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4 fade-in-up">
+                <!-- Les images de la galerie sont injectées ici par JS -->
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-20 bg-primary">
+    <!-- NOUVEAU : Section Pro Shop -->
+    <section id="shop" class="py-20 bg-primary"> <!-- Alternance de couleur -->
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 fade-in-up">
+                <h2 class="text-4xl font-bold font-heading mb-4 text-primary animate-letters" data-translate-key="shop_title">NOTRE PRO SHOP</h2>
+                <p class="text-secondary max-w-2xl mx-auto" data-translate-key="shop_subtitle">Protéines, suppléments, et équipement. Tout ce dont vous avez besoin.</p>
+            </div>
+
+            <!-- NOUVEAU : Barre de Recherche et Tri -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8 fade-in-up">
+                <div class="relative w-full md:w-1/2 lg:w-1/3">
+                    <input type="search" id="shop-search-input" class="form-input w-full pl-10 pr-4 py-2 rounded-full border border-color bg-secondary text-primary focus:outline-none" data-translate-placeholder="search_placeholder" placeholder="Rechercher un produit...">
+                    <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-secondary"></i>
+                </div>
+                <div class="relative w-full md:w-auto">
+                    <select id="shop-sort-select" class="w-full md:w-auto appearance-none pl-4 pr-10 py-2 rounded-full border border-color bg-secondary text-primary font-semibold focus:outline-none focus:border-accent">
+                        <option value="default" data-translate-key="sort_default">Tri par défaut</option>
+                        <option value="price-asc" data-translate-key="sort_price_asc">Prix: Croissant</option>
+                        <option value="price-desc" data-translate-key="sort_price_desc">Prix: Décroissant</option>
+                    </select>
+                    <i class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-secondary pointer-events-none"></i>
+                </div>
+            </div>
+
+            <!-- Filtres de Catégories -->
+            <div id="shop-filters" class="flex justify-center flex-wrap gap-2 mb-8 fade-in-up">
+                <button class="shop-filter-btn active px-4 py-2 rounded-full font-semibold" data-category="all" data-translate-key="filter_all">Tout</button>
+                <button class="shop-filter-btn px-4 py-2 rounded-full font-semibold" data-category="supplements" data-translate-key="filter_supplements">Suppléments</button>
+                <button class="shop-filter-btn px-4 py-2 rounded-full font-semibold" data-category="apparel" data-translate-key="filter_apparel">Vêtements</button>
+                <button class="shop-filter-btn px-4 py-2 rounded-full font-semibold" data-category="gear" data-translate-key="filter_gear">Équipement</button>
+            </div>
+
+            <!-- Grille des Produits -->
+            <div id="shop-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 fade-in-up">
+                <!-- Les cartes de produits sont injectées ici par JS -->
+            </div>
+        </div>
+    </section>
+
+
+     <!-- Section Parallaxe -->
+     <section id="motivation" class="py-32 parallax" 
+              style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&q=80&w=2069')">
+        <div class="container mx-auto px-6 text-center text-white fade-in-up">
+            <h2 class="text-4xl font-bold font-heading mb-4 animate-letters" data-translate-key="motivation_title">POURQUOI NOUS CHOISIR ?</h2>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto" data-translate-key="motivation_subtitle">Nous offrons plus qu'un simple abonnement. Nous offrons une expérience.</p>
+        </div>
+     </section>
+
+     <!-- Section Tarifs -->
+    <section id="pricing" class="py-20 bg-secondary"> <!-- Alternance de couleur -->
       <div class="container mx-auto px-6">
         <div class="text-center mb-16 fade-in-up">
-          <h2 class="text-4xl font-bold font-heading mb-4 text-primary">CHOISISSEZ VOTRE PLAN</h2>
-          <p class="text-secondary max-w-2xl mx-auto">Des abonnements flexibles conçus pour s'adapter à votre style de vie et à vos objectifs. Engagement mensuel, sans frais cachés.</p>
+          <h2 class="text-4xl font-bold font-heading mb-4 text-primary animate-letters" data-translate-key="pricing_title">CHOISISSEZ VOTRE PLAN</h2>
+          <p class="text-secondary max-w-2xl mx-auto" data-translate-key="pricing_subtitle">Des abonnements flexibles conçus pour s'adapter à votre style de vie.</p>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-center">
-          <!-- Plan 1: 2 sessions/week -->
-          <div class="bg-secondary p-8 rounded-lg shadow-custom-lg text-center flex flex-col h-full fade-in-up">
-            <h3 class="text-2xl font-bold font-heading mb-2 text-primary">DÉCOUVERTE</h3>
-            <p class="text-4xl font-bold mb-4 text-primary">3,000 <span class="text-lg font-medium text-secondary">DZD/mois</span></p>
-            <p class="font-semibold text-secondary mb-6">2 Séances / Semaine</p>
-            <ul class="text-left space-y-2 mb-8 text-secondary flex-grow">
-              <li><i class="fas fa-check text-green-500 mr-2"></i>Accès à la salle</li>
-              <li><i class="fas fa-check text-green-500 mr-2"></i>Cours collectifs</li>
-            </ul>
-            <a href="#contact" class="mt-auto w-full bg-gray-300 text-gray-800 p-3 rounded-full hover:bg-gray-400 font-bold transition">Choisir ce Plan</a>
-          </div>
-
-          <!-- Plan 2: 3 sessions/week -->
-          <div class="bg-secondary p-8 rounded-lg shadow-custom-lg text-center flex flex-col h-full fade-in-up" style="transition-delay: 150ms;">
-            <h3 class="text-2xl font-bold font-heading mb-2 text-primary">ACTIF</h3>
-            <p class="text-4xl font-bold mb-4 text-primary">4,000 <span class="text-lg font-medium text-secondary">DZD/mois</span></p>
-            <p class="font-semibold text-secondary mb-6">3 Séances / Semaine</p>
-             <ul class="text-left space-y-2 mb-8 text-secondary flex-grow">
-              <li><i class="fas fa-check text-green-500 mr-2"></i>Accès à la salle</li>
-              <li><i class="fas fa-check text-green-500 mr-2"></i>Cours collectifs</li>
-            </ul>
-            <a href="#contact" class="mt-auto w-full bg-gray-300 text-gray-800 p-3 rounded-full hover:bg-gray-400 font-bold transition">Choisir ce Plan</a>
-          </div>
-
-          <!-- Plan 3: 4 sessions/week (Popular) -->
-          <div class="pricing-card-popular bg-secondary p-8 rounded-lg shadow-custom-xl text-center flex flex-col h-full fade-in-up" style="transition-delay: 300ms;">
-            <div class="popular-badge">Populaire</div>
-            <h3 class="text-2xl font-bold font-heading mb-2 text-primary">PERFORMANCE</h3>
-            <p class="text-4xl font-bold mb-4" style="color: var(--accent-color);">5,000 <span class="text-lg font-medium text-secondary">DZD/mois</span></p>
-            <p class="font-semibold text-secondary mb-6">4 Séances / Semaine</p>
-            <ul class="text-left space-y-2 mb-8 text-secondary flex-grow">
-              <li><i class="fas fa-check text-green-500 mr-2"></i>Accès à la salle</li>
-              <li><i class="fas fa-check text-green-500 mr-2"></i>Cours collectifs</li>
-              <li><i class="fas fa-check text-green-500 mr-2"></i>Suivi mensuel</li>
-            </ul>
-            <a href="#contact" class="mt-auto w-full p-3 rounded-full font-bold transition transform hover:scale-105" style="background-color: var(--accent-color); color: white;">Choisir ce Plan</a>
-          </div>
-          
-          <!-- Plan 4: Unlimited -->
-          <div class="bg-secondary p-8 rounded-lg shadow-custom-lg text-center flex flex-col h-full fade-in-up" style="transition-delay: 600ms;">
-            <h3 class="text-2xl font-bold font-heading mb-2 text-primary">ILLIMITÉ</h3>
-            <p class="text-4xl font-bold mb-4 text-primary">7,000 <span class="text-lg font-medium text-secondary">DZD/mois</span></p>
-            <p class="font-semibold text-secondary mb-6">Accès Illimité</p>
-            <ul class="text-left space-y-2 mb-8 text-secondary flex-grow">
-              <li><i class="fas fa-check text-green-500 mr-2"></i>Accès à la salle</li>
-              <li><i class="fas fa-check text-green-500 mr-2"></i>Cours collectifs</li>
-              <li><i class="fas fa-check text-green-500 mr-2"></i>Suivi personnalisé</li>
-            </ul>
-            <a href="#contact" class="mt-auto w-full bg-gray-300 text-gray-800 p-3 rounded-full hover:bg-gray-400 font-bold transition">Choisir ce Plan</a>
-          </div>
+        <div id="pricing-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 fade-in-up">
+          <!-- Cartes de tarification injectées -->
         </div>
       </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 parallax" style="background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=2070');">
+    <!-- Section Témoignages -->
+    <section id="testimonials" class="pt-28 pb-20 bg-primary"> <!-- Alternance de couleur -->
       <div class="container mx-auto px-6 text-center">
-        <h2 class="text-4xl font-bold font-heading mb-4 fade-in-up text-primary">ILS ONT ATTEINT LEURS OBJECTIFS</h2>
-        <p class="text-secondary mb-12 max-w-2xl mx-auto fade-in-up">Découvrez les histoires de réussite de nos membres.</p>
-        
-        <div class="relative max-w-3xl mx-auto bg-primary p-8 rounded-lg shadow-custom-xl fade-in-up">
-          <div id="testimonial-slider-container">
-            <!-- Testimonial 1 -->
+        <div class="relative max-w-3xl mx-auto bg-secondary p-8 rounded-lg shadow-custom-xl fade-in-up"> <!-- Changé en bg-secondary -->
+          <h2 class="text-4xl font-bold font-heading mb-4 fade-in-up text-primary animate-letters" data-translate-key="testimonials_title">CE QUE DISENT NOS MEMBRES</h2>
+          <p class="text-secondary mb-12 max-w-2xl mx-auto fade-in-up" data-translate-key="testimonials_subtitle">Leurs succès sont notre meilleure motivation.</p>
+          
+          <div id="testimonial-slider-container" class="overflow-hidden">
+            <!-- Slide 1 -->
             <div class="testimonial-slide active">
-              <img loading="lazy" src="https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&q=80&w=200&h=200" alt="Photo de Amine B." class="w-24 h-24 rounded-full mx-auto mb-6 border-4 object-cover" style="border-color: var(--accent-color);">
-              <p class="text-secondary italic text-lg mb-6">"J'ai perdu 10 kg en 3 mois grâce aux coachs de Fitness Fusion ! L'ambiance est incroyable et m'a vraiment motivé à ne rien lâcher."</p>
-              <p class="font-bold text-primary text-xl">- Amine B.</p>
+              <img loading="lazy" src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?auto=format&fit=crop&q=80&w=200&h=200&crop=faces" alt="Photo de Karim B." class="w-24 h-24 rounded-full mx-auto mb-6 border-4 object-cover" style="border-color: var(--accent-color);">
+              <p class="text-secondary italic text-lg mb-6" data-translate-key="testimonial1_text">"Super salle, coachs au top et ambiance motivante ! J'ai vu des résultats rapidement."</p>
+              <p class="font-bold text-primary text-xl">- Karim B.</p>
             </div>
-            <!-- Testimonial 2 -->
+            <!-- Slide 2 -->
             <div class="testimonial-slide">
-              <img loading="lazy" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=1974" alt="Photo de Fatima Z." class="w-24 h-24 rounded-full mx-auto mb-6 border-4 object-cover" style="border-color: var(--accent-color);">
-              <p class="text-secondary italic text-lg mb-6">"Les cours de Yoga sont fantastiques. J'ai retrouvé une souplesse que je pensais perdue. C'est mon moment de détente de la semaine."</p>
-              <p class="font-bold text-primary text-xl">- Fatima Z.</p>
+              <img loading="lazy" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200&h=200&crop=faces" alt="Photo de Amina S." class="w-24 h-24 rounded-full mx-auto mb-6 border-4 object-cover" style="border-color: var(--accent-color);">
+              <p class="text-secondary italic text-lg mb-6" data-translate-key="testimonial2_text">"Les cours collectifs sont géniaux, surtout la Zumba ! L'espace femme est très bien équipé."</p>
+              <p class="font-bold text-primary text-xl">- Amina S.</p>
+            </div>
+             <!-- Slide 3 -->
+            <div class="testimonial-slide">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=200&h=200&crop=faces" alt="Photo de Yacine M." class="w-24 h-24 rounded-full mx-auto mb-6 border-4 object-cover" style="border-color: var(--accent-color);">
+              <p class="text-secondary italic text-lg mb-6" data-translate-key="testimonial3_text">"Le matériel est neuf et varié. L'équipe est toujours disponible pour des conseils. Je recommande vivement Seven Gym."</p>
+              <p class="font-bold text-primary text-xl">- Yacine M.</p>
             </div>
           </div>
-
-          <!-- Slider Controls -->
-          <button class="testimonial-prev absolute top-1/2 left-0 md:-left-12 transform -translate-y-1/2 bg-secondary/50 hover:bg-secondary text-primary p-3 rounded-full shadow-md transition">
+          <!-- Boutons de Navigation -->
+          <button class="testimonial-prev absolute top-1/2 left-0 md:-left-12 transform -translate-y-1/2 bg-secondary/50 hover:bg-secondary text-primary p-3 rounded-full shadow-md transition z-10">
               <i class="fas fa-chevron-left"></i>
           </button>
-          <button class="testimonial-next absolute top-1/2 right-0 md:-right-12 transform -translate-y-1/2 bg-secondary/50 hover:bg-secondary text-primary p-3 rounded-full shadow-md transition">
+          <button class="testimonial-next absolute top-1/2 right-0 md:-right-12 transform -translate-y-1/2 bg-secondary/50 hover:bg-secondary text-primary p-3 rounded-full shadow-md transition z-10">
               <i class="fas fa-chevron-right"></i>
           </button>
         </div>
       </div>
     </section>
 
+     <!-- Section FAQ -->
+    <section id="faq" class="py-20 bg-secondary"> <!-- Alternance de couleur -->
+        <div class="container mx-auto px-6 max-w-3xl">
+            <div class="text-center mb-12 fade-in-up">
+                <h2 class="text-4xl font-bold font-heading mb-4 text-primary animate-letters" data-translate-key="nav_faq">Questions Fréquentes</h2>
+            </div>
+            <div class="space-y-4 fade-in-up">
+                <details class="faq-item bg-primary p-4 rounded-lg shadow-custom border border-color"> <!-- Changé en bg-primary -->
+                    <summary data-translate-key="faq1_q">Quels sont les horaires d'ouverture ?</summary>
+                    <div class="faq-content text-secondary pt-2" data-translate-key="faq1_a">
+                        Nos horaires varient pour hommes et femmes. Veuillez consulter la section "Horaires" ci-dessus pour les détails complets. Nous sommes ouverts tous les jours.
+                    </div>
+                </details>
+                <details class="faq-item bg-primary p-4 rounded-lg shadow-custom border border-color">
+                    <summary data-translate-key="faq2_q">Proposez-vous des coachs personnels ?</summary>
+                    <div class="faq-content text-secondary pt-2" data-translate-key="faq2_a">
+                        Oui, nous avons des coachs certifiés disponibles pour des séances de suivi personnalisé. Contactez-nous pour plus d'informations sur les tarifs et la disponibilité.
+                    </div>
+                </details>
+                 <details class="faq-item bg-primary p-4 rounded-lg shadow-custom border border-color">
+                    <summary data-translate-key="faq3_q">Y a-t-il une période d'essai ?</summary>
+                    <div class="faq-content text-secondary pt-2" data-translate-key="faq3_a">
+                        Nous proposons parfois des offres découvertes. Le mieux est de passer nous voir à la salle ou de nous appeler pour connaître les promotions en cours.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-primary">
+
+    <!-- Section Contact -->
+    <section id="contact" class="py-20 bg-primary"> <!-- Alternance de couleur -->
         <div class="container mx-auto px-6">
             <div class="text-center mb-12 fade-in-up">
-                <h2 class="text-4xl font-bold font-heading mb-4 text-primary">CONTACTEZ-NOUS</h2>
-                <p class="text-secondary max-w-xl mx-auto">Prêt à commencer ? Envoyez-nous un message ou passez nous voir !</p>
+                <h2 class="text-4xl font-bold font-heading mb-4 text-primary animate-letters" data-translate-key="contact_title">CONTACTEZ-NOUS</h2>
+                <p class="text-secondary max-w-xl mx-auto" data-translate-key="contact_subtitle">Prêt à commencer ? Contactez-nous pour une visite ou plus d'informations.</p>
             </div>
-
-            <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 bg-secondary p-8 rounded-lg shadow-custom-lg">
-                <!-- Contact Form & Info -->
+            <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 bg-secondary p-8 rounded-lg shadow-custom-lg"> <!-- Changé en bg-secondary -->
+                <!-- Formulaire de Contact & Infos -->
                 <div class="fade-in-up">
-                  <form id="contact-form" action="#" method="POST" >
-                      <div class="mb-4">
-                          <label for="name" class="block text-primary font-semibold mb-2">Nom Complet</label>
-                          <input type="text" id="name" name="name" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-primary text-primary" required>
+                  <form id="contact-form" action="#" method="POST" novalidate>
+                      <div class="form-input-container mb-4">
+                          <input type="text" id="name" name="name" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-primary text-primary" placeholder=" " required> <!-- bg-primary -->
+                          <label for="name" class="form-label" data-translate-key="form_name">Nom Complet</label>
                       </div>
-                      <div class="mb-4">
-                          <label for="email" class="block text-primary font-semibold mb-2">Email</label>
-                          <input type="email" id="email" name="email" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-primary text-primary" required>
+                      <div class="form-input-container mb-4">
+                          <input type="email" id="email" name="email" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-primary text-primary" placeholder=" " required> <!-- bg-primary -->
+                           <label for="email" class="form-label" data-translate-key="form_email">Email</label>
+                           <span class="validation-icon check"><i class="fas fa-check-circle"></i></span>
+                           <span class="validation-icon cross"><i class="fas fa-times-circle"></i></span>
                       </div>
-                      <div class="mb-6">
-                          <label for="message" class="block text-primary font-semibold mb-2">Votre Message</label>
-                          <textarea id="message" name="message" rows="5" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-primary text-primary" required placeholder="J'aimerais m'inscrire au plan Performance..."></textarea>
+                      <div class="form-input-container mb-6">
+                          <textarea id="message" name="message" rows="5" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-primary text-primary" placeholder=" " required data-translate-placeholder="form_message_placeholder"></textarea> <!-- bg-primary -->
+                           <label for="message" class="form-label" data-translate-key="form_message">Votre Message</label>
                       </div>
-                      <button type="submit" class="w-full text-white p-3 rounded-full font-bold text-lg transition flex items-center justify-center space-x-2" style="background-color: var(--accent-color); hover:background-color: var(--accent-color-dark);">
-                          <span>Envoyer</span>
+                      <button type="submit" id="submit-button" class="magnetic-button w-full text-primary p-3 rounded-full font-bold text-lg transition flex items-center justify-center space-x-2" style="background-color: var(--accent-color);">
+                          <span id="submit-button-text" data-translate-key="form_send">Envoyer</span>
                       </button>
                       <div id="form-status" class="mt-4 text-center"></div>
                   </form>
-                  <div class="mt-12">
-                     <h3 class="text-2xl font-bold mb-4 text-primary">Nos Coordonnées</h3>
+                   <div class="mt-12">
+                     <h3 class="text-2xl font-bold mb-4 text-primary" data-translate-key="contact_info_title">Nos Coordonnées</h3>
                       <div class="space-y-6">
-                        <div class="flex items-center group">
-                            <div class="bg-primary p-3 rounded-full mr-4 shadow-custom-sm">
-                                <i class="fas fa-map-marker-alt text-2xl" style="color: var(--accent-color);"></i>
-                            </div>
-                            <div>
-                              <p class="font-bold text-primary">Adresse</p>
-                              <p class="text-secondary">123 Rue de la Liberté, Constantine, Algérie</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center group">
-                            <div class="bg-primary p-3 rounded-full mr-4 shadow-custom-sm">
-                                <i class="fas fa-phone text-2xl" style="color: var(--accent-color);"></i>
-                            </div>
-                            <div>
-                              <p class="font-bold text-primary">Téléphone</p>
-                              <p class="text-secondary">+213 555 123 456</p>
-                            </div>
-                        </div>
+                          <div class="flex items-start"> 
+                              <div class="bg-primary p-3 rounded-full mr-4 shadow-custom-sm flex-shrink-0"> <!-- bg-primary -->
+                                  <i class="fas fa-map-marker-alt text-2xl" style="color: var(--accent-color);"></i>
+                              </div>
+                              <div>
+                                <p class="font-bold text-primary" data-translate-key="address_label">Adresse</p>
+                                <p class="text-secondary" data-translate-key="address_value">QX3C+5J, Chéraga, Alger</p> 
+                                <a href="https://www.google.com/maps/search/?api=1&query=QX3C%2B5J%2C+Ch%C3%A9raga%2C+Alger" target="_blank" rel="noopener noreferrer" class="view-map-link inline-flex items-center text-sm font-semibold mt-1" style="color: var(--accent-color);">
+                                  <span data-translate-key="view_map">Voir sur la carte</span> <i class="fas fa-external-link-alt ml-1 text-xs"></i>
+                                </a>
+                              </div>
+                          </div>
+                          <div class="flex items-center">
+                              <div class="bg-primary p-3 rounded-full mr-4 shadow-custom-sm">
+                                  <i class="fas fa-phone text-2xl" style="color: var(--accent-color);"></i>
+                              </div>
+                              <div>
+                                <p class="font-bold text-primary" data-translate-key="phone_label">Téléphone</p>
+                                <p class="text-secondary">0792 24 00 50</p> 
+                              </div>
+                          </div>
                       </div>
                   </div>
                 </div>
                 
                 <!-- Google Map -->
-                <div class="fade-in-up" style="transition-delay: 200ms;">
+                <div class="fade-in-up" style="transition-delay: 200ms; min-height: 400px;">
                   <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d103243.51817812921!2d6.551322386352934!3d36.34091515281896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12f1db535a265b79%3A0x285923a634125c14!2sConstantine!5e0!3m2!1sfr!2sdz!4v1678886543210!5m2!1sfr!2sdz" 
-                    width="100%" 
-                    height="100%" 
-                    style="border:0; border-radius: 8px;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade"
-                    title="Carte de Fitness Fusion à Constantine">
+                    src="https://www.google.com/maps/embed?pb=!1m18!m12!1m3!1d25585.340947708573!2d2.94392435104886!3d36.75338100192537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fafc6e5f171c7%3A0xb33a5796f64a593!2sCh%C3%A9raga!5e0!3m2!1sfr!2sdz!4v1729855836853!5m2!1sfr!2sdz" 
+                    width="100%" height="100%" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    title="Carte de Seven Gym à Cheraga">
                   </iframe>
                 </div>
             </div>
@@ -562,281 +1042,1625 @@
     </section>
   </main>
   
-  <!-- Footer -->
+  <!-- Bandeau Défilant -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span data-translate-key="ticker1">🔥 Nouveau cours de CrossFit le Dimanche !</span>
+            <span data-translate-key="ticker2">💪 Offre spéciale -10% ce mois-ci !</span>
+            <span data-translate-key="ticker3">✨ Suivez-nous sur Instagram @sevengymdz</span>
+            <span data-translate-key="ticker4">🎉 Zumba Party tous les Lundis !</span>
+             <!-- Répétition pour une boucle fluide -->
+             <span data-translate-key="ticker1">🔥 Nouveau cours de CrossFit le Dimanche !</span>
+            <span data-translate-key="ticker2">💪 Offre spéciale -10% ce mois-ci !</span>
+            <span data-translate-key="ticker3">✨ Suivez-nous sur Instagram @sevengymdz</span>
+            <span data-translate-key="ticker4">🎉 Zumba Party tous les Lundis !</span>
+        </div>
+    </div>
+
+  <!-- Pied de page -->
   <footer class="bg-gray-800 text-white">
-      <div class="container mx-auto px-6 py-6 text-center">
-          <p>&copy; 2025 Fitness Fusion. Tous droits réservés.</p>
+      <div class="container mx-auto px-6 py-8 text-center">
+          <div class="flex justify-center space-x-6 mb-4">
+            <a href="mailto:info@sevengym.dz" aria-label="Email" class="text-gray-400 hover:text-yellow-400"> <i class="fas fa-envelope text-2xl"></i> </a>
+            <a href="https://instagram.com/sevengymdz" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-gray-400 hover:text-yellow-400"> <i class="fab fa-instagram text-2xl"></i> </a>
+            <a href="https://facebook.com/SEVENGYM" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-gray-400 hover:text-yellow-400"> <i class="fab fa-facebook text-2xl"></i> </a>
+          </div>
+          <p class="text-gray-500" data-translate-key="footer_rights">&copy; 2025 Seven Gym. Tous droits réservés.</p>
       </div>
   </footer>
   
-  <!-- Floating Back to Top Button -->
-  <button id="back-to-top" class="hidden fixed bottom-5 right-5 w-12 h-12 rounded-full shadow-lg focus:outline-none transition-opacity duration-300 z-50 text-white" style="background-color: var(--accent-color);">
+  <!-- Bouton "Retour en Haut" -->
+  <button id="back-to-top" class="hidden fixed bottom-5 right-5 w-12 h-12 rounded-full shadow-lg focus:outline-none transition-opacity duration-300 z-50 text-primary" style="background-color: var(--accent-color);">
     <i class="fas fa-arrow-up"></i>
   </button>
 
-  <!-- Gallery Lightbox -->
-    <div id="lightbox" class="fixed inset-0 bg-black/80 flex items-center justify-center opacity-0 pointer-events-none z-[100]">
-        <button id="lightbox-close" class="absolute top-5 right-5 text-white text-3xl">&times;</button>
-        <img id="lightbox-img" src="" alt="Vue agrandie de la galerie" class="max-w-[90%] max-h-[80%] object-contain rounded-lg">
-    </div>
+  <!-- Bouton Flottant WhatsApp -->
+  <a id="whatsapp-button" href="https://wa.me/213792240050" target="_blank" rel="noopener noreferrer" class="fixed bottom-20 right-5 w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-transform transform hover:scale-110 z-50" aria-label="Contactez-nous sur WhatsApp">
+      <i class="fab fa-whatsapp text-3xl"></i>
+  </a>
 
-    <!-- Free Trial Modal -->
-    <div id="trial-modal-overlay" class="fixed inset-0 bg-black/60 flex items-center justify-center opacity-0 pointer-events-none z-[100]">
-        <div id="trial-modal-box" class="bg-primary p-8 rounded-lg shadow-xl w-full max-w-md mx-4 transform scale-95 opacity-0">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-2xl font-bold font-heading text-primary">Votre Séance d'Essai Gratuite</h2>
-                <button id="trial-modal-close" class="text-2xl text-secondary">&times;</button>
-            </div>
-            <p class="text-secondary mb-6">Remplissez ce formulaire pour recevoir votre pass par email. Valable une semaine.</p>
-            <form id="trial-form">
-                <div class="mb-4">
-                    <label for="trial-name" class="block text-primary font-semibold mb-2">Nom Complet</label>
-                    <input type="text" id="trial-name" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-secondary text-primary" required>
-                </div>
-                <div class="mb-6">
-                    <label for="trial-email" class="block text-primary font-semibold mb-2">Email</label>
-                    <input type="email" id="trial-email" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-secondary text-primary" required>
-                </div>
-                <button type="submit" class="w-full text-white p-3 rounded-full font-bold text-lg transition" style="background-color: var(--accent-color);">Obtenir Mon Pass</button>
-                <p id="trial-form-status" class="text-center mt-4"></p>
-            </form>
-        </div>
-    </div>
+  <!-- Lightbox de la Galerie (Structure) -->
+  <div id="gallery-lightbox" class="">
+      <button id="lightbox-close" aria-label="Fermer la lightbox">&times;</button>
+      <button id="lightbox-prev" class="lightbox-nav" aria-label="Image précédente"><i class="fas fa-chevron-left"></i></button>
+      <img id="lightbox-image" src="" alt="Image agrandie">
+      <button id="lightbox-next" class="lightbox-nav" aria-label="Image suivante"><i class="fas fa-chevron-right"></i></button>
+  </div>
+
+
+  <!-- Modal de Réservation -->
+  <div id="booking-modal-overlay" class="modal-overlay"></div>
+  <div id="booking-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
+      <button id="booking-modal-close" class="modal-close" data-translate-key="modal_close_label" aria-label="Fermer">&times;</button>
+      
+      <div id="booking-modal-content" class="modal-content">
+          <h2 id="booking-modal-title" class="text-2xl font-bold font-heading mb-6 text-primary" data-translate-key="book_modal_title">Réserver votre place</h2>
+          
+          <form id="booking-modal-form">
+              <input type="hidden" id="booking-details-activity" value="">
+              <input type="hidden" id="booking-details-day" value="">
+              <input type="hidden" id="booking-details-time" value="">
+
+              <div class="form-input-container mb-4">
+                  <input type="text" id="booking-name" name="booking-name" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-secondary text-primary" placeholder=" " required>
+                  <label for="booking-name" class="form-label" data-translate-key="form_name">Nom Complet</label>
+              </div>
+              <div class="form-input-container mb-6">
+                  <input type="tel" id="booking-phone" name="booking-phone" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-secondary text-primary" placeholder=" " required>
+                  <label for="booking-phone" class="form-label" data-translate-key="form_phone">Numéro de Téléphone</label>
+              </div>
+              <button type="submit" id="booking-submit-button" class="magnetic-button w-full text-primary p-3 rounded-full font-bold text-lg transition flex items-center justify-center space-x-2" style="background-color: var(--accent-color);">
+                  <span id="booking-submit-text" data-translate-key="form_confirm_booking">Confirmer la réservation</span>
+              </button>
+          </form>
+
+          <div id="booking-confirmation" class="hidden">
+              <i class="fas fa-check-circle"></i>
+              <h3 class="text-2xl font-bold font-heading mb-2" data-translate-key="booking_success_title">Réservation Confirmée !</h3>
+              <p class="text-secondary" id="booking-success-message"></p>
+          </div>
+      </div>
+  </div>
+
+  <!-- NOUVEAU : Modal de Détail Produit -->
+  <div id="product-detail-modal-overlay" class="modal-overlay"></div>
+  <div id="product-detail-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="product-modal-title">
+      <button id="product-detail-modal-close" class="modal-close" data-translate-key="modal_close_label" aria-label="Fermer">&times;</button>
+      
+      <!-- Contenu injecté par JS -->
+      <div id="product-detail-content" class="modal-content">
+          <!-- Exemple de structure (sera remplacée par JS) -->
+          <img id="product-modal-image" src="https://placehold.co/400x400" alt="Produit" class="w-full h-48 object-cover rounded-lg mb-4">
+          <h2 id="product-modal-title" class="text-2xl font-bold font-heading mb-2 text-primary">Nom du Produit</h2>
+          <p id="product-modal-price" class="text-3xl font-bold mb-4" style="color: var(--accent-color);">0 DZD</p>
+          <p id="product-modal-description" class="text-secondary mb-6">Description détaillée du produit...</p>
+      </div>
+
+      <div class="modal-footer">
+          <div class="flex justify-between items-center mb-4">
+              <span class="text-secondary font-semibold" data-translate-key="quantity">Quantité :</span>
+              <div class="quantity-selector">
+                  <button id="product-modal-quantity-minus" class="quantity-btn rounded-l-md">-</button>
+                  <input id="product-modal-quantity-input" type="number" class="quantity-input" value="1" min="1" aria-label="Quantité">
+                  <button id="product-modal-quantity-plus" class="quantity-btn rounded-r-md">+</button>
+              </div>
+          </div>
+          <button id="product-modal-add-to-cart-btn" class="magnetic-button w-full text-primary p-3 rounded-full font-bold text-lg transition flex items-center justify-center space-x-2" style="background-color: var(--accent-color);">
+              <i class="fas fa-shopping-bag mr-2"></i>
+              <span data-translate-key="add_to_cart">Ajouter au Panier</span>
+          </button>
+      </div>
+  </div>
+
+  <!-- NOUVEAU : Modal Panier -->
+  <div id="cart-modal-overlay" class="modal-overlay"></div>
+  <div id="cart-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="cart-modal-title">
+      <button id="cart-modal-close" class="modal-close" data-translate-key="modal_close_label" aria-label="Fermer">&times;</button>
+      
+      <!-- Écran 1: Contenu du Panier -->
+      <div id="cart-content-container">
+          <h2 id="cart-modal-title" class="text-2xl font-bold font-heading mb-6 text-primary" data-translate-key="cart_title">Votre Panier</h2>
+          
+          <div id="cart-items-container" class="modal-content">
+              <!-- Les articles du panier sont injectés ici par JS -->
+              <p id="cart-empty-message" class="text-secondary text-center py-8" data-translate-key="cart_empty">Votre panier est vide.</p>
+          </div>
+
+          <div id="cart-summary-footer" class="modal-footer">
+              <div class="flex justify-between items-center mb-4">
+                  <span class="text-xl font-semibold text-primary" data-translate-key="subtotal">Sous-total :</span>
+                  <span id="cart-subtotal" class="text-2xl font-bold text-primary">0 DZD</span>
+              </div>
+              <button id="cart-checkout-btn" class="magnetic-button w-full text-primary p-3 rounded-full font-bold text-lg transition flex items-center justify-center space-x-2" style="background-color: var(--accent-color);">
+                  <span data-translate-key="checkout">Passer au Paiement</span>
+              </button>
+          </div>
+      </div>
+
+      <!-- Écran 2: Formulaire de Paiement -->
+      <div id="cart-checkout-form" class="hidden">
+          <h2 class="text-2xl font-bold font-heading mb-6 text-primary" data-translate-key="checkout">Paiement</h2>
+          <p class="bg-blue-100 border border-blue-300 text-blue-800 p-3 rounded-md mb-4 text-sm" data-translate-key="in_gym_pickup">
+            <i class="fas fa-info-circle mr-2"></i>Toutes les commandes sont pour un retrait à la salle.
+          </p>
+
+          <form id="checkout-form" class="shop-modal-form modal-content">
+              <div class="form-input-container mb-4">
+                  <input type="text" id="checkout-name" name="checkout-name" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-secondary text-primary" placeholder=" " required>
+                  <label for="checkout-name" class="form-label" data-translate-key="form_name">Nom Complet</label>
+              </div>
+              <div class="form-input-container mb-4">
+                  <input type="email" id="checkout-email" name="checkout-email" class="form-input w-full p-3 border border-color rounded-lg focus:outline-none bg-secondary text-primary" placeholder=" " required>
+                  <label for="checkout-email" class="form-label" data-translate-key="form_email">Email</label>
+              </div>
+              <!-- 
+                NOTE DE DÉVELOPPEMENT : C'est ici que l'élément Stripe Card serait monté.
+                <div id="stripe-card-element" class="p-3 border border-color rounded-lg bg-secondary"></div>
+                <div id="stripe-card-errors" role="alert" class="text-red-500 text-sm mt-2"></div>
+              -->
+              <p class="text-center text-secondary my-4">Simulating secure payment. No card needed for this demo.</p>
+          </form>
+
+          <div class="modal-footer">
+              <div class="flex justify-between items-center mb-4">
+                  <span class="text-xl font-semibold text-primary" data-translate-key="total">Total :</span>
+                  <span id="checkout-total" class="text-2xl font-bold" style="color: var(--accent-color);">0 DZD</span>
+              </div>
+              <button id="checkout-confirm-btn" class="magnetic-button w-full text-white p-3 rounded-full font-bold text-lg transition flex items-center justify-center space-x-2" style="background-color: #10b981;"> <!-- Bouton vert pour confirmer -->
+                  <span id="checkout-confirm-text" data-translate-key="confirm_purchase">Confirmer l'Achat</span>
+              </button>
+          </div>
+      </div>
+
+      <!-- Écran 3: Confirmation d'Achat -->
+      <div id="cart-confirmation" class="hidden">
+          <i class="fas fa-check-circle"></i>
+          <h3 class="text-2xl font-bold font-heading mb-2" data-translate-key="purchase_success_title">Achat Confirmé !</h3>
+          <p class="text-secondary" data-translate-key="purchase_success_message">Votre commande est en préparation. Vous pouvez la récupérer à l'accueil.</p>
+      </div>
+
+  </div>
 
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      // --- Sélecteurs d'éléments (conservés de sevengym.html) ---
       const header = document.getElementById("header");
       const mobileMenuBtn = document.getElementById("mobile-menu-btn");
       const mobileMenu = document.getElementById("mobile-menu");
-      const contactForm = document.getElementById('contact-form');
-      const formStatus = document.getElementById('form-status');
+      const mobileMenuOverlay = document.getElementById("mobile-menu-overlay");
       const backToTopBtn = document.getElementById('back-to-top');
+      const favicon = document.getElementById('favicon');
+      const preloader = document.getElementById('preloader');
+      const scrollProgressBar = document.getElementById('scroll-progress-bar');
 
-      // --- Dark Mode Toggle ---
-      const themeToggleBtns = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
-      const darkIcons = document.querySelectorAll('#theme-toggle-dark-icon, #theme-toggle-mobile .fa-moon');
-      const lightIcons = document.querySelectorAll('#theme-toggle-light-icon, #theme-toggle-mobile .fa-sun');
+      // --- Sélecteurs du Modal de Réservation ---
+      const bookingModalOverlay = document.getElementById('booking-modal-overlay');
+      const bookingModal = document.getElementById('booking-modal');
+      const bookingModalClose = document.getElementById('booking-modal-close');
+      const bookingModalTitle = document.getElementById('booking-modal-title');
+      const bookingModalForm = document.getElementById('booking-modal-form');
+      const bookingConfirmation = document.getElementById('booking-confirmation');
+      const menScheduleBody = document.getElementById('men-schedule-body');
+      const womenScheduleBody = document.getElementById('women-schedule-body');
 
-      const setTheme = (theme) => {
-          document.documentElement.setAttribute('data-theme', theme);
-          localStorage.setItem('theme', theme);
-          if (theme === 'dark') {
-              darkIcons.forEach(i => i.classList.add('hidden'));
-              lightIcons.forEach(i => i.classList.remove('hidden'));
-              document.getElementById('testimonials').style.backgroundImage = `linear-gradient(rgba(26, 32, 44, 0.92), rgba(26, 32, 44, 0.92)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=2070')`;
-          } else {
-              darkIcons.forEach(i => i.classList.remove('hidden'));
-              lightIcons.forEach(i => i.classList.add('hidden'));
-              document.getElementById('testimonials').style.backgroundImage = `linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=2070')`;
+      // --- NOUVEAU : Sélecteurs du Pro Shop ---
+      const shopGrid = document.getElementById('shop-grid');
+      const shopFilters = document.getElementById('shop-filters');
+      const shopSearchInput = document.getElementById('shop-search-input');
+      const shopSortSelect = document.getElementById('shop-sort-select');
+      // Panier
+      const cartToggle = document.getElementById('cart-toggle');
+      const cartToggleMobile = document.getElementById('cart-toggle-mobile');
+      const cartBadge = document.getElementById('cart-badge');
+      const cartBadgeMobile = document.getElementById('cart-badge-mobile');
+      const cartModalOverlay = document.getElementById('cart-modal-overlay');
+      const cartModal = document.getElementById('cart-modal');
+      const cartModalClose = document.getElementById('cart-modal-close');
+      const cartItemsContainer = document.getElementById('cart-items-container');
+      const cartEmptyMessage = document.getElementById('cart-empty-message');
+      const cartSubtotal = document.getElementById('cart-subtotal');
+      const cartCheckoutBtn = document.getElementById('cart-checkout-btn');
+      const cartContentContainer = document.getElementById('cart-content-container');
+      const cartCheckoutForm = document.getElementById('cart-checkout-form');
+      const cartConfirmation = document.getElementById('cart-confirmation');
+      const checkoutTotal = document.getElementById('checkout-total');
+      const checkoutConfirmBtn = document.getElementById('checkout-confirm-btn');
+      const checkoutConfirmText = document.getElementById('checkout-confirm-text');
+      const checkoutForm = document.getElementById('checkout-form');
+      const cartSummaryFooter = document.getElementById('cart-summary-footer');
+      // Modal Produit
+      const productDetailModalOverlay = document.getElementById('product-detail-modal-overlay');
+      const productDetailModal = document.getElementById('product-detail-modal');
+      const productDetailModalClose = document.getElementById('product-detail-modal-close');
+      const productDetailContent = document.getElementById('product-detail-content');
+      const productModalImage = document.getElementById('product-modal-image');
+      const productModalTitle = document.getElementById('product-modal-title');
+      const productModalPrice = document.getElementById('product-modal-price');
+      const productModalDescription = document.getElementById('product-modal-description');
+      const productModalQuantityMinus = document.getElementById('product-modal-quantity-minus');
+      const productModalQuantityPlus = document.getElementById('product-modal-quantity-plus');
+      const productModalQuantityInput = document.getElementById('product-modal-quantity-input');
+      const productModalAddToCartBtn = document.getElementById('product-modal-add-to-cart-btn');
+
+      // --- NOUVEAU : État du Pro Shop ---
+      let cart = []; // Format: [{ id: 'prod1', quantity: 2 }, { id: 'prod2', quantity: 1 }]
+      let currentProductId = null; // Pour savoir quel produit est dans le modal
+      let searchDebounceTimer;
+
+      // --- NOUVEAU : Données du Pro Shop (MISES À JOUR) ---
+      const shopProducts = [
+          { id: 'prod1', nameKey: 'prod_tshirt_name', descriptionKey: 'prod_tshirt_desc', price: 3000, currency: 'DZD', image: 'https://i.imgur.com/ZJLyTAW.png', category: 'apparel', rating: 5, isNew: true },
+          { id: 'prod2', nameKey: 'prod_whey_name', descriptionKey: 'prod_whey_desc', price: 8500, currency: 'DZD', image: 'https://i.imgur.com/a7EIo4E.png', category: 'supplements', rating: 5, isNew: true },
+          { id: 'prod3', nameKey: 'prod_creatine_name', descriptionKey: 'prod_creatine_desc', price: 4500, currency: 'DZD', image: 'https://i.imgur.com/a7EIo4E.png', category: 'supplements', rating: 5, isNew: true }
+      ];
+
+
+      // --- Logique de la barre de progression de défilement ---
+      const updateScrollProgress = () => {
+          if (!scrollProgressBar) return;
+          const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+          const scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
+          scrollProgressBar.style.width = `${scrollPercent}%`;
+      };
+      window.addEventListener('scroll', updateScrollProgress);
+
+
+      // --- Animation de chargement échelonné (conservée) ---
+      const startPageLoadAnimation = () => {
+          const logo = document.querySelector('header .container > a');
+          const navItems = document.querySelectorAll('header nav ul li');
+          const heroItems = document.querySelectorAll('#home .hero-load');
+          let delay = 0;
+          const increment = 100; 
+
+          if (logo) {
+              logo.style.transitionDelay = `${delay}ms`;
+              logo.style.opacity = '1';
+              logo.style.transform = 'translateY(0)';
+              delay += increment;
+          }
+          navItems.forEach(item => {
+              item.style.transitionDelay = `${delay}ms`;
+              item.style.opacity = '1';
+              item.style.transform = 'translateY(0)';
+              delay += increment / 2;
+          });
+          delay = 300;
+          heroItems.forEach(item => {
+              item.style.transitionDelay = `${delay}ms`;
+              item.style.opacity = '1';
+              item.style.transform = 'translateY(0)';
+               delay += increment;
+          });
+      };
+
+      // --- Pré-chargeur (CORRIGÉ) ---
+      const hidePreloader = () => {
+          if (preloader && !preloader.classList.contains('loaded')) {
+              preloader.classList.add('loaded');
+              startPageLoadAnimation();
           }
       };
+      window.addEventListener('load', hidePreloader);
+      setTimeout(hidePreloader, 3000);
       
-      const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      setTheme(savedTheme);
 
-      themeToggleBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+      // --- Prise en charge multilingue (i18n) (contenu MIS À JOUR) ---
+      const translations = {
+        fr: {
+            nav_home: "Accueil", nav_schedule: "Horaires", nav_gallery: "Notre Salle", nav_shop: "Boutique", nav_pricing: "Tarifs", nav_testimonials: "Témoignages", nav_faq: "FAQ", nav_contact: "Contact",
+            hero_subtitle: "L'endroit où la force rencontre la détermination. Rejoignez la communauté.", 
+            status_loading: "Chargement...", status_open: "Ouvert Maintenant", status_closed: "Fermé Actuellement", hero_cta: "Voir les Tarifs",
+            offer_title: "Offre Spéciale du Mois !", offer_desc: "-10% sur votre premier mois d'abonnement illimité !", countdown_days: "Jours", countdown_hours: "Heures", countdown_minutes: "Minutes", countdown_seconds: "Secondes",
+            schedule_title: "NOS HORAIRES", schedule_subtitle: "Consultez nos plannings dédiés pour hommes et femmes.", schedule_book_now: "Réservez votre place pour les cours collectifs !", tab_men: "Hommes", tab_women: "Femmes", schedule_men_title: "Planning Hommes", schedule_women_title: "Planning Femmes", table_day: "Jour", table_activities: "Activités & Horaires",
+            day_samedi: "Samedi", day_dimanche: "Dimanche", day_lundi: "Lundi", day_mardi: "Mardi", day_mercredi: "Mercredi", day_jeudi: "Jeudi", day_vendredi: "Vendredi",
+            act_gym: "Gym", act_zumba: "Zumba", act_crossfit: "CrossFit", act_boxthai: "Box Thai", act_repos: "Repos", 
+            gallery_subtitle: "Découvrez notre espace moderne et équipé.",
+            // NOUVEAU : Boutique
+            shop_title: "NOTRE PRO SHOP", shop_subtitle: "Protéines, suppléments, et équipement. Tout ce dont vous avez besoin.",
+            filter_all: "Tout", filter_supplements: "Suppléments", filter_apparel: "Vêtements", filter_gear: "Équipement",
+            search_placeholder: "Rechercher un produit...",
+            sort_default: "Tri par défaut",
+            sort_price_asc: "Prix: Croissant",
+            sort_price_desc: "Prix: Décroissant",
+            badge_sale: "En Solde",
+            badge_new: "Nouveau",
+            view_details: "Voir Détails", add_to_cart: "Ajouter au Panier", quantity: "Quantité",
+            prod_tshirt_name: "T-Shirt 'Seven Gym' (Recto/Verso)", 
+            prod_tshirt_desc: "T-shirt d'entraînement officiel Seven Gym. Design unique avec logo avant et grand '7' au dos. Confortable et respirant.",
+            prod_whey_name: "Protéine Whey Gold Standard", 
+            prod_whey_desc: "Pot de protéine Whey Gold Standard. Idéal pour la construction musculaire et la récupération après l'entraînement.",
+            prod_creatine_name: "Créatine Monohydrate", 
+            prod_creatine_desc: "Pot de créatine monohydrate pure. Augmente la force, la puissance et la performance.",
+            // NOUVEAU : Panier & Paiement
+            cart_title: "Votre Panier", cart_empty: "Votre panier est vide.",
+            subtotal: "Sous-total", total: "Total", checkout: "Passer au Paiement", remove_item: "Retirer",
+            in_gym_pickup: "Toutes les commandes sont pour un retrait à la salle.",
+            confirm_purchase: "Confirmer l'Achat",
+            purchase_success_title: "Achat Confirmé !",
+            purchase_success_message: "Votre commande est en préparation. Vous pouvez la récupérer à l'accueil.",
+            // ...
+            motivation_title: "POURQUOI NOUS CHOISIR ?", 
+            motivation_subtitle: "Nous offrons plus qu'un simple abonnement. Nous offrons une expérience.",
+            pricing_title: "CHOISISSEZ VOTRE PLAN", 
+            pricing_subtitle: "Des abonnements flexibles conçus pour s'adapter à votre style de vie.",
+            freq_2: "Découverte (2/sem)", freq_3: "Actif (3/sem)", freq_4: "Performance (4/sem)", freq_unlimited: "Illimité", 
+            price_unit: "DZD/mois",
+            pricing_feature1: "Accès aux équipements", pricing_feature2: "Cours collectifs", pricing_feature3: "Suivi mensuel", pricing_feature4: "Suivi personnalisé",
+            pricing_cta: "Choisir ce Plan", pricing_popular: "Populaire", pricing_back_details: "Détails Inclus",
+            pricing_back_feature1: "Accès aux équipements", pricing_back_feature2: "Cours collectifs", pricing_back_feature3: "Suivi mensuel", pricing_back_feature4: "Suivi personnalisé",
+            testimonials_title: "CE QUE DISENT NOS MEMBRES", testimonials_subtitle: "Leurs succès sont notre meilleure motivation.", 
+            testimonial1_text: "\"Super salle, coachs au top et ambiance motivante ! J'ai vu des résultats rapidement.\"", 
+            testimonial2_text: "\"Les cours collectifs sont géniaux, surtout la Zumba ! L'espace femme est très bien équipé.\"", 
+            testimonial3_text: "\"Le matériel est neuf et varié. L'équipe est toujours disponible pour des conseils. Je recommande vivement Seven Gym.\"", 
+            faq1_q: "Quels sont les horaires d'ouverture ?", faq1_a: "Nos horaires varient pour hommes et femmes. Veuillez consulter la section \"Horaires\" ci-dessus pour les détails complets. Nous sommes ouverts tous les jours.", faq2_q: "Proposez-vous des coachs personnels ?", faq2_a: "Oui, nous avons des coachs certifiés disponibles pour des séances de suivi personnalisé. Contactez-nous pour plus d'informations sur les tarifs et la disponibilité.", faq3_q: "Y a-t-il une période d'essai ?", faq3_a: "Nous proposons parfois des offres découvertes. Le mieux est de passer nous voir à la salle ou de nous appeler pour connaître les promotions en cours.",
+            contact_title: "CONTACTEZ-NOUS", contact_subtitle: "Prêt à commencer ? Contactez-nous pour une visite ou plus d'informations.",
+            form_name: "Nom Complet", form_email: "Email", form_message: "Votre Message", form_message_placeholder: "J'aimerais m'inscrire...", form_send: "Envoyer", form_sending: "Envoi en cours...", form_sent: "Envoyé !", form_success: "Message envoyé ! Nous vous répondrons bientôt.",
+            contact_info_title: "Nos Coordonnées", address_label: "Adresse", address_value: "QX3C+5J, Chéraga, Alger", view_map: "Voir sur la carte", phone_label: "Téléphone",
+            ticker1: "🔥 Nouveau cours de CrossFit le Dimanche !", ticker2: "💪 Offre spéciale -10% ce mois-ci !", ticker3: "✨ Suivez-nous sur Instagram @sevengymdz", ticker4: "🎉 Zumba Party tous les Lundis !",
+            footer_rights: "© 2025 Seven Gym. Tous droits réservés.",
+            book_now: "Réserver",
+            book_modal_title: "Réserver votre place",
+            form_phone: "Numéro de Téléphone",
+            form_confirm_booking: "Confirmer la réservation",
+            booking_success_title: "Réservation Confirmée !",
+            booking_success_message: "Nous avons réservé votre place pour {activity} le {day} à {time}.",
+            modal_close_label: "Fermer"
+        },
+        ar: {
+            nav_home: "الرئيسية", nav_schedule: "التوقيت", nav_gallery: "قاعتنا", nav_shop: "المتجر", nav_pricing: "الأسعار", nav_testimonials: "الشهادات", nav_faq: "الأسئلة", nav_contact: "اتصل بنا",
+            hero_subtitle: "المكان الذي تلتقي فيه القوة بالعزيمة. انضم إلى مجتمعنا.", 
+            status_loading: "جار التحميل...", status_open: "مفتوح الآن", status_closed: "مغلق حاليا", hero_cta: "شاهد الأسعار",
+            offer_title: "عرض خاص هذا الشهر!", offer_desc: "-10% على اشتراك الشهر الأول غير المحدود!", countdown_days: "أيام", countdown_hours: "ساعات", countdown_minutes: "دقائق", countdown_seconds: "ثواني",
+            schedule_title: "توقيتنا", schedule_subtitle: "اطلع على جداولنا المخصصة للرجال والنساء.", schedule_book_now: "احجز مكانك في الحصص الجماعية!", tab_men: "رجال", tab_women: "نساء", schedule_men_title: "جدول الرجال", schedule_women_title: "جدول النساء", table_day: "اليوم", table_activities: "الأنشطة والتوقيت",
+            day_samedi: "السبت", day_dimanche: "الأحد", day_lundi: "الاثنين", day_mardi: "الثلاثاء", day_mercredi: "الأربعاء", day_jeudi: "الخميس", day_vendredi: "الجمعة",
+            act_gym: "رياضة", act_zumba: "زومبا", act_crossfit: "كروس فيت", act_boxthai: "ملاكمة تايلاندية", act_repos: "راحة", 
+            gallery_subtitle: "اكتشف مساحتنا الحديثة والمجهزة.",
+            // NOUVEAU : Boutique (Arabe)
+            shop_title: "متجرنا الاحترافي", shop_subtitle: "بروتينات، مكملات، ومعدات. كل ما تحتاجه.",
+            filter_all: "الكل", filter_supplements: "المكملات", filter_apparel: "الملابس", filter_gear: "المعدات",
+            search_placeholder: "ابحث عن منتج...",
+            sort_default: "الفرز الاftراضي",
+            sort_price_asc: "السعر: تصاعدي",
+            sort_price_desc: "السعر: تنازلي",
+            badge_sale: "تخفيض",
+            badge_new: "جديد",
+            view_details: "عرض التفاصيل", add_to_cart: "أضف إلى السلة", quantity: "الكمية",
+            prod_tshirt_name: "تي شيرت 'Seven Gym' (وجهان)", 
+            prod_tshirt_desc: "تي شيرت تمرين رسمي من Seven Gym. تصميم فريد بشعار أمامي ورقم '7' كبير على الظهر. مريح ويسمح بمرور الهواء.",
+            prod_whey_name: "بروتين واي جولد ستاندرد", 
+            prod_whey_desc: "علبة بروتين واي جولد ستاندرد. مثالية لبناء العضلات والاستشفاء بعد التمرين.",
+            prod_creatine_name: "كرياتين مونوهيدرات", 
+            prod_creatine_desc: "علبة كرياتين مونوهيدرات نقية. تزيد من القوة والقدرة والأداء.",
+            // NOUVEAU : Panier & Paiement (Arabe)
+            cart_title: "سلّتك", cart_empty: "سلّتك فارغة.",
+            subtotal: "المجموع الفرعي", total: "المجموع", checkout: "الانتقال للدفع", remove_item: "إزالة",
+            in_gym_pickup: "جميع الطلبات للاستلام من القاعة.",
+            confirm_purchase: "تأكيد الشراء",
+            purchase_success_title: "تم الشراء!",
+            purchase_success_message: "طلبك قيد التحضير. يمكنك استلامه من مكتب الاستقبال.",
+            // ...
+            motivation_title: "لماذا تختارنا؟", 
+            motivation_subtitle: "نحن نقدم أكثر من مجرد اشتراك. نحن نقدم تجربة.",
+            pricing_title: "اختر خطتك", 
+            pricing_subtitle: "اشتراكات مرنة مصممة لتناسب أسلوب حياتك.",
+            freq_2: "اكتشاف (2/أسبوع)", freq_3: "نشط (3/أسبوع)", freq_4: "أداء (4/أسبوع)", freq_unlimited: "غير محدود", 
+            price_unit: "دج/شهر",
+            pricing_feature1: "دخول للأجهزة", pricing_feature2: "حصص جماعية", pricing_feature3: "متابعة شهرية", pricing_feature4: "متابعة شخصية",
+            pricing_cta: "اختر الخطة", pricing_popular: "الأكثر شيوعًا", pricing_back_details: "التفاصيل متضمنة",
+            pricing_back_feature1: "دخول للأجهزة", pricing_back_feature2: "حصص جماعية", pricing_back_feature3: "متابعة شهرية", pricing_back_feature4: "متابعة شخصية",
+            testimonials_title: "ماذا يقول أعضاؤنا", testimonials_subtitle: "نجاحهم هو أفضل حافز لنا.", 
+            testimonial1_text: "\"قاعة رائعة، مدربون ممتازون وجو محفز! رأيت النتائج بسرعة.\"", 
+            testimonial2_text: "\"الحصص الجماعية رائعة، خاصة الزومبا! قسم النساء مجهز جيدًا.\"", 
+            testimonial3_text: "\"المعدات جديدة ومتنوعة. الفريق متاح دائمًا لتقديم المشورة. أوصي بشدة بسفن جيم.\"", 
+            faq1_q: "ما هي أوقات العمل؟", faq1_a: "تختلف أوقاتنا للرجال والنساء. يرجى مراجعة قسم \"التوقيت\" أعلاه للحصول على التفاصيل الكاملة. نحن نفتح كل يوم.", faq2_q: "هل تقدمون مدربين شخصيين؟", faq2_a: "نعم، لدينا مدربون معتمدون متاحون لجلسات المتابعة الشخصية. اتصل بنا للحصول على مزيد من المعلومات حول الأسعار والتوافر.", faq3_q: "هل هناك فترة تجريبية؟", faq3_a: "نقدم أحيانًا عروضًا تجريبية. من الأفضل زيارتنا في القاعة أو الاتصال بنا لمعرفة العروض الترويجية الحالية.",
+            contact_title: "اتصل بنا", contact_subtitle: "جاهز للبدء؟ اتصل بنا للزيارة أو لمزيد من المعلومات.",
+            form_name: "الاسم الكامل", form_email: "البريد الإلكتروني", form_message: "رسالتك", form_message_placeholder: "أود التسجيل...", form_send: "إرسال", form_sending: "جار الارسال...", form_sent: "تم الارسال!", form_success: "تم إرسال الرسالة! سوف نرد عليك قريبا.",
+            contact_info_title: "معلومات الاتصال", address_label: "العنوان", address_value: "QX3C+5J، شراقة، الجزائر", view_map: "شاهد على الخريطة", phone_label: "الهاتف",
+            ticker1: "🔥 حصة كروس فيت جديدة يوم الأحد!", ticker2: "💪 عرض خاص -10% هذا الشهر!", ticker3: "✨ تابعنا على انستغرام @sevengymdz", ticker4: "🎉 حفلة زومBA كل يوم اثنين!",
+            footer_rights: "© 2025 سفن جيم. جميع الحقوق محفوظة.",
+            book_now: "احجز الآن",
+            book_modal_title: "احجز مكانك",
+            form_phone: "رقم الهاتف",
+            form_confirm_booking: "تأكيد الحجز",
+            booking_success_title: "تم تأكيد الحجز!",
+            booking_success_message: "لقد حجزنا مكانك لـ {activity} يوم {day} الساعة {time}.",
+            modal_close_label: "إغلاق"
+        }
+      };
+
+      const setLanguage = (lang) => {
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        
+        document.querySelectorAll('[data-translate-key]').forEach(el => {
+            const key = el.getAttribute('data-translate-key');
+            if (el.id === 'submit-button-text' && !el.dataset.originalText) {
+                el.dataset.originalText = translations['fr'][key];
+                el.dataset.originalKey = key;
+            }
+            if(translations[lang][key]) el.textContent = translations[lang][key];
+        });
+         document.querySelectorAll('[data-translate-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-translate-placeholder');
+             if(translations[lang][key]) el.placeholder = translations[lang][key];
+        });
+        document.querySelectorAll('[data-translate-aria-label]').forEach(el => {
+            const key = el.getAttribute('data-translate-aria-label');
+             if(translations[lang][key]) el.setAttribute('aria-label', translations[lang][key]);
+        });
+
+        // Mise à jour des éléments dynamiques
+        updateGymStatus(lang); 
+        renderSchedule('men', lang);
+        renderSchedule('women', lang);
+        renderPricingCards(lang);
+        updateShopRender(); // NOUVEAU : Utilise la nouvelle fonction
+        updateCart(lang); 
+        updateTestimonialText(currentTestimonialSlide, lang); 
+
+        document.getElementById('current-lang').textContent = lang.toUpperCase();
+        document.getElementById('current-lang-mobile').textContent = lang.toUpperCase();
+        localStorage.setItem('language', lang);
+      };
+
+      // Logique du sélecteur de langue (conservée)
+      const langToggle = document.getElementById('lang-toggle');
+      const langMenu = document.getElementById('lang-menu');
+      if (langToggle && langMenu) {
+         langToggle.addEventListener('click', () => {
+             const isHidden = langMenu.classList.contains('hidden');
+             if (isHidden) {
+                 langMenu.classList.remove('hidden');
+                 requestAnimationFrame(() => { langMenu.classList.remove('opacity-0', 'scale-95'); });
+             } else {
+                  langMenu.classList.add('opacity-0', 'scale-95');
+                  langMenu.addEventListener('transitionend', () => { langMenu.classList.add('hidden'); }, { once: true });
+             }
+         });
+         document.addEventListener('click', (e) => {
+            if (!langToggle.contains(e.target) && !langMenu.contains(e.target) && !langMenu.classList.contains('hidden')) {
+                 langMenu.classList.add('opacity-0', 'scale-95');
+                 langMenu.addEventListener('transitionend', () => { langMenu.classList.add('hidden'); }, { once: true });
+            }
+         });
+      }
+      const langToggleMobile = document.getElementById('lang-toggle-mobile');
+      const langMenuMobile = document.getElementById('lang-menu-mobile');
+       if (langToggleMobile && langMenuMobile) {
+         langToggleMobile.addEventListener('click', () => {
+             const isHidden = langMenuMobile.classList.contains('hidden');
+             if (isHidden) {
+                 langMenuMobile.classList.remove('hidden');
+                 requestAnimationFrame(() => { langMenuMobile.classList.remove('opacity-0', 'scale-95'); });
+             } else {
+                  langMenuMobile.classList.add('opacity-0', 'scale-95');
+                  langMenuMobile.addEventListener('transitionend', () => { langMenuMobile.classList.add('hidden'); }, { once: true });
+             }
+         });
+          document.addEventListener('click', (e) => {
+             if (!langToggleMobile.contains(e.target) && !langMenuMobile.contains(e.target) && !langMenuMobile.classList.contains('hidden')) {
+                  langMenuMobile.classList.add('opacity-0', 'scale-95');
+                  langMenuMobile.addEventListener('transitionend', () => { langMenuMobile.classList.add('hidden'); }, { once: true });
+             }
+          });
+      }
+      document.querySelectorAll('#lang-menu a, #lang-menu-mobile a').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const lang = e.target.getAttribute('data-lang');
+            setLanguage(lang);
+            [langMenu, langMenuMobile].forEach(menu => {
+                if(menu && !menu.classList.contains('hidden')) {
+                     menu.classList.add('opacity-0', 'scale-95');
+                     menu.addEventListener('transitionend', () => { menu.classList.add('hidden'); }, { once: true });
+                }
+            });
         });
       });
+      const savedLang = localStorage.getItem('language') || 'fr';
+     
+      // --- Sélecteur de Thème (conservé) ---
+      const themeToggleBtns = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
+      const moonIcons = document.querySelectorAll('.fa-moon');
+      const sunIcons = document.querySelectorAll('.fa-sun');
+      const faviconLight = "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏋️</text></svg>";
+      const faviconDark = "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌙</text></svg>";
 
+      const setTheme = (theme, animate = false) => {
+          const isDark = theme === 'dark';
+          document.documentElement.setAttribute('data-theme', theme);
+          localStorage.setItem('theme', theme);
+          favicon.href = isDark ? faviconDark : faviconLight;
 
-      // --- Header scroll & Back to Top Button ---
-      window.addEventListener("scroll", () => {
-        header.classList.toggle("scrolled", window.scrollY > 50);
-        
-        if (window.scrollY > 300) {
-            backToTopBtn.classList.remove('hidden');
-        } else {
-            backToTopBtn.classList.add('hidden');
-        }
-      });
-      
-      backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-
-
-      // --- Mobile menu toggle ---
-      mobileMenuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-
-      // --- Smooth scroll & Active Nav Link on Scroll ---
-      const sections = document.querySelectorAll('main section[id]');
-      const navLinks = document.querySelectorAll('.nav-link');
-
-      const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                  navLinks.forEach(link => {
-                      link.classList.remove('active');
-                      if (link.getAttribute('href').substring(1) === entry.target.id) {
-                          link.classList.add('active');
-                      }
-                  });
+          moonIcons.forEach(icon => {
+              if (animate) {
+                  icon.classList.toggle('hiding', isDark);
+                  icon.addEventListener('transitionend', () => icon.classList.toggle('hidden', isDark), { once: true });
+              } else {
+                 icon.classList.toggle('hidden', isDark);
+                 icon.classList.remove('hiding'); 
               }
           });
-      }, { rootMargin: '-50% 0px -50% 0px' });
+          sunIcons.forEach(icon => {
+               if (animate) {
+                  icon.classList.toggle('hiding', !isDark);
+                  icon.addEventListener('transitionend', () => icon.classList.toggle('hidden', !isDark), { once: true });
+               } else {
+                 icon.classList.toggle('hidden', !isDark);
+                  icon.classList.remove('hiding'); 
+              }
+          });
+      };
+      const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      setTheme(savedTheme, false);
+      themeToggleBtns.forEach(btn => btn.addEventListener('click', () => {
+          const currentTheme = document.documentElement.getAttribute('data-theme');
+          setTheme(currentTheme === 'dark' ? 'light' : 'dark', true);
+      }));
 
+
+      // --- Défilement de l'En-tête & Bouton "Retour en Haut" (conservés) ---
+      window.addEventListener("scroll", () => {
+        if(header) header.classList.toggle("scrolled", window.scrollY > 50);
+        if(backToTopBtn) backToTopBtn.classList.toggle('hidden', window.scrollY <= 300);
+        handleStickyScheduleHeader();
+      });
+      if(backToTopBtn) backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      // --- Glissement du Menu Mobile (conservé) ---
+      if (mobileMenuBtn && mobileMenu && mobileMenuOverlay) {
+          mobileMenuBtn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              mobileMenu.classList.toggle("open");
+              mobileMenuOverlay.classList.toggle("open");
+          });
+          mobileMenuOverlay.addEventListener("click", () => {
+              mobileMenu.classList.remove("open");
+              mobileMenuOverlay.classList.remove("open");
+          });
+          mobileMenu.querySelectorAll('a[href^="#"]').forEach(link => {
+              link.addEventListener('click', () => {
+                   mobileMenu.classList.remove("open");
+                   mobileMenuOverlay.classList.remove("open");
+              });
+          });
+      }
+
+
+      // --- Défilement fluide & Lien de navigation actif (conservés) ---
+      const sections = document.querySelectorAll('main section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  navLinks.forEach(link => link.classList.remove('active'));
+                  const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+                  if (activeLink) {
+                      activeLink.classList.add('active');
+                  }
+              }
+          });
+      }, { rootMargin: '-40% 0px -60% 0px' }); 
       sections.forEach(section => observer.observe(section));
       
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
-          const targetElement = document.querySelector(this.getAttribute('href'));
-          if (targetElement) {
-              targetElement.scrollIntoView({ behavior: 'smooth' });
-              if (!mobileMenu.classList.contains('hidden')) {
-                  mobileMenu.classList.add('hidden');
-              }
-          }
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+                if (mobileMenu && mobileMenu.classList.contains('open')) {
+                     mobileMenu.classList.remove("open");
+                     mobileMenuOverlay.classList.remove("open");
+                }
+            }
         });
       });
       
-      // --- Contact Form Submission ---
-      if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          formStatus.textContent = 'Message envoyé avec succès !';
-          formStatus.style.color = 'green';
-          contactForm.reset();
-          setTimeout(() => { formStatus.textContent = ''; }, 5000);
-        });
-      }
-
-      // --- Scroll-triggered fade-in animation ---
-      const animationObserver = new IntersectionObserver((entries) => {
+      // --- Animation de fondu entrant & Animation de lettres (conservées) ---
+      const animationObserver = new IntersectionObserver(entries => {
           entries.forEach(entry => {
               if (entry.isIntersecting) {
                   entry.target.classList.add('visible');
+                   if (entry.target.classList.contains('animate-letters')) {
+                       animateLetters(entry.target);
+                   }
+                  // Échelonnement pour les enfants (cartes de tarification, produits)
+                  if (entry.target.id === 'pricing-grid') {
+                      entry.target.querySelectorAll('.pricing-card').forEach((card, index) => {
+                          card.style.transitionDelay = `${index * 100}ms`;
+                          card.classList.add('visible');
+                      });
+                  }
+                  if (entry.target.id === 'shop-grid') { // NOUVEAU : Échelonnement pour la boutique
+                      entry.target.querySelectorAll('.product-card').forEach((card, index) => {
+                          card.style.transitionDelay = `${index * 100}ms`;
+                          card.classList.add('visible');
+                      });
+                  }
               }
           });
-      }, { threshold: 0.1 });
+      }, { threshold: 0.1 }); 
+      
+      document.querySelectorAll('.fade-in-up').forEach(el => animationObserver.observe(el));
+       document.querySelectorAll('.animate-letters').forEach(el => animationObserver.observe(el));
 
-      document.querySelectorAll('.fade-in-up').forEach(el => {
-          animationObserver.observe(el);
+      const wrapLetters = (element) => {
+          if (!element || element.dataset.lettersWrapped) return;
+          element.dataset.lettersWrapped = 'true';
+          const text = element.textContent.trim();
+          element.innerHTML = text.split('').map(letter => `<span>${letter === ' ' ? '&nbsp;' : letter}</span>`).join('');
+      };
+      const animateLetters = (element) => {
+          wrapLetters(element);
+          element.querySelectorAll('span').forEach((span, index) => {
+              span.style.transitionDelay = `${index * 50}ms`;
+              requestAnimationFrame(() => {
+                span.style.opacity = '1';
+                span.style.transform = 'translateY(0)';
+              });
+          });
+      };
+
+      // --- Statut Ouvert/Fermé (conservé) ---
+      const gymStatusBadge = document.querySelector('#gym-status .status-badge');
+       const openingHours = { 
+           0: [{ open: 8, close: 12 }, { open: 17, close: 23 }],  // Dimanche
+           1: [{ open: 8, close: 15 }, { open: 19.25, close: 23 }], // Lundi 
+           2: [{ open: 8, close: 12 }, { open: 17, close: 23 }],  // Mardi
+           3: [{ open: 8, close: 15 }, { open: 19.25, close: 23 }], // Mercredi 
+           4: [{ open: 8, close: 22 }],                          // Jeudi
+           5: [{ open: 18.25, close: 21 }],                      // Vendredi
+           6: [{ open: 8, close: 15 }, { open: 19.25, close: 23 }]   // Samedi 
+       };
+      function updateGymStatus(lang = 'fr') {
+          const now = new Date();
+          const nowAlger = new Date(now.toLocaleString("en-US", {timeZone: "Africa/Algiers"}));
+          const currentDay = nowAlger.getDay(); 
+          const currentHour = nowAlger.getHours();
+          const currentMinute = nowAlger.getMinutes();
+          const currentTime = currentHour + currentMinute / 60;
+          const hoursTodayRanges = openingHours[currentDay] || [];
+          let isOpen = false;
+          for (const range of hoursTodayRanges) {
+              if (currentTime >= range.open && currentTime < range.close) {
+                  isOpen = true;
+                  break; 
+              }
+          }
+          if (gymStatusBadge) {
+              const statusKey = isOpen ? 'status_open' : 'status_closed';
+              gymStatusBadge.textContent = translations[lang][statusKey] || (isOpen ? 'Ouvert' : 'Fermé');
+              gymStatusBadge.classList.toggle('open', isOpen);
+              gymStatusBadge.classList.toggle('closed', !isOpen);
+               gymStatusBadge.setAttribute('data-translate-key', statusKey); 
+          }
+      }
+      setInterval(() => {
+          updateGymStatus(localStorage.getItem('language') || 'fr');
+          updateLiveHighlight(localStorage.getItem('language') || 'fr');
+      }, 60000);
+
+      // --- Données d'horaires (SOURCE DE VÉRITÉ - conservées) ---
+        const scheduleData = { 
+           men: {
+               samedi: [ { activity: 'Gym', start: 8, end: 15 }, { activity: 'Gym', start: 19.25, end: 23 }, { activity: 'Box Thai', start: 20, end: 21.5, icon: 'fa-solid fa-person-running', bookable: true } ],
+               dimanche: [ { activity: 'Gym', start: 8, end: 12 }, { activity: 'Gym', start: 17, end: 23 }, { activity: 'CrossFit', start: 19, end: 20, icon: 'fa-solid fa-dumbbell', bookable: true } ],
+               lundi: [ { activity: 'Gym', start: 8, end: 15 }, { activity: 'Gym', start: 19.25, end: 23 }, { activity: 'Box Thai', start: 20, end: 21.5, icon: 'fa-solid fa-person-running', bookable: true } ],
+               mardi: [ { activity: 'Gym', start: 8, end: 12 }, { activity: 'Gym', start: 17, end: 23 } ],
+               mercredi: [ { activity: 'Gym', start: 8, end: 15 }, { activity: 'Gym', start: 19.25, end: 23 }, { activity: 'CrossFit', start: 19, end: 20, icon: 'fa-solid fa-dumbbell', bookable: true }, { activity: 'Box Thai', start: 20, end: 21.5, icon: 'fa-solid fa-person-running', bookable: true } ],
+               jeudi: [ { activity: 'Gym', start: 8, end: 22 } ], 
+               vendredi: [ { activity: 'Gym', start: 18.25, end: 21 } ]
+           },
+           women: {
+               samedi: [ { activity: 'Gym', start: 15.5, end: 19 } ],
+               dimanche: [ { activity: 'Gym', start: 12.5, end: 16 } ],
+               lundi: [ { activity: 'Gym', start: 15.5, end: 19 }, { activity: 'Zumba', start: 17, end: 18, icon: 'fa-solid fa-music', bookable: true } ],
+               mardi: [ { activity: 'Gym', start: 12.5, end: 16 } ],
+               mercredi: [ { activity: 'Gym', start: 15.5, end: 19 } ],
+               jeudi: [ { activity: 'Gym', start: 10, end: 15 } ],
+               vendredi: [ { activity: 'Gym', start: 15, end: 18 } ]
+           }
+       };
+
+      // --- Rendu des horaires & Surlignage En Direct (MODIFIÉ pour la réservation) ---
+      function formatTime(timeDecimal) {
+          const hours = Math.floor(timeDecimal);
+          const minutes = Math.round((timeDecimal - hours) * 60);
+          return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+      }
+      function updateLiveHighlight(lang = 'fr') {
+         document.querySelectorAll('.highlight-now').forEach(el => el.classList.remove('highlight-now'));
+         const now = new Date();
+         const nowAlger = new Date(now.toLocaleString("en-US", {timeZone: "Africa/Algiers"}));
+         const currentDayIndex = nowAlger.getDay();
+         const daysOrder = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+         const currentDayKey = daysOrder[currentDayIndex];
+         const currentHour = nowAlger.getHours();
+         const currentMinute = nowAlger.getMinutes();
+         const currentTime = currentHour + currentMinute / 60;
+         ['men', 'women'].forEach(gender => {
+             const activitiesToday = scheduleData[gender][currentDayKey] || [];
+             activitiesToday.forEach((act, index) => {
+                 if (currentTime >= act.start && currentTime < act.end) {
+                     const scheduleBody = document.getElementById(`${gender}-schedule-body`);
+                     if (scheduleBody) {
+                         const rows = scheduleBody.querySelectorAll('tr');
+                         const dayRowIndex = daysOrder.indexOf(currentDayKey);
+                         if (dayRowIndex !== -1 && rows[dayRowIndex]) {
+                              const activityElements = rows[dayRowIndex].querySelectorAll('.activity-item');
+                              if (activityElements[index]) { 
+                                  activityElements[index].classList.add('highlight-now');
+                              }
+                         }
+                     }
+                 }
+             });
+         });
+      }
+      function renderSchedule(gender, lang = 'fr') {
+          const scheduleBody = document.getElementById(`${gender}-schedule-body`);
+          if (!scheduleBody) return; 
+          const daysOrder = ['samedi', 'dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi'];
+          let tableHTML = '';
+          daysOrder.forEach(dayKey => {
+              const activities = scheduleData[gender][dayKey] || [{ activity: 'Repos', start: 0, end: 0 }]; 
+              let activitiesHTML = '<div>'; 
+              const dayNameKey = `day_${dayKey}`;
+              const dayName = translations[lang][dayNameKey] || dayKey.charAt(0).toUpperCase() + dayKey.slice(1); 
+
+              activities.forEach(act => {
+                   const activityKey = `act_${act.activity.toLowerCase().replace(/[\s-]+/g, '')}`; 
+                   const activityName = translations[lang][activityKey] || act.activity; 
+                   const activityClass = act.activity.toLowerCase().replace(/[\s-]+/g, ''); 
+                   const timeString = act.activity !== 'Repos' ? `${formatTime(act.start)} - ${formatTime(act.end)}` : '';
+                   let iconHTML = '';
+                   if (act.icon) { iconHTML = `<i class="${act.icon}"></i>`; } 
+                   else if (act.activity === 'Gym') { iconHTML = '<i class="fa-solid fa-weight-hanging"></i>'; } 
+                   else if (act.activity === 'Repos') { iconHTML = '<i class="fa-solid fa-bed"></i>'; }
+                   
+                   let bookButtonHTML = '';
+                   if (act.bookable) {
+                       const bookNowText = translations[lang]['book_now'] || 'Réserver';
+                       bookButtonHTML = `
+                         <button class="book-now-btn" 
+                                 data-activity-name="${activityName}" 
+                                 data-day="${dayName}" 
+                                 data-time="${timeString}">
+                           ${bookNowText} <i class="fas fa-calendar-check"></i>
+                         </button>`;
+                   }
+
+                   if (act.activity === 'Repos') {
+                      activitiesHTML += `<div class="activity-item activity-repos italic text-secondary"><div class="activity-details"><i class="fa-solid fa-bed mr-2"></i>${activityName}</div></div>`;
+                   } else { 
+                       activitiesHTML += `
+                         <div class="activity-item activity-${activityClass}">
+                           <div class="activity-details">
+                             ${iconHTML}
+                             <span class="font-medium">${activityName}:</span>&nbsp;${timeString}
+                           </div>
+                           ${bookButtonHTML}
+                         </div>`;
+                   }
+              });
+              activitiesHTML += '</div>';
+              tableHTML += `
+                  <tr>
+                      <td>${dayName}</td>
+                      <td>${activitiesHTML}</td> 
+                  </tr>
+              `;
+          });
+          scheduleBody.innerHTML = tableHTML;
+      }
+
+      // --- En-tête d'horaires collant (conservé) ---
+      const scheduleHeaders = document.querySelectorAll('.schedule-sticky-header');
+      let headerHeight = 68;
+      function handleStickyScheduleHeader() {
+          const headerEl = document.getElementById('header');
+          if (headerEl) headerHeight = headerEl.offsetHeight;
+          scheduleHeaders.forEach(header => {
+              const table = header.closest('table');
+              if (!table) return;
+              const rect = table.getBoundingClientRect();
+              const isSticky = rect.top <= headerHeight && rect.bottom >= headerHeight + header.offsetHeight;
+              header.classList.toggle('sticky-header', isSticky);
+              header.querySelectorAll('th').forEach(th => th.style.top = `${headerHeight}px`);
+          });
+      }
+
+      // --- Changement d'onglet d'horaires (conservé) ---
+      const scheduleTabs = document.querySelectorAll('.schedule-tab');
+      const scheduleContents = document.querySelectorAll('.schedule-content');
+      scheduleTabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+              if (tab.classList.contains('active')) return;
+              scheduleTabs.forEach(t => t.classList.remove('active'));
+              tab.classList.add('active');
+              const targetId = tab.dataset.target;
+              scheduleContents.forEach(content => { content.style.display = 'block'; requestAnimationFrame(() => { content.classList.remove('active'); }); });
+              setTimeout(() => {
+                  scheduleContents.forEach(content => {
+                     if (content.id !== targetId) { content.style.display = 'none'; } 
+                     else { requestAnimationFrame(() => { content.classList.add('active'); }); }
+                  });
+                   handleStickyScheduleHeader();
+              }, 400); 
+          });
       });
 
-      // --- Testimonial Slider ---
-      const slides = document.querySelectorAll('.testimonial-slide');
-      const prevBtn = document.querySelector('.testimonial-prev');
-      const nextBtn = document.querySelector('.testimonial-next');
-      let currentSlide = 0;
 
-      function showSlide(n) {
-          slides.forEach((slide, i) => {
-              slide.classList.toggle('active', i === n);
+      // --- MIS À JOUR : Données de Tarification (de gym.html) ---
+      const pricingData = [
+        { key: 'freq_2', price: 3000, highlight: false, back_details: ["pricing_feature1", "pricing_feature2"] },
+        { key: 'freq_3', price: 4000, highlight: false, back_details: ["pricing_feature1", "pricing_feature2"] },
+        { key: 'freq_4', price: 5000, highlight: true, back_details: ["pricing_feature1", "pricing_feature2", "pricing_feature3"] },
+        { key: 'freq_unlimited', price: 7000, highlight: false, back_details: ["pricing_feature1", "pricing_feature2", "pricing_feature4"] }
+      ];
+
+       // --- Animation de Compteur (conservée) ---
+       const animateCountUp = (el) => {
+           const target = parseInt(el.getAttribute('data-target-price'), 10);
+           if (isNaN(target) || el.dataset.animated === 'true') return; 
+           el.dataset.animated = 'true'; 
+           let current = 0;
+           const increment = Math.ceil(target / 50); 
+           const duration = 1000; 
+           const stepTime = Math.max(10, duration / (target / increment)); 
+           const timer = setInterval(() => {
+               current += increment;
+               if (current >= target) { current = target; clearInterval(timer); }
+               el.firstChild.textContent = current.toLocaleString('fr-FR'); 
+           }, stepTime);
+       };
+
+      // --- Rendu des Cartes de Tarification (Structure Flip-Card de sevengym.html, contenu MIS À JOUR) ---
+      const pricingGrid = document.getElementById('pricing-grid');
+      function renderPricingCards(lang = 'fr') {
+          if (!pricingGrid) return;
+          let pricingHTML = '';
+          pricingData.forEach((plan, index) => { 
+              const frequencyText = translations[lang][plan.key] || plan.key.replace('freq_', '');
+              const popularText = translations[lang]['pricing_popular'] || 'Populaire';
+              const priceUnitText = translations[lang]['price_unit'] || 'DZD/mois';
+              const ctaText = translations[lang]['pricing_cta'] || "S'inscrire";
+              const backDetailsTitle = translations[lang]['pricing_back_details'] || 'Détails';
+
+              const featuresHTML = plan.back_details.map((detailKey) => {
+                  const detailText = translations[lang][detailKey] || detailKey;
+                  return `<li><i class="fas fa-check text-green-500 mr-2"></i>${detailText}</li>`;
+              }).join('');
+              
+              const backFeaturesHTML = plan.back_details.map((detailKey) => {
+                  const detailText = translations[lang][detailKey] || detailKey;
+                  return `<li><i class="fas fa-star text-xs mr-2"></i>${detailText}</li>`;
+              }).join('');
+
+              const delay = index * 100;
+              const highlightClasses = plan.highlight ? 'border-2 border-yellow-500 relative pricing-card-popular' : '';
+              const btnStyle = plan.highlight ? `background-color: var(--accent-color); color: var(--text-primary);` : `background-color: var(--text-secondary); color: white;`;
+              const btnHover = plan.highlight ? `hover:opacity-80` : `hover:opacity-80`;
+
+              pricingHTML += `
+                  <div class="pricing-card bg-primary rounded-lg shadow-custom flex flex-col items-center text-center ${highlightClasses}" style="transition-delay: ${delay}ms;" tabindex="0"> 
+                     <div class="pricing-card-inner">
+                        <div class="pricing-card-front">
+                              ${plan.highlight ? `<span class="pricing-card-popular-badge absolute top-0 -translate-y-1/2 text-xs font-bold uppercase tracking-wider text-primary px-3 py-1 rounded-full mb-4" style="background-color: var(--accent-color);">${popularText}</span>` : ''}
+                              <h3 class="text-xl font-bold font-heading mb-2 text-primary mt-4">${frequencyText}</h3>
+                              <p class="text-4xl font-bold mb-4 price-number" style="color: ${plan.highlight ? 'var(--accent-color)' : 'var(--text-primary)'};" data-target-price="${plan.price}"><span>0</span><span class="text-lg font-normal text-secondary"> ${priceUnitText}</span></p>
+                              <ul class="text-secondary space-y-2 mb-6 text-sm flex-grow">
+                                  ${featuresHTML}
+                              </ul>
+                              <a href="#contact" class="magnetic-button mt-auto w-full p-3 rounded-full font-bold transition ${btnHover}" style="${btnStyle}">
+                                  ${ctaText}
+                              </a>
+                        </div>
+                        <div class="pricing-card-back">
+                             <h4 class="text-xl font-heading">${backDetailsTitle}</h4>
+                             <ul class="text-sm">${backFeaturesHTML}</ul>
+                             <p class="mt-auto text-xs italic opacity-80">Appuyez sur Échap ou quittez le focus pour retourner</p>
+                        </div>
+                     </div>
+                  </div>
+              `;
           });
-          currentSlide = n;
+          pricingGrid.innerHTML = pricingHTML;
+
+          document.querySelectorAll('#pricing-grid .pricing-card').forEach(card => {
+              card.classList.remove('visible');
+              card.dataset.animated = 'false';
+              animationObserver.observe(card);
+              
+              card.addEventListener('keydown', (e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      card.classList.toggle('is-flipped');
+                  }
+                  if (e.key === 'Escape') {
+                       card.classList.remove('is-flipped');
+                  }
+              });
+              card.addEventListener('focusout', () => {
+                   card.classList.remove('is-flipped');
+              });
+
+              if (typeof initMagneticButton === 'function') {
+                  const btn = card.querySelector('.magnetic-button');
+                  if(btn) initMagneticButton(btn);
+              }
+          });
+
+          const pricingObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.querySelectorAll('.price-number').forEach(el => animateCountUp(el)); observer.unobserve(entry.target); } }); }, { threshold: 0.5 }); 
+          if(pricingGrid) pricingObserver.observe(pricingGrid);
       }
 
-      if (slides.length > 0) {
-        nextBtn.addEventListener('click', () => {
-            showSlide((currentSlide + 1) % slides.length);
-        });
-
-        prevBtn.addEventListener('click', () => {
-            showSlide((currentSlide - 1 + slides.length) % slides.length);
-        });
+       // --- Slider de Témoignages (conservé) ---
+      const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+      const testimonialPrevBtn = document.querySelector('.testimonial-prev');
+      const testimonialNextBtn = document.querySelector('.testimonial-next');
+      let currentTestimonialSlide = 0;
+      function showTestimonialSlide(n) {
+          testimonialSlides.forEach((slide, i) => { slide.classList.toggle('active', i === n); });
+          currentTestimonialSlide = n;
+          updateTestimonialText(n, localStorage.getItem('language') || 'fr'); 
+      }
+      function updateTestimonialText(index, lang) { 
+        const slide = testimonialSlides[index];
+        if (!slide) return;
+        const textElement = slide.querySelector('p[data-translate-key]');
+        const key = textElement?.getAttribute('data-translate-key');
+        if (key && translations[lang] && translations[lang][key]) {
+            textElement.textContent = translations[lang][key];
+        }
+       }
+      if(testimonialSlides.length > 0) {
+        testimonialNextBtn.addEventListener('click', () => { showTestimonialSlide((currentTestimonialSlide + 1) % testimonialSlides.length); });
+        testimonialPrevBtn.addEventListener('click', () => { showTestimonialSlide((currentTestimonialSlide - 1 + testimonialSlides.length) % testimonialSlides.length); });
+      }
+      
+      // --- Formulaire de Contact (conservé) ---
+      const contactForm = document.getElementById('contact-form');
+      const submitButton = document.getElementById('submit-button');
+      const submitButtonText = document.getElementById('submit-button-text');
+      const formStatus = document.getElementById('form-status');
+      const emailInput = document.getElementById('email');
+      if (emailInput) {
+          emailInput.addEventListener('input', () => {
+              const emailValue = emailInput.value;
+              const container = emailInput.parentElement;
+              const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
+              if (emailValue === '') { container.classList.remove('valid', 'invalid'); } 
+              else if (isValid) { container.classList.add('valid'); container.classList.remove('invalid'); } 
+              else { container.classList.add('invalid'); container.classList.remove('valid'); }
+          });
+      }
+      if (contactForm && submitButton && submitButtonText && formStatus) {
+          const initialLang = localStorage.getItem('language') || 'fr';
+          const originalTextKey = 'form_send';
+          submitButtonText.dataset.originalText = translations[initialLang][originalTextKey];
+          submitButtonText.dataset.originalKey = originalTextKey;
+          contactForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const currentLang = localStorage.getItem('language') || 'fr';
+            submitButton.disabled = true;
+            submitButtonText.innerHTML = `<span class="spinner"></span> ${translations[currentLang]['form_sending'] || 'Envoi en cours...'}`;
+            setTimeout(() => {
+                formStatus.textContent = translations[currentLang]['form_success'] || 'Message envoyé !';
+                formStatus.style.color = 'green';
+                submitButtonText.innerHTML = `<i class="fas fa-check mr-2"></i> ${translations[currentLang]['form_sent'] || 'Envoyé !'}`;
+                submitButton.style.backgroundColor = '#10b981'; 
+                contactForm.reset();
+                contactForm.querySelectorAll('.form-input-container').forEach(cont => cont.classList.remove('valid', 'invalid'));
+                setTimeout(() => { 
+                    formStatus.textContent = ''; 
+                    submitButton.disabled = false;
+                    const originalKey = submitButtonText.dataset.originalKey;
+                    submitButtonText.innerHTML = translations[currentLang][originalKey] || submitButtonText.dataset.originalText; 
+                    submitButton.style.backgroundColor = ''; 
+                }, 3000); 
+            }, 1500); 
+          });
       }
 
-      // --- Schedule Filter ---
-        const filterBtns = document.querySelectorAll('.schedule-filter-btn');
-        const scheduleItems = document.querySelectorAll('.schedule-item');
+       // --- Wiggle du bouton WhatsApp (conservé) ---
+      const whatsappButton = document.getElementById('whatsapp-button');
+      if (whatsappButton) {
+          setTimeout(() => {
+              whatsappButton.classList.add('wiggle');
+              whatsappButton.addEventListener('animationend', () => { whatsappButton.classList.remove('wiggle'); }, { once: true });
+          }, 8000); 
+      }
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.dataset.filter;
-
-                scheduleItems.forEach(item => {
-                    if (filter === 'all' || item.dataset.category === filter) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
+       // --- Boutons Magnétiques (conservés) ---
+       const initMagneticButton = (button) => {
+            if (!button) return;
+            button.addEventListener('mousemove', (e) => {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                const strength = 0.4; 
+                button.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
             });
-        });
-
-        // --- Gallery Lightbox ---
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxClose = document.getElementById('lightbox-close');
-
-        galleryItems.forEach(item => {
-            item.addEventListener('click', () => {
-                lightboxImg.src = item.src;
-                lightbox.classList.add('active');
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translate(0px, 0px)';
             });
-        });
+             button.style.transition = 'transform 0.1s linear';
+       };
+       document.querySelectorAll('.magnetic-button').forEach(initMagneticButton);
 
-        const closeLightbox = () => {
-            lightbox.classList.remove('active');
-            setTimeout(() => { lightboxImg.src = '' }, 300);
+        // --- Machine à Écrire (Typewriter) (conservée) ---
+        const typewriterElement = document.querySelector('.typewriter');
+        if (typewriterElement) {
+            const phrases = [
+                "L'endroit où la force rencontre la détermination.",
+                "Rejoignez la communauté.",
+                "Découvrez nos cours de CrossFit.",
+                "Atteignez vos objectifs.",
+                "Essayez la Zumba Party!",
+            ];
+            let phraseIndex = 0;
+            let letterIndex = 0;
+            let isDeleting = false;
+            const typingSpeed = 100;
+            const deletingSpeed = 50;
+            const pauseEnd = 1500; 
+
+            const type = () => {
+                const currentPhrase = phrases[phraseIndex];
+                let textToShow = '';
+                if (isDeleting) {
+                    textToShow = currentPhrase.substring(0, letterIndex - 1);
+                    letterIndex--;
+                } else {
+                    textToShow = currentPhrase.substring(0, letterIndex + 1);
+                    letterIndex++;
+                }
+                typewriterElement.textContent = textToShow; 
+
+                let typeSpeed = isDeleting ? deletingSpeed : typingSpeed;
+                if (!isDeleting && letterIndex === currentPhrase.length) {
+                    typeSpeed = pauseEnd;
+                    isDeleting = true;
+                } else if (isDeleting && letterIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    typeSpeed = typingSpeed * 2;
+                }
+                setTimeout(type, typeSpeed);
+            };
+            if (document.documentElement.lang !== 'ar') {
+               setTimeout(type, pauseEnd);
+            }
         }
 
-        lightboxClose.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                closeLightbox();
-            }
-        });
+       // --- Parallaxe du Héros au Mouvement de la Souris (conservé) ---
+        const heroContainer = document.querySelector('.hero-parallax-container');
+        const heroContent = document.querySelector('.hero-content'); 
+        if (heroContainer && heroContent) {
+            heroContainer.addEventListener('mousemove', (e) => {
+                if (window.matchMedia("(min-width: 1024px)").matches) {
+                    const { clientX, clientY } = e;
+                    const { offsetWidth, offsetHeight } = heroContainer;
+                    const xPos = (clientX / offsetWidth - 0.5) * 2;
+                    const yPos = (clientY / offsetHeight - 0.5) * 2;
+                    const moveFactor = 10;
+                    heroContent.style.transform = `translate(${xPos * -moveFactor}px, ${yPos * -moveFactor}px)`;
+                }
+            });
+             heroContainer.addEventListener('mouseleave', () => {
+                 heroContent.style.transform = `translate(0px, 0px)`;
+             });
+              heroContent.style.transition = 'transform 0.1s linear';
+        }
 
-        // --- Free Trial Modal ---
-        const trialModalOverlay = document.getElementById('trial-modal-overlay');
-        const trialModalBox = document.getElementById('trial-modal-box');
-        const openTrialModalBtns = document.querySelectorAll('#trial-cta-header, #trial-cta-mobile');
-        const closeTrialModalBtn = document.getElementById('trial-modal-close');
-        const trialForm = document.getElementById('trial-form');
-        const trialFormStatus = document.getElementById('trial-form-status');
-
-        const openModal = () => {
-            trialModalOverlay.classList.remove('opacity-0', 'pointer-events-none');
-            trialModalBox.classList.remove('scale-95', 'opacity-0');
-        };
-
-        const closeModal = () => {
-            trialModalBox.classList.add('scale-95', 'opacity-0');
-            trialModalOverlay.classList.add('opacity-0', 'pointer-events-none');
-        };
-
-        openTrialModalBtns.forEach(btn => btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            openModal();
-             if (!mobileMenu.classList.contains('hidden')) {
-                  mobileMenu.classList.add('hidden');
-              }
-        }));
-
-        closeTrialModalBtn.addEventListener('click', closeModal);
-        trialModalOverlay.addEventListener('click', (e) => {
-            if (e.target === trialModalOverlay) {
-                closeModal();
-            }
-        });
+        // --- Lightbox de la Galerie (Structure de sevengym.html, contenu MIS À JOUR) ---
+        const galleryGrid = document.getElementById('gallery-grid');
+        const lightbox = document.getElementById('gallery-lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+        let currentImageIndex = 0;
         
-        trialForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            trialFormStatus.style.color = 'green';
-            trialFormStatus.textContent = 'Merci ! Votre pass a été envoyé.';
-            setTimeout(() => {
-                closeModal();
-                trialFormStatus.textContent = '';
-                trialForm.reset();
-            }, 2000);
-        });
+        const galleryImages = [
+            'https://i.imgur.com/B4s2eEf.png',
+            'https://i.imgur.com/k7YyVZL.jpeg',
+            'https://i.imgur.com/TyDoKNI.jpeg',
+            'https://i.imgur.com/sVL4Fza.jpeg',
+            'https://i.imgur.com/XNXzXm5.jpeg',
+            'https://i.imgur.com/Pj2L9tZ.jpeg'
+        ];
+
+        if (galleryGrid) {
+            galleryGrid.innerHTML = '';
+            galleryImages.forEach((src, index) => {
+                const imgContainer = document.createElement('div');
+                imgContainer.className = 'overflow-hidden rounded-lg shadow-lg cursor-pointer aspect-square';
+                imgContainer.innerHTML = `<img src="${src}" alt="Salle de gym ${index + 1}" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110 gallery-thumbnail" loading="lazy">`;
+                imgContainer.addEventListener('click', () => openLightbox(index));
+                galleryGrid.appendChild(imgContainer);
+            });
+        }
+
+        const handleLightboxKey = (e) => {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') showPrevImage();
+            if (e.key === 'ArrowRight') showNextImage();
+        };
+
+        const openLightbox = (index) => {
+            currentImageIndex = index;
+            updateLightboxImage();
+            lightbox.classList.add('open');
+            document.addEventListener('keydown', handleLightboxKey);
+        };
+        const closeLightbox = () => {
+            lightbox.classList.remove('open');
+            document.removeEventListener('keydown', handleLightboxKey);
+        };
+        const showPrevImage = () => { currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length; updateLightboxImage(); };
+        const showNextImage = () => { currentImageIndex = (currentImageIndex + 1) % galleryImages.length; updateLightboxImage(); };
+        const updateLightboxImage = () => { lightboxImage.src = galleryImages[currentImageIndex]; };
+
+        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+        if (lightboxPrev) lightboxPrev.addEventListener('click', showPrevImage);
+        if (lightboxNext) lightboxNext.addEventListener('click', showNextImage);
+        if (lightbox) lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+        // --- Compte à Rebours (conservé) ---
+        const offerCountdown = () => {
+            const now = new Date();
+            const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+            const gap = endOfMonth.getTime() - now.getTime();
+            if (gap < 0) {
+                 ['offer-days', 'offer-hours', 'offer-minutes', 'offer-seconds'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.innerText = '0';
+                 });
+                 return;
+            }
+            const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
+            document.getElementById('offer-days').innerText = Math.floor(gap / day);
+            document.getElementById('offer-hours').innerText = String(Math.floor((gap % day) / hour)).padStart(2, '0');
+            document.getElementById('offer-minutes').innerText = String(Math.floor((gap % hour) / minute)).padStart(2, '0');
+            document.getElementById('offer-seconds').innerText = String(Math.floor((gap % minute) / second)).padStart(2, '0');
+        };
+       setInterval(offerCountdown, 1000);
+       offerCountdown();
+
+      // --- Logique du Modal de Réservation (conservée) ---
+      const openBookingModal = (activity, day, time) => {
+          const lang = localStorage.getItem('language') || 'fr';
+          const titleBase = translations[lang]['book_modal_title'] || 'Réserver votre place';
+          bookingModalTitle.textContent = `${titleBase} - ${activity}`;
+          document.getElementById('booking-details-activity').value = activity;
+          document.getElementById('booking-details-day').value = day;
+          document.getElementById('booking-details-time').value = time;
+          bookingModalForm.classList.remove('hidden');
+          bookingConfirmation.classList.add('hidden');
+          bookingModalForm.reset();
+          bookingModal.classList.add('open');
+          bookingModalOverlay.classList.add('open');
+      };
+      const closeBookingModal = () => {
+          bookingModal.classList.remove('open');
+          bookingModalOverlay.classList.remove('open');
+      };
+      [menScheduleBody, womenScheduleBody].forEach(body => {
+          if (body) {
+              body.addEventListener('click', (e) => {
+                  const bookButton = e.target.closest('.book-now-btn');
+                  if (bookButton) {
+                      e.preventDefault();
+                      const { activityName, day, time } = bookButton.dataset;
+                      openBookingModal(activityName, day, time);
+                  }
+              });
+          }
+      });
+      if(bookingModalClose) bookingModalClose.addEventListener('click', closeBookingModal);
+      if(bookingModalOverlay) bookingModalOverlay.addEventListener('click', closeBookingModal);
+      if (bookingModalForm) {
+          bookingModalForm.addEventListener('submit', (e) => {
+              e.preventDefault();
+              const lang = localStorage.getItem('language') || 'fr';
+              const submitButton = document.getElementById('booking-submit-button');
+              const submitButtonText = document.getElementById('booking-submit-text');
+              submitButton.disabled = true;
+              submitButtonText.innerHTML = `<span class="spinner"></span> ${translations[lang]['form_sending'] || 'Envoi en cours...'}`;
+              setTimeout(() => {
+                  bookingModalForm.classList.add('hidden');
+                  bookingConfirmation.classList.remove('hidden');
+                  const activity = document.getElementById('booking-details-activity').value;
+                  const day = document.getElementById('booking-details-day').value;
+                  const time = document.getElementById('booking-details-time').value;
+                  const successMessageTemplate = translations[lang]['booking_success_message'] || 'Nous avons réservé votre place pour {activity} le {day} à {time}.';
+                  document.getElementById('booking-success-message').textContent = successMessageTemplate
+                      .replace('{activity}', activity)
+                      .replace('{day}', day)
+                      .replace('{time}', time);
+                  submitButton.disabled = false;
+                  submitButtonText.innerHTML = translations[lang]['form_confirm_booking'] || 'Confirmer la réservation';
+                  setTimeout(closeBookingModal, 3000);
+              }, 1500);
+          });
+      }
+
+      // --- NOUVEAU : Logique du Pro Shop (MISE À JOUR MAJEURE) ---
+
+      // Formatteur de devise
+      const formatCurrency = (amount, currency = 'DZD') => {
+          return `${amount.toLocaleString('fr-FR')} ${currency}`;
+      };
+
+      // Rendu des produits
+      const renderShop = (lang = 'fr', category = 'all', searchTerm = '', sortMode = 'default') => {
+          if (!shopGrid) return;
+
+          // 1. Filtrer
+          let filteredProducts = shopProducts.filter(p => {
+              const categoryMatch = category === 'all' || p.category === category;
+              const productName = (translations[lang][p.nameKey] || p.nameKey).toLowerCase();
+              const searchMatch = productName.includes(searchTerm.toLowerCase());
+              return categoryMatch && searchMatch;
+          });
+
+          // 2. Trier
+          if (sortMode === 'price-asc') {
+              filteredProducts.sort((a, b) => (a.salePrice || a.price) - (b.salePrice || b.price));
+          } else if (sortMode === 'price-desc') {
+              filteredProducts.sort((a, b) => (b.salePrice || b.price) - (a.salePrice || a.price));
+          }
+
+          shopGrid.innerHTML = ''; // Vide la grille
+          
+          filteredProducts.forEach((product, index) => {
+              const productName = translations[lang][product.nameKey] || product.nameKey;
+              const viewDetailsText = translations[lang]['view_details'] || 'Voir Détails';
+              const saleText = translations[lang]['badge_sale'] || 'En Solde';
+              const newText = translations[lang]['badge_new'] || 'Nouveau';
+
+              // Logique des badges
+              let badgeHTML = '';
+              if (product.salePrice) {
+                  badgeHTML = `<span class="product-badge sale">${saleText}</span>`;
+              } else if (product.isNew) {
+                  badgeHTML = `<span class="product-badge">${newText}</span>`;
+              }
+
+              // Logique du prix
+              let priceHTML = '';
+              if (product.salePrice) {
+                  priceHTML = `
+                      <p class="product-card-price">
+                          ${formatCurrency(product.salePrice, product.currency)}
+                          <span class="original-price">${formatCurrency(product.price, product.currency)}</span>
+                      </p>`;
+              } else {
+                  priceHTML = `<p class="product-card-price">${formatCurrency(product.price, product.currency)}</p>`;
+              }
+
+              // Logique des étoiles
+              let starsHTML = '<div class="star-rating">';
+              for (let i = 1; i <= 5; i++) {
+                  if (i <= product.rating) {
+                      starsHTML += '<i class="fas fa-star"></i>';
+                  } else {
+                      starsHTML += '<i class="far fa-star"></i>'; // Étoile vide
+                  }
+              }
+              starsHTML += ` <span class="text-xs text-secondary ml-1">(${product.rating}.0)</span></div>`;
+
+
+              const card = document.createElement('div');
+              card.className = 'product-card fade-in-up';
+              card.style.transitionDelay = `${index * 100}ms`; // Ajoute un délai pour l'animation
+              card.innerHTML = `
+                  <div class="product-card-image-container">
+                      <img src="${product.image}" alt="${productName}" class="product-card-image" onerror="this.src='https://placehold.co/400x400/fde047/111111?text=Image+Error';">
+                      ${badgeHTML}
+                  </div>
+                  <div class="product-card-content">
+                      ${starsHTML}
+                      <h3 class="product-card-name">${productName}</h3>
+                      ${priceHTML}
+                      <button class="product-card-btn magnetic-button w-full p-3 rounded-full font-bold transition" data-product-id="${product.id}">
+                          ${viewDetailsText}
+                      </button>
+                  </div>
+              `;
+              shopGrid.appendChild(card);
+              animationObserver.observe(card); // Observe la nouvelle carte
+              const btn = card.querySelector('.magnetic-button');
+              if(btn) initMagneticButton(btn);
+          });
+      };
       
+      // NOUVEAU : Fonction de mise à jour du rendu de la boutique
+      const updateShopRender = () => {
+          const lang = localStorage.getItem('language') || 'fr';
+          const category = shopFilters.querySelector('.shop-filter-btn.active').dataset.category || 'all';
+          const searchTerm = shopSearchInput.value || '';
+          const sortMode = shopSortSelect.value || 'default';
+          renderShop(lang, category, searchTerm, sortMode);
+      };
+
+      // Gestion des filtres de la boutique (MISE À JOUR)
+      if (shopFilters) {
+          shopFilters.addEventListener('click', (e) => {
+              const target = e.target.closest('.shop-filter-btn');
+              if (target) {
+                  shopFilters.querySelectorAll('.shop-filter-btn').forEach(btn => btn.classList.remove('active'));
+                  target.classList.add('active');
+                  updateShopRender();
+              }
+          });
+      }
+      
+      // NOUVEAU : Écouteurs pour la recherche et le tri
+      if (shopSearchInput) {
+          shopSearchInput.addEventListener('input', () => {
+              clearTimeout(searchDebounceTimer);
+              searchDebounceTimer = setTimeout(updateShopRender, 300);
+          });
+      }
+      if (shopSortSelect) {
+          shopSortSelect.addEventListener('change', updateShopRender);
+      }
+
+
+      // Ouvrir le modal produit
+      const openProductModal = (productId) => {
+          const product = shopProducts.find(p => p.id === productId);
+          if (!product) return;
+          
+          currentProductId = productId; // Stocke l'ID
+          const lang = localStorage.getItem('language') || 'fr';
+          
+          productModalImage.src = product.image;
+          productModalImage.alt = translations[lang][product.nameKey] || product.nameKey;
+          productModalImage.onerror = () => { productModalImage.src = 'https://placehold.co/400x400/fde047/111111?text=Image+Error'; };
+          
+          productModalTitle.textContent = translations[lang][product.nameKey] || product.nameKey;
+          
+          // Logique de prix pour le modal
+          if (product.salePrice) {
+               productModalPrice.innerHTML = `
+                  ${formatCurrency(product.salePrice, product.currency)}
+                  <span class="original-price text-2xl">${formatCurrency(product.price, product.currency)}</span>
+              `;
+          } else {
+               productModalPrice.innerHTML = formatCurrency(product.price, product.currency);
+          }
+
+          productModalDescription.textContent = translations[lang][product.descriptionKey] || product.descriptionKey;
+          productModalQuantityInput.value = '1'; // Réinitialise la quantité
+          
+          productDetailModal.classList.add('open');
+          productDetailModalOverlay.classList.add('open');
+      };
+
+      // Fermer le modal produit
+      const closeProductModal = () => {
+          productDetailModal.classList.remove('open');
+          productDetailModalOverlay.classList.remove('open');
+          currentProductId = null;
+      };
+
+      // CORRECTION : Ajout des écouteurs pour fermer le modal produit
+      if (productDetailModalClose) {
+          productDetailModalClose.addEventListener('click', closeProductModal);
+      }
+      if (productDetailModalOverlay) {
+          productDetailModalOverlay.addEventListener('click', closeProductModal);
+      }
+
+      // Clic sur la grille des produits (délégation d'événements)
+      if (shopGrid) {
+          shopGrid.addEventListener('click', (e) => {
+              const target = e.target.closest('.product-card-btn');
+              if (target) {
+                  const productId = target.dataset.productId;
+                  openProductModal(productId);
+              }
+          });
+      }
+
+      // Gestion de la quantité dans le modal produit
+      if (productModalQuantityPlus) {
+          productModalQuantityPlus.addEventListener('click', () => {
+              productModalQuantityInput.value = parseInt(productModalQuantityInput.value, 10) + 1;
+          });
+      }
+      if (productModalQuantityMinus) {
+          productModalQuantityMinus.addEventListener('click', () => {
+              const currentVal = parseInt(productModalQuantityInput.value, 10);
+              if (currentVal > 1) {
+                  productModalQuantityInput.value = currentVal - 1;
+              }
+          });
+      }
+      if(productModalQuantityInput) {
+          productModalQuantityInput.addEventListener('change', () => {
+              if (parseInt(productModalQuantityInput.value, 10) < 1) {
+                  productModalQuantityInput.value = '1';
+              }
+          });
+      }
+
+      // Ajouter au panier
+      const addToCart = (productId, quantity) => {
+          const existingItem = cart.find(item => item.id === productId);
+          if (existingItem) {
+              existingItem.quantity += quantity;
+          } else {
+              cart.push({ id: productId, quantity: quantity });
+          }
+          updateCart();
+      };
+      
+      // Mettre à jour l'affichage du panier (modal & badge)
+      const updateCart = (lang = localStorage.getItem('language') || 'fr') => {
+          if (cart.length === 0) {
+              // Panier vide
+              cartItemsContainer.innerHTML = '';
+              cartEmptyMessage.classList.remove('hidden');
+              cartSummaryFooter.classList.add('hidden');
+              [cartBadge, cartBadgeMobile].forEach(badge => {
+                  badge.classList.add('hidden');
+                  badge.textContent = '0';
+              });
+          } else {
+              // Panier plein
+              cartEmptyMessage.classList.add('hidden');
+              cartSummaryFooter.classList.remove('hidden');
+              cartItemsContainer.innerHTML = '';
+              let subtotal = 0;
+              let totalItems = 0;
+              
+              cart.forEach(item => {
+                  const product = shopProducts.find(p => p.id === item.id);
+                  if (!product) return;
+                  
+                  const itemPrice = product.salePrice || product.price; // Utilise le prix soldé s'il existe
+                  subtotal += itemPrice * item.quantity;
+                  totalItems += item.quantity;
+                  
+                  const productName = translations[lang][product.nameKey] || product.nameKey;
+                  const removeText = translations[lang]['remove_item'] || 'Retirer';
+                  
+                  const itemElement = document.createElement('div');
+                  itemElement.className = 'cart-item';
+                  itemElement.innerHTML = `
+                      <img src="${product.image}" alt="${productName}" class="cart-item-img" onerror="this.src='https://placehold.co/60x60/fde047/111111?text=Error';">
+                      <div class="cart-item-details">
+                          <div class="cart-item-name">${productName}</div>
+                          <div class="cart-item-price">${formatCurrency(itemPrice, product.currency)}</div>
+                          <div class="cart-item-quantity">
+                              <input type="number" value="${item.quantity}" min="1" data-id="${product.id}" class="cart-item-quantity-input" aria-label="Quantité produit">
+                          </div>
+                      </div>
+                      <button class="cart-item-remove" data-id="${product.id}" title="${removeText}">&times;</button>
+                  `;
+                  cartItemsContainer.appendChild(itemElement);
+              });
+              
+              // Mettre à jour les totaux
+              cartSubtotal.textContent = formatCurrency(subtotal);
+              checkoutTotal.textContent = formatCurrency(subtotal);
+              
+              // Mettre à jour les badges
+              [cartBadge, cartBadgeMobile].forEach(badge => {
+                  badge.classList.remove('hidden');
+                  badge.textContent = totalItems;
+              });
+          }
+      };
+
+      // Clic sur "Ajouter au panier" dans le modal produit
+      if (productModalAddToCartBtn) {
+          productModalAddToCartBtn.addEventListener('click', () => {
+              const quantity = parseInt(productModalQuantityInput.value, 10);
+              if (currentProductId && quantity > 0) {
+                  addToCart(currentProductId, quantity);
+                  closeProductModal();
+              }
+          });
+      }
+
+      // Ouvrir/Fermer le modal Panier
+      const openCartModal = () => {
+          cartContentContainer.classList.remove('hidden');
+          cartCheckoutForm.classList.add('hidden');
+          cartConfirmation.classList.add('hidden');
+          updateCart();
+          cartModal.classList.add('open');
+          cartModalOverlay.classList.add('open');
+      };
+      const closeCartModal = () => {
+          cartModal.classList.remove('open');
+          cartModalOverlay.classList.remove('open');
+      };
+      if (cartToggle) cartToggle.addEventListener('click', openCartModal);
+      if (cartToggleMobile) cartToggleMobile.addEventListener('click', openCartModal);
+      if (cartModalClose) cartModalClose.addEventListener('click', closeCartModal);
+      if (cartModalOverlay) cartModalOverlay.addEventListener('click', closeCartModal);
+
+      // Gestion des événements dans le panier (Retirer, Changer Quantité)
+      if (cartItemsContainer) {
+          cartItemsContainer.addEventListener('click', (e) => {
+              if (e.target.classList.contains('cart-item-remove')) {
+                  const productId = e.target.dataset.id;
+                  cart = cart.filter(item => item.id !== productId);
+                  updateCart();
+              }
+          });
+          
+          cartItemsContainer.addEventListener('change', (e) => {
+              if (e.target.classList.contains('cart-item-quantity-input')) {
+                  const productId = e.target.dataset.id;
+                  let newQuantity = parseInt(e.target.value, 10);
+                  if (newQuantity < 1) {
+                      newQuantity = 1;
+                      e.target.value = '1';
+                  }
+                  const itemInCart = cart.find(item => item.id === productId);
+                  if (itemInCart) {
+                      itemInCart.quantity = newQuantity;
+                      updateCart();
+                  }
+              }
+          });
+      }
+
+      // Logique de Paiement
+      if (cartCheckoutBtn) {
+          cartCheckoutBtn.addEventListener('click', () => {
+              cartContentContainer.classList.add('hidden');
+              cartCheckoutForm.classList.remove('hidden');
+          });
+      }
+      
+      if (checkoutForm) {
+          checkoutForm.addEventListener('submit', (e) => e.preventDefault()); 
+      }
+
+      if (checkoutConfirmBtn) {
+          checkoutConfirmBtn.addEventListener('click', () => {
+              const lang = localStorage.getItem('language') || 'fr';
+              checkoutConfirmBtn.disabled = true;
+              checkoutConfirmText.innerHTML = `<span class="spinner"></span> ${translations[lang]['form_sending'] || 'Envoi en cours...'}`;
+
+              setTimeout(() => {
+                  cartCheckoutForm.classList.add('hidden');
+                  cartConfirmation.classList.remove('hidden');
+
+                  cart = [];
+                  updateCart();
+                  
+                  checkoutConfirmBtn.disabled = false;
+                  checkoutConfirmText.innerHTML = translations[lang]['confirm_purchase'] || "Confirmer l'Achat";
+                  
+                  setTimeout(closeCartModal, 3000);
+                  
+              }, 1500);
+          });
+      }
+
+
+      // --- Appels Initiaux (conservés) ---
+       setLanguage(savedLang);
+       updateGymStatus(savedLang);
+       updateLiveHighlight(savedLang);
+       updateShopRender(); // NOUVEAU : Utilise la nouvelle fonction
+       updateCart(savedLang); 
+
     });
   </script>
 </body>
 </html>
-
-
-
-
