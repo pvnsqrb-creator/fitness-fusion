@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <!-- 
-  FICHIER FUSIONNÉ (v4 - Thème Jaune & Noir + Fonctionnalités Boutique)
+  FICHIER FUSIONNÉ (v6 - Correctif Responsive Mobile)
   Base : sevengym.html
   MODIFIÉ : 
-  - Changement de nom pour "Seven Gym"
-  - Refonte de la palette de couleurs en Jaune & Noir
-  - Ajout des fonctionnalités Pro Shop : Recherche, Tri, Évaluations, Badges
-  - MISE À JOUR : Liste des produits 28/10/2025
-  - CORRECTION : Ajout des écouteurs pour fermer le modal produit.
+  - CORRECTION (Prix) : L'animation du compteur de prix se déclenche désormais plus tôt (seuil de 0.1 au lieu de 0.5) pour s'assurer qu'elle s'active sur les écrans mobiles plus petits.
+  - CORRECTION (Détail Produit) : Réduction de la taille de la police pour le titre (text-3xl -> text-2xl md:text-3xl) et le prix (text-3xl -> text-2xl md:text-3xl) dans le modal de détail du produit pour un meilleur affichage sur mobile.
 -->
 <html lang="fr" class="scroll-smooth">
 <head>
@@ -400,6 +397,11 @@
         display: flex; 
         flex-direction: column; 
     }
+    /* MODAL PRODUIT : Plus large sur bureau */
+    #product-detail-modal.modal {
+        max-width: 650px; /* Plus large pour la grille */
+    }
+
     .modal.open, .modal-overlay.open {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
@@ -535,13 +537,19 @@
       margin-bottom: 1rem;
     }
     /* NOUVEAU : Prix en Solde */
-    .product-card-price .original-price {
+    .product-card-price .original-price, #product-modal-price .original-price {
       text-decoration: line-through;
       color: var(--text-secondary);
       font-size: 1rem;
       font-weight: 400;
       margin-left: 0.5rem;
     }
+    /* MODAL : Ajustement taille prix soldé */
+    #product-modal-price .original-price {
+        font-size: 1.25rem; /* text-xl */
+        margin-left: 0.5rem; /* ml-2 */
+    }
+
 
     .product-card-btn {
       background-color: var(--accent-color);
@@ -1032,7 +1040,7 @@
                 <!-- Google Map -->
                 <div class="fade-in-up" style="transition-delay: 200ms; min-height: 400px;">
                   <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!m12!1m3!1d25585.340947708573!2d2.94392435104886!3d36.75338100192537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fafc6e5f171c7%3A0xb33a5796f64a593!2sCh%C3%A9raga!5e0!3m2!1sfr!2sdz!4v1729855836853!5m2!1sfr!2sdz" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!m12!m3!1d25585.340947708573!2d2.94392435104886!3d36.75338100192537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fafc6e5f171c7%3A0xb33a5796f64a593!2sCh%C3%A9raga!5e0!3m2!1sfr!2sdz!4v1729855836853!5m2!1sfr!2sdz" 
                     width="100%" height="100%" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                     title="Carte de Seven Gym à Cheraga">
                   </iframe>
@@ -1128,13 +1136,33 @@
       <button id="product-detail-modal-close" class="modal-close" data-translate-key="modal_close_label" aria-label="Fermer">&times;</button>
       
       <!-- Contenu injecté par JS -->
+      <!-- MODIFIÉ : Structure du modal produit -->
       <div id="product-detail-content" class="modal-content">
-          <!-- Exemple de structure (sera remplacée par JS) -->
-          <img id="product-modal-image" src="https://placehold.co/400x400" alt="Produit" class="w-full h-48 object-cover rounded-lg mb-4">
-          <h2 id="product-modal-title" class="text-2xl font-bold font-heading mb-2 text-primary">Nom du Produit</h2>
-          <p id="product-modal-price" class="text-3xl font-bold mb-4" style="color: var(--accent-color);">0 DZD</p>
-          <p id="product-modal-description" class="text-secondary mb-6">Description détaillée du produit...</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 md:gap-6">
+              <!-- Col 1: Image -->
+              <div class="relative">
+                  <img id="product-modal-image" src="https://placehold.co/400x400" alt="Produit" class="w-full aspect-square object-cover rounded-lg mb-4 md:mb-0 border border-color">
+                  <div id="product-modal-badges" class="absolute top-3 left-3 flex flex-col gap-2">
+                      <!-- Badges (ex: <span class="product-badge">Nouveau</span>) -->
+                  </div>
+              </div>
+              
+              <!-- Col 2: Details -->
+              <div>
+                  <p id="product-modal-category" class="text-sm uppercase text-secondary font-semibold mb-1">Category</p>
+                  <!-- CORRECTION : Tailles de police responsives -->
+                  <h2 id="product-modal-title" class="text-2xl md:text-3xl font-bold font-heading mb-2 text-primary">Nom du Produit</h2>
+                  <div id="product-modal-rating" class="star-rating mb-3">
+                      <!-- Stars (ex: <i class="fas fa-star"></i>) -->
+                  </div>
+                  <!-- CORRECTION : Tailles de police responsives -->
+                  <p id="product-modal-price" class="text-2xl md:text-3xl font-bold mb-4" style="color: var(--accent-color);">0 DZD</p>
+                  <p id="product-modal-description" class="text-secondary mb-6">Description détaillée du produit...</p>
+              </div>
+          </div>
       </div>
+      <!-- FIN Structure du modal produit -->
+
 
       <div class="modal-footer">
           <div class="flex justify-between items-center mb-4">
@@ -1282,6 +1310,11 @@
       const productModalQuantityPlus = document.getElementById('product-modal-quantity-plus');
       const productModalQuantityInput = document.getElementById('product-modal-quantity-input');
       const productModalAddToCartBtn = document.getElementById('product-modal-add-to-cart-btn');
+      // MODIFIÉ : Ajout des nouveaux sélecteurs de modal produit
+      const productModalCategory = document.getElementById('product-modal-category');
+      const productModalRating = document.getElementById('product-modal-rating');
+      const productModalBadges = document.getElementById('product-modal-badges');
+
 
       // --- NOUVEAU : État du Pro Shop ---
       let cart = []; // Format: [{ id: 'prod1', quantity: 2 }, { id: 'prod2', quantity: 1 }]
@@ -1905,9 +1938,11 @@
 
        // --- Animation de Compteur (conservée) ---
        const animateCountUp = (el) => {
+           // MODIFIÉ : Cible le premier span pour le texte
            const target = parseInt(el.getAttribute('data-target-price'), 10);
-           if (isNaN(target) || el.dataset.animated === 'true') return; 
-           el.dataset.animated = 'true'; 
+           const numberSpan = el.querySelector('span:first-child');
+           if (isNaN(target) || !numberSpan || numberSpan.dataset.animated === 'true') return; 
+           numberSpan.dataset.animated = 'true'; 
            let current = 0;
            const increment = Math.ceil(target / 50); 
            const duration = 1000; 
@@ -1915,7 +1950,7 @@
            const timer = setInterval(() => {
                current += increment;
                if (current >= target) { current = target; clearInterval(timer); }
-               el.firstChild.textContent = current.toLocaleString('fr-FR'); 
+               numberSpan.textContent = current.toLocaleString('fr-FR'); 
            }, stepTime);
        };
 
@@ -1946,13 +1981,20 @@
               const btnStyle = plan.highlight ? `background-color: var(--accent-color); color: var(--text-primary);` : `background-color: var(--text-secondary); color: white;`;
               const btnHover = plan.highlight ? `hover:opacity-80` : `hover:opacity-80`;
 
+              // MODIFIÉ : Structure du prix pour le responsive mobile
               pricingHTML += `
                   <div class="pricing-card bg-primary rounded-lg shadow-custom flex flex-col items-center text-center ${highlightClasses}" style="transition-delay: ${delay}ms;" tabindex="0"> 
                      <div class="pricing-card-inner">
                         <div class="pricing-card-front">
                               ${plan.highlight ? `<span class="pricing-card-popular-badge absolute top-0 -translate-y-1/2 text-xs font-bold uppercase tracking-wider text-primary px-3 py-1 rounded-full mb-4" style="background-color: var(--accent-color);">${popularText}</span>` : ''}
                               <h3 class="text-xl font-bold font-heading mb-2 text-primary mt-4">${frequencyText}</h3>
-                              <p class="text-4xl font-bold mb-4 price-number" style="color: ${plan.highlight ? 'var(--accent-color)' : 'var(--text-primary)'};" data-target-price="${plan.price}"><span>0</span><span class="text-lg font-normal text-secondary"> ${priceUnitText}</span></p>
+                              
+                              <!-- MODIFIÉ : Flex-col sur mobile, flex-row sur sm+ -->
+                              <p class="flex flex-col sm:flex-row sm:items-baseline sm:justify-center text-center font-bold mb-4 price-number" style="color: ${plan.highlight ? 'var(--accent-color)' : 'var(--text-primary)'};" data-target-price="${plan.price}">
+                                  <span class="text-3xl sm:text-4xl">0</span>
+                                  <span class="text-base sm:text-lg font-normal text-secondary sm:ml-1.5"> ${priceUnitText}</span>
+                              </p>
+                              
                               <ul class="text-secondary space-y-2 mb-6 text-sm flex-grow">
                                   ${featuresHTML}
                               </ul>
@@ -1973,7 +2015,10 @@
 
           document.querySelectorAll('#pricing-grid .pricing-card').forEach(card => {
               card.classList.remove('visible');
-              card.dataset.animated = 'false';
+              // MODIFIÉ : Réinitialise l'animation du compteur
+              const numberSpan = card.querySelector('.price-number span:first-child');
+              if(numberSpan) numberSpan.dataset.animated = 'false';
+              
               animationObserver.observe(card);
               
               card.addEventListener('keydown', (e) => {
@@ -1995,7 +2040,15 @@
               }
           });
 
-          const pricingObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.querySelectorAll('.price-number').forEach(el => animateCountUp(el)); observer.unobserve(entry.target); } }); }, { threshold: 0.5 }); 
+          // MODIFIÉ : L'observateur cible la grille pour animer les prix
+          const pricingObserver = new IntersectionObserver((entries, observer) => { 
+              entries.forEach(entry => { 
+                  if (entry.isIntersecting) { 
+                      entry.target.querySelectorAll('.price-number').forEach(el => animateCountUp(el)); 
+                      observer.unobserve(entry.target); 
+                  } 
+              }); 
+          }, { threshold: 0.1 }); // CORRECTION : Seuil changé de 0.5 à 0.1
           if(pricingGrid) pricingObserver.observe(pricingGrid);
       }
 
@@ -2414,7 +2467,7 @@
       }
 
 
-      // Ouvrir le modal produit
+      // MODIFIÉ : Ouvrir le modal produit
       const openProductModal = (productId) => {
           const product = shopProducts.find(p => p.id === productId);
           if (!product) return;
@@ -2432,7 +2485,7 @@
           if (product.salePrice) {
                productModalPrice.innerHTML = `
                   ${formatCurrency(product.salePrice, product.currency)}
-                  <span class="original-price text-2xl">${formatCurrency(product.price, product.currency)}</span>
+                  <span class="original-price">${formatCurrency(product.price, product.currency)}</span>
               `;
           } else {
                productModalPrice.innerHTML = formatCurrency(product.price, product.currency);
@@ -2440,6 +2493,38 @@
 
           productModalDescription.textContent = translations[lang][product.descriptionKey] || product.descriptionKey;
           productModalQuantityInput.value = '1'; // Réinitialise la quantité
+
+          // --- NOUVEAU : Logique pour les nouveaux éléments ---
+          
+          // Catégorie
+          if (productModalCategory) {
+              productModalCategory.textContent = product.category.charAt(0).toUpperCase() + product.category.slice(1);
+          }
+
+          // Étoiles
+          if (productModalRating) {
+              let starsHTML = '';
+              for (let i = 1; i <= 5; i++) {
+                  starsHTML += i <= product.rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+              }
+              starsHTML += ` <span class="text-xs text-secondary ml-1">(${product.rating}.0)</span>`;
+              productModalRating.innerHTML = starsHTML;
+          }
+
+          // Badges
+          if (productModalBadges) {
+              let badgeHTML = '';
+              const saleText = translations[lang]['badge_sale'] || 'En Solde';
+              const newText = translations[lang]['badge_new'] || 'Nouveau';
+              
+              if (product.salePrice) {
+                  badgeHTML = `<span class="product-badge sale">${saleText}</span>`;
+              } else if (product.isNew) {
+                  badgeHTML = `<span class="product-badge">${newText}</span>`;
+              }
+              productModalBadges.innerHTML = badgeHTML;
+          }
+          // --- Fin de la nouvelle logique ---
           
           productDetailModal.classList.add('open');
           productDetailModalOverlay.classList.add('open');
